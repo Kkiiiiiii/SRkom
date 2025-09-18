@@ -27,7 +27,7 @@
                             <a class="nav-link" href="{{ route('info') }}">Info Sekolah</a>
                         </li>
                         <li class="nav-item">
-                            <http://127.0.0.1:8000/a class="nav-link" href="{{ route('berita') }}">Berita</a>
+                            <a class="nav-link" href="{{ route('berita') }}">Berita</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="{{ route('galeri') }}">Galeri</a>
@@ -36,12 +36,12 @@
                             <a class="nav-link " href="{{ route('ekskul') }}">Ekstrakurikuler</a>
                         </li>
                     </ul>
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Login</a>
-                        </li>
-                    </ul>
                 </div>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Login</a>
+                    </li>
+                </ul>
             </div>
         </nav>
         <main>
