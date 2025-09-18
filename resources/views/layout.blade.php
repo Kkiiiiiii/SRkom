@@ -12,7 +12,7 @@
         <nav class="navbar navbar-expand-sm navbar-dark bg-h">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="{{ asset('assets/logo.webp') }}" alt="Logo" width="50" height="50" class="rounded-circle">
+                    <img src="{{ asset('assets/image/logo_osis.jpeg') }}" alt="Logo" width="50" height="50" class="rounded-circle">
                     Sekolah
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +24,7 @@
                             <a class="nav-link active" href="{{ route('beranda') }}">Beranda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('info') }}">Info Sekolah</a>
+                            <a class="nav-link" href="{{ route('info') }}">Profil Sekolah</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('berita') }}">Berita</a>
@@ -39,7 +39,7 @@
                 </div>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
+                        <a class="nav-link" href="{{ route('loginShow') }}">Login</a>
                     </li>
                 </ul>
             </div>

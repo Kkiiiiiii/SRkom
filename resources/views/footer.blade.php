@@ -2,7 +2,7 @@
     <div class="container">
           <div class="d-flex flex-column flex-md-row justify-content-evenly align-items-center mb-4 gap-3">
             <div class="d-flex align-items-center gap-3">
-                <img src="{{ asset('assets/logo.webp') }}" class="rounded-circle" width="60" height="60">
+                <img src="{{ asset('assets/image/logo_osis.jpeg') }}" class="rounded-circle" width="60" height="60">
                 <h5 class="mb-0">SMPN 02</h5>
             </div>
             <div class="row"></div>
@@ -31,18 +31,17 @@
         </div>
         </div>
         <br>
-        <div class="d-flex">
+        <div class="container d-flex">
             <div class="col-md-4">
-                <p>Info Sekolah</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, optio incidunt? Ab!</p>
+                <p>Alamat Sekolah</p>
+                <p>Jl. Raya Pabuaran, RT.03/RW.12, Cikeas Udik, Kec. Gn. Putri, Kabupaten Bogor, Jawa Barat 16965</p>
             </div>
             <div class="col-md-4">
-                <p>Contact</p>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam, itaque. Dolore necessitatibus
-                    similique exercitationem voluptate.</p>
+                <p>Visi-Misi</p>
+                <p>Adiwiyata</p>
                 </div>
                 <div class="col-md-4">
-                    <p>Visi-Misi</p>
+                    <p>Contact</p>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam, itaque. Dolore necessitatibus
                         similique exercitationem voluptate.</p>
                     </div>

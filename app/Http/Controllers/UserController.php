@@ -14,7 +14,7 @@ class UserController extends Controller
 
     public function info()
     {
-        return view('infoSekolah');
+        return view('profilSekolah');
     }
 
     public function berita()

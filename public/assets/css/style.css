@@ -17,3 +17,7 @@
 .footer-social-icon:hover {
     background-color: gray; 
 }
+
+.login-box{
+    border-radius: 25%;
+}
