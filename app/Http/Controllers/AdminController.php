@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\guru;
+use App\Models\profil_sekolah;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -10,5 +12,27 @@ class AdminController extends Controller
     public function dash()
     {
         return view('admin.dashboard');
+    }
+
+    public function profil()
+    {
+        $ps = profil_sekolah::all();
+        return view('admin.profilSekolah', compact('ps'));
+    }
+
+    public function user()
+    {
+        return view('admin.user');
+    }
+
+    public function guru()
+    {
+        $guru = guru::all();
+        return view('admin.guru', compact('guru'));
+    }
+
+    public function siswa()
+    {
+        return view('admin.siswa');
     }
 }

@@ -11,13 +11,26 @@
     align-items: center;
     margin: 0 10px; 
     border-radius: 20%;
-    background-color: #ddd;
+    background: linear-gradient(135deg, #ffff,#e1c2c2); 
+    /* text-emphasis-color: white; */
 }
 
 .footer-social-icon:hover {
-    background-color: gray; 
+    background: linear-gradient(135deg,  #3B0270,#340651);
+
 }
 
 .login-box{
     border-radius: 25%;
+}
+
+.galeri{
+    height: 100px;
+    width: 100px;
+    float: left;
+    overflow: hidden;
+}
+
+.galeri .img{
+    width: 100px;
 }

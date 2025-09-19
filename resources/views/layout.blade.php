@@ -12,7 +12,7 @@
         <nav class="navbar navbar-expand-sm navbar-dark bg-h">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="{{ asset('assets/image/logo_osis.jpeg') }}" alt="Logo" width="50" height="50" class="rounded-circle">
+                    <img src="{{ asset('assets/image/logo_osis.jpeg') }}" alt="Logo" width="50" height="50" class="rounded-circle img-thumbnail">
                     Sekolah
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,19 +21,20 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('beranda') }}">Beranda</a>
+                            {{-- UNTUK MEMBUAT NAV NYA AKTIF KETIKA DI KLIK --}}
+                            <a class="nav-link {{ request()->routeIs('beranda') ? 'active' : '' }}" href="{{ route('beranda') }}">Beranda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('info') }}">Profil Sekolah</a>
+                            <a class="nav-link {{ request()->routeIs('info') ? 'active' : '' }}" href="{{ route('info') }}">Profil Sekolah</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('berita') }}">Berita</a>
+                            <a class="nav-link {{ request()->routeIs('berita') ? 'active' : '' }}" href="{{ route('berita') }}">Berita</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="{{ route('galeri') }}">Galeri</a>
+                            <a class="nav-link {{ request()->routeIs('galeri') ? 'active' : '' }}" href="{{ route('galeri') }}">Galeri</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="{{ route('ekskul') }}">Ekstrakurikuler</a>
+                            <a class="nav-link {{ request()->routeIs('ekskul') ? 'active' : '' }}" href="{{ route('ekskul') }}">Ekstrakurikuler</a>
                         </li>
                     </ul>
                 </div>

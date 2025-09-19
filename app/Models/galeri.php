@@ -9,5 +9,9 @@ class galeri extends Model
     //
     protected $table = 'galeri';
 
+    protected $primaryKey = 'id_galeri';
+    public $incrementing = true;
+    protected $keyType = 'int';
+
     public $timestamps = false; 
 }

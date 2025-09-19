@@ -70,13 +70,20 @@
 
 <body>
     <div class="sidebar">
-        <img src="{{ asset('assets/image/logo_osis.jpeg') }}" alt="Logo" width="50" height="50" class="rounded-circle">
-        Sekolah
-        <a class="active" href="{{ route('admin.dash') }}">Dashboard</a>
-        <a href="">Profil Sekolah</a>
+        <div class="d-flex">
+            <img src="{{ asset('assets/image/logo_osis.jpeg') }}" width="50" height="50" class="rounded-circle my-3 ms-2">
+            <h5 class="mt-4 ms-2">Sekolah</h5>
+        </div>
+        <a  href="{{ route('admin.dash')}}" class="{{ request()->routeIs('admin.dash') ? 'active' : '' }}">Dashboard</a>
+        <a href="{{ route('admin.profilSek') }}" class="{{ request()->routeIs('admin.profilSek') ? 'active' : '' }}">Profil Sekolah</a>
         <a href="">Berita</a>
         <a href="">Galeri</a>
         <a href="">Ekstrakurikuler</a>
+        <hr>
+        <a href="{{ route('admin.User') }}">Users</a>
+        <a href="{{ route('admin.Guru') }}">Guru</a>
+        <a href="{{ route('admin.Siswa') }}">Siswa</a>
+        <hr>
         <li class="nav-item">
             <a class="nav-link" href="#"
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -95,6 +102,13 @@
     <script src="{{ asset('assets/fontawesome/js/all.min.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+       {{-- <script>
+        $(document).ready(function () {
+            $('.sidebar a').on('click', function () {
+                $('.sidebar a').removeClass('active'); // Hilangkan dari semua
+                $(this).addClass('active'); // Tambahkan ke yang diklik
+            });
+    });
+       </script> --}}
 </body>
-
 </html>

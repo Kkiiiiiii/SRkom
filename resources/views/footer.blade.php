@@ -2,7 +2,7 @@
     <div class="container">
           <div class="d-flex flex-column flex-md-row justify-content-evenly align-items-center mb-4 gap-3">
             <div class="d-flex align-items-center gap-3">
-                <img src="{{ asset('assets/image/logo_osis.jpeg') }}" class="rounded-circle" width="60" height="60">
+                <img src="{{ asset('assets/image/logo_osis.jpeg') }}" class="rounded-circle img-thumbnail" width="60" height="60">
                 <h5 class="mb-0">SMPN 02</h5>
             </div>
             <div class="row"></div>
