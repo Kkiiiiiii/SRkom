@@ -23,6 +23,12 @@
     .carousel-caption {
         bottom: 20%;
     }
+    .box-guru .card:hover{
+            transform: translateY(-3px);          
+        }
+        .box-siswa .card:hover{
+            transform: translateY(-3px);          
+        }
 </style>
 
 <section>

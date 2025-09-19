@@ -19,14 +19,14 @@
             </div>
         @endif
         <div class="table-responsive">
-            <table class="table table table-secondary text-center align-middle">
+            <table class="table table-md table-secondary text-center align-middle">
                 <thead class="table-danger">
                     <tr>
-                        <th>ID Guru</th>
-                        <th>nama_guru</th>
-                        <th>nip</th>
-                        <th>mapel</th>
-                        <th>foto</th>
+                        <th>ID Siswa</th>
+                        <th>NISN</th>
+                        <th>Nama Siswa</th>
+                        <th>JK</th>
+                        <th>Tahun Masuk</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
