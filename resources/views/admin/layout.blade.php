@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,12 +28,12 @@
     }
 
     .sidebar a.active {
-        background-color: #3B0270;
+        background-color: #6F9496;
         color: white;
     }
 
     .sidebar a:hover:not(.active) {
-        background-color: #3B0270;
+        background-color: #40585a;
         color: white;
     }
 
@@ -80,9 +79,9 @@
         <a href="">Galeri</a>
         <a href="">Ekstrakurikuler</a>
         <hr>
-        <a href="{{ route('admin.User') }}">Users</a>
+        <a href="{{ route('admin.User') }}"  class="{{ request()->routeIs('admin.User') ? 'active' : '' }}">Users</a>
         <a href="{{ route('admin.Guru') }}">Guru</a>
-        <a href="{{ route('admin.Siswa') }}">Siswa</a>
+        <a href="{{ route('admin.Siswa') }}" class="{{ request()->routeIs('admin.Siswa') ? 'active' : '' }}">Siswa</a>
         <hr>
         <li class="nav-item">
             <a class="nav-link" href="#"
@@ -102,13 +101,5 @@
     <script src="{{ asset('assets/fontawesome/js/all.min.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-       {{-- <script>
-        $(document).ready(function () {
-            $('.sidebar a').on('click', function () {
-                $('.sidebar a').removeClass('active'); // Hilangkan dari semua
-                $(this).addClass('active'); // Tambahkan ke yang diklik
-            });
-    });
-       </script> --}}
 </body>
 </html>

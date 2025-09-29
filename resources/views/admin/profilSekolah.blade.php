@@ -21,7 +21,7 @@
         @endif
 
         <div class="table-responsive">
-            <table class="table table-bordered table-striped text-center align-middle">
+            <table class="table table-bordered text-center align-middle">
                 <thead class="table-dark">
                     <tr>
                         <th>ID Profil</th>
@@ -46,7 +46,7 @@
                             <td>{{ $item->kepala_sekolah }}</td>
                             <td>
                                 @if ($item->foto)
-                                    <img src="{{ asset('uploads/' . $item->foto) }}" class="rounded-circle"
+                                    <img src="{{ asset('uploads/' . $item->foto) }}" class="img-fluid"
                                         width="60" height="60" alt="Foto Sekolah">
                                 @else
                                     <span>-</span>

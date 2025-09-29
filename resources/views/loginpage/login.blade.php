@@ -10,7 +10,7 @@
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg,#ffb300, #ffffff);
+            background: linear-gradient(135deg, #6F9496, #ffffff);
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -18,7 +18,7 @@
         }
 
         .login-card {
-            background: url('{{ asset('assets/image/logo_osis.jpeg') }}') no-repeat center center;
+            background-color: #6F9496;
             background-size: cover;
             border-radius: 10px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
@@ -37,7 +37,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.6);
             z-index: 1;
         }
 
@@ -65,6 +64,7 @@
 <body>
 
     <div class="login-card">
+        <img src="{{ asset('assets/image/logo_sekolah.png') }}" class="rounded-circle img-thumbnail mb-3" width="80" height="80" style="margin-left: 8rem">
         <h3 class="login-title">LoginPage</h3>
         <form action="{{ route('login') }}" method="POST">
             @csrf
@@ -77,7 +77,7 @@
                 <input type="password" name="password" id="password" class="form-control" required>
             </div>
             <div class="d-grid">
-                <button type="submit" class="btn btn-warning text-white fw-bold">Login</button>
+                <button type="submit" class="btn btn-success text-white fw-bold">Login</button>
             </div>
             {{-- <div class="mt-3 text-center">
                 <small>Belum punya akun? <a href="" class="text-light">Daftar di sini</a></small>

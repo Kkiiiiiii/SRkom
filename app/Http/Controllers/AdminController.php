@@ -11,7 +11,8 @@ class AdminController extends Controller
     //
     public function dash()
     {
-        return view('admin.dashboard');
+        $data ['guru'] = guru::all();
+        return view('admin.dashboard', $data);
     }
 
     public function profil()

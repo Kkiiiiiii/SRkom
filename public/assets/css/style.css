@@ -1,5 +1,5 @@
 .bg-h{
-    background-color: #3B0270;
+    background-color: #6F9496;
 }
 .footer-social-icon {
     padding: 12px;
@@ -16,7 +16,7 @@
 }
 
 .footer-social-icon:hover {
-    background: linear-gradient(135deg,  #3B0270,#340651);
+    background: linear-gradient(135deg,  #ffff,#40585a);
 
 }
 

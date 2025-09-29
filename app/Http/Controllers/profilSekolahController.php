@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Storage;
 class profilSekolahController extends Controller
 {
     //
+    public function info()
+    {
+        $ps = profil_sekolah::all();
+        return view('profilSekolah', compact('ps'));
+    }
+
     public function create()
     {
         return view('admin.createProf');

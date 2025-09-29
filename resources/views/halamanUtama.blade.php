@@ -1,103 +1,137 @@
 @extends('layout')
 @section('content')
 <style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .utama {
+        background: url('/uploads/smpn.jpg') center/cover no-repeat;
+        color: white;
+        padding: 100px 20px;
+        text-align: center;
+        min-height: 65vh;
+        box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+    }
+
+    .utama h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    }
+
+    .section-title {
+        text-align: center;
+        margin: 50px 0 30px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .stat-card {
+        border: none;
+        color: white;
+        transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-5px);
+    }
+
     .box-siswa .card {
         background: linear-gradient(135deg, #81c784, #4caf50);
-        color: white;
-        border: none;
     }
+
     .box-guru .card {
         background: linear-gradient(135deg, #ffb300, #fb8c00);
-        color: white;
-        border: none;
     }
-    .carousel-berita {
-        width: 100%;
-        height: 400px;
+
+    .stat-card i {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
     }
-    .carousel-berita img {
-        width: 100%;
-        height: 400px;
-        object-fit: cover;
+
+    .stat-number {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin: 0;
     }
-    .carousel-caption {
-        bottom: 20%;
-    }
-    .box-guru .card:hover{
-            transform: translateY(-3px);          
-        }
-        .box-siswa .card:hover{
-            transform: translateY(-3px);          
-        }
 </style>
 
-<section>
-    <div id="carousel-berita" class="carousel slide carousel-berita" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="https://lh3.googleusercontent.com/p/AF1QipPP-Nb412be8Ek6M_MxRuRzE7s2sNB9e__OIqX_=s1134-k-no" alt="Berita 1">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Berita</h5>
-                    <p>Isi berita di sini</p>
-                </div>
-            </div>            
-        </div>
-        <a class="carousel-control-prev" href="#carousel-berita" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Sebelumnya</span>
-        </a>
-        <a class="carousel-control-next" href="#carousel-berita" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Berikutnya</span>
-        </a>
+<section class="utama">
+    <div class="container">
+        <h1>Selamat Datang di Sekolah</h1>
+        <p>Mendidik generasi cerdas, kreatif, dan berkarakter.</p>
     </div>
 </section>
 
-<div class="container-fluid pt-3 mb-3">
-    <section class="container justify-content-evenly align-content-center d-flex pb-5">
-        <div class="mt-5 w-25 box-siswa">
-            <div class="card border-dark">
-                <div class="card-body d-flex justify-content-between align-items-center">
-                  <div>
-                      <h4 class="card-title">Jumlah Siswa</h4>
-                      <p class="card-text">1.200</p>
-                    </div>
-                    <i class="fa-solid fa-graduation-cap fa-3x me-4"></i>
-                </div>
-            </div>
+{{-- PROFIL SEKOLAH DAN JUMLAH GURU, MURID --}}
+<section class="container my-5">
+    <h2 class="section-title">Profil Sekolah</h2>
+    <div class="row align-items-center">
+        {{-- profil sekolah --}}
+        <div class="col-md-6 d-flex align-items-center">
+            <img src="{{ asset('assets/image/logo_sekolah.png') }}" alt="Logo Sekolah" class="me-3 rounded-circle" width="80" height="80">
+            <p class="mb-0">
+                SMPN 02 adalah sekolah unggulan yang berkomitmen mencetak generasi berprestasi, disiplin tinggi, dan berkarakter.
+                Dengan fasilitas memadai serta tenaga pendidik profesional, kami mendukung siswa dalam meraih potensi terbaiknya.
+            </p>
         </div>
-        <div class="mt-5 w-25 box-guru">
-            <div class="card border-dark">
-                <div class="card-body d-flex justify-content-between align-items-center">
-                  <div>
-                      <h4 class="card-title">Jumlah Guru</h4>
-                      <p class="card-text">900</p>
-                    </div>
-                    <i class="fa-solid fa-person-chalkboard fa-3x me-4"></i>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
 
-{{-- <section class="galeri">
-    <div class="row justify-content-center mt-3 pb-3 bg-light">
-        <div class="col-md-4">
-            <img src="{{ asset('assets/image/logo.webp') }}" alt="Galeri" class="img-fluid">
-        </div>  
+        {{-- jumlah guru dan murid --}}
+        <div class="col-md-6">
+            <div class="row g-4">
+                <div class="col-md-6 box-siswa">
+                    <div class="card stat-card p-3 text-center">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <h5>Jumlah Siswa</h5>
+                        <p class="stat-number">1200</p>
+                    </div>
+                </div>
+                <div class="col-md-6 box-guru">
+                    <div class="card stat-card p-3 text-center">
+                        <i class="fa-solid fa-person-chalkboard"></i>
+                        <h5>Jumlah Guru</h5>
+                        <p class="stat-number">{{ $guru->count() }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</section> --}}
+</section>
 
+{{-- EKSKUL --}}
 <section class="ekskul">
-  <div class="row">
-
-  </div>
+    <h2 class="section-title">Program Ekskul</h2>
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <img src="{{ asset('assets/image/ekskul/pramuka.webp') }}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Pramuka</h5>
+                        <p class="card-text">Kegiatan pramuka melatih kepemimpinan, kerja tim, dan keterampilan luar ruangan.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <img src="{{ asset('assets/image/ekskul/pmr.png') }}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">PMR</h5>
+                        <p class="card-text">Ekskul futsal meningkatkan Pengetahuan, disiplin, dan kesehatan jasmani.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <img src="{{ asset('assets/image/ekskul/paskib.jpg') }}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Paskibra</h5>
+                        <p class="card-text">Ekskul paskibra melatih kedisiplinan, koordinasi, dan keterampilan baris-berbaris.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
-
-<script>
-    $('#carousel-berita').carousel({
-        interval: 3000,
-        wrap: true
-    });
-</script>
 @endsection

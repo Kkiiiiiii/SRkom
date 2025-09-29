@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\guru;
+use App\Models\profil_sekolah;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -9,12 +11,8 @@ class UserController extends Controller
     //
     public function index()
     {
-        return view('halamanUtama');
-    }
-
-    public function info()
-    {
-        return view('profilSekolah');
+        $data ['guru'] = guru::all();
+        return view('halamanUtama', $data);
     }
 
     public function berita()

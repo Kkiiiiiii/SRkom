@@ -9,11 +9,16 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
     <body>
+        <style>
+            body{
+             font-family: 'Segoe UI',sans-serif;
+            }
+        </style>
         <nav class="navbar navbar-expand-sm navbar-dark bg-h">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="{{ asset('assets/image/logo_osis.jpeg') }}" alt="Logo" width="50" height="50" class="rounded-circle img-thumbnail">
-                    Sekolah
+                    <img src="{{ asset('assets/image/logo_sekolah.png') }}" alt="Logo" width="50" height="50" class="rounded-circle img-thumbnail">
+                    SMP 02
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -50,7 +55,6 @@
         </main>
         
         @include('footer')
-    <script>
         <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('assets/fontawesome/js/all.min.js')}}"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
