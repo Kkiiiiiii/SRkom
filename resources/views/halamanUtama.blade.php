@@ -21,10 +21,16 @@
     }
 
     .section-title {
+        text-decoration: none;
         text-align: center;
         margin: 50px 0 30px;
         font-weight: bold;
         color: #333;
+    }
+
+    .section-title a {
+        text-decoration: none;
+
     }
 
     .stat-card {
@@ -66,13 +72,15 @@
 
 {{-- PROFIL SEKOLAH DAN JUMLAH GURU, MURID --}}
 <section class="container my-5">
-    <h2 class="section-title">Profil Sekolah</h2>
+    <h2 class="section-title"><a href="{{ route('info') }}" class="text-dark">Profil Sekolah</a></h2>
     <div class="row align-items-center">
         {{-- profil sekolah --}}
         <div class="col-md-6 d-flex align-items-center">
-            <img src="{{ asset('assets/image/logo_sekolah.png') }}" alt="Logo Sekolah" class="me-3 rounded-circle" width="80" height="80">
+            <a href="{{ route('info') }}">
+                <img src="{{ asset('assets/image/logo_sekolah.png') }}" alt="Logo Sekolah" class="me-3 rounded-circle" width="80" height="80">
+            </a>
             <p class="mb-0">
-                SMPN 02 adalah sekolah unggulan yang berkomitmen mencetak generasi berprestasi, disiplin tinggi, dan berkarakter.
+                SMPN 02 Gunungputri adalah sekolah unggulan yang berkomitmen mencetak generasi berprestasi, disiplin tinggi, dan berkarakter.
                 Dengan fasilitas memadai serta tenaga pendidik profesional, kami mendukung siswa dalam meraih potensi terbaiknya.
             </p>
         </div>
@@ -82,14 +90,14 @@
             <div class="row g-4">
                 <div class="col-md-6 box-siswa">
                     <div class="card stat-card p-3 text-center">
-                        <i class="fa-solid fa-graduation-cap"></i>
+                        <i class="fa-solid fa-graduation-cap" style="font-size: 40px"></i>
                         <h5>Jumlah Siswa</h5>
                         <p class="stat-number">1200</p>
                     </div>
                 </div>
                 <div class="col-md-6 box-guru">
                     <div class="card stat-card p-3 text-center">
-                        <i class="fa-solid fa-person-chalkboard"></i>
+                        <i class="fa-solid fa-person-chalkboard"  style="font-size: 40px"></i>
                         <h5>Jumlah Guru</h5>
                         <p class="stat-number">{{ $guru->count() }}</p>
                     </div>
@@ -101,7 +109,7 @@
 
 {{-- EKSKUL --}}
 <section class="ekskul">
-    <h2 class="section-title">Program Ekskul</h2>
+    <h2 class="section-title"><a href="{{ route('info') }}" class="text-dark">Ekstrakurikuler</a></h2>
     <div class="container">
         <div class="row g-4">
             <div class="col-md-4">
@@ -134,4 +142,41 @@
         </div>
     </div>
 </section>
+
+        {{-- BERITA --}}
+    <section class="berita">
+    <h2 class="section-title"><a href="{{ route('berita') }}" class="text-dark">Berita Terbaru</a></h2>
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <img src="{{ asset('assets/image/berita/kegPramuka.jpg') }}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Kegiatan Pramuka di SMPN 02 Gunungputri</h5>
+                        <p class="card-text">SMPN 02 Gunungputri mengadakan kegiatan pramuka yang seru dan mendidik bagi siswa-siswi.</p>
+                        <a href="{{ route('berita') }}" class="btn btn-primary">Baca Selengkapnya</a>   
+                </div>
+            </div>
+        </div>
+         <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <img src="{{ asset('assets/image/berita/rohis.jpg') }}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Kegiatan Rohis di SMPN 02 Gunungputri</h5>
+                        <p class="card-text">SMPN 02 Gunungputri mengadakan kegiatan rohis yang diadakan setiap hari jumat.</p>
+                        <a href="{{ route('berita') }}" class="btn btn-primary">Baca Selengkapnya</a>   
+                </div>
+            </div>
+        </div>
+          <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <img src="{{ asset('assets/image/berita/rohis.jpg') }}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Kegiatan Rohis di SMPN 02 Gunungputri</h5>
+                        <p class="card-text">SMPN 02 Gunungputri mengadakan kegiatan rohis yang diadakan setiap hari jumat.</p>
+                        <a href="{{ route('berita') }}" class="btn btn-primary">Baca Selengkapnya</a>   
+                </div>
+            </div>
+        </div>
+        </section>
 @endsection

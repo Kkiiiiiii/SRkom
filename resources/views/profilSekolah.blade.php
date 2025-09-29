@@ -1,58 +1,73 @@
 @extends('layout')
 @section('content')
 <section>
-    <style>
-
-    </style>
     <div class="container mt-5">
-        <table class="table table-borderless">
-            <thead class="table-light">
-                <tr class="table-secondary text-dark">
-                    <th class="text-start" style="text-align: left;">No</th>
-                    <th class="text-start" style="text-align: left;">Nama Sekolah</th>
-                    <th class="text-start" style="text-align: left;">Kepala Sekolah</th>
-                    <th class="text-start" style="text-align: left;">Foto Sekolah</th>
-                    <th class="text-start" style="text-align: left;">Logo Sekolah</th>
-                    <th class="text-start" style="text-align: left;">NPSN</th>
-                    <th class="text-start" style="text-align: left;">Alamat</th>
-                    <th class="text-start" style="text-align: left;">Kontak</th>
-                    <th class="text-start" style="text-align: left;">Visi Misi</th>
-                    <th class="text-start" style="text-align: left;">Tahun Berdiri</th>
-                    <th class="text-start" style="text-align: left;">Deskripsi</th>
-                </tr>
-            </thead>
+        @foreach ($ps as $item)
+        <table class="table table-borderless align-middle table-striped">
             <tbody>
-                @foreach ($ps as $item)
                 <tr>
-                       <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->nama_sekolah }}</td>
-                            <td>{{ $item->kepala_sekolah }}</td>
-                            <td>
-                                @if ($item->foto)
-                                    <img src="{{ asset('uploads/' . $item->foto) }}" class="img-fluid"
-                                        width="60" height="60" alt="Foto Sekolah">
-                                @else
-                                    <span>-</span>
-                                @endif
-                            </td>
-                            <td>
-                                @if ($item->logo)
-                                    <img src="{{ asset('uploads/' . $item->logo) }}" class="rounded-circle"
-                                        width="60" height="60" alt="Logo Sekolah">
-                                @else
-                                    <span>-</span>
-                                @endif
-                            </td>
-                            <td>{{ $item->npsn }}</td>
-                            <td>{{ $item->alamat }}</td>
-                            <td>{{ $item->kontak }}</td>
-                            <td>{{ $item->visi_misi }}</td>
-                            <td>{{ $item->tahun_berdiri }}</td>
-                            <td class="long-text">{{ $item->deskripsi }}</td>
+                    <th class="text-start" width="20%">No</th>
+                    <td class="text-end">{{ $loop->iteration }}</td>
+                </tr>
+                <tr>
+                    <th class="text-start">Nama Sekolah</th>
+                    <td class="text-end">{{ $item->nama_sekolah }}</td>
+                </tr>
+                <tr>
+                    <th class="text-start">Kepala Sekolah</th>
+                    <td class="text-end">{{ $item->kepala_sekolah }}</td>
+                </tr>
+                <tr>
+                    <th class="text-start">Foto Sekolah</th>
+                    <td class="text-end">
+                        @if ($item->foto)
+                            <img src="{{ asset('uploads/' . $item->foto) }}" 
+                                 class="img-fluid rounded shadow-sm"
+                                 width="120" alt="Foto Sekolah">
+                        @else
+                            <span>-</span>
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <th class="text-start">Logo Sekolah</th>
+                    <td class="text-end">
+                        @if ($item->logo)
+                            <img src="{{ asset('uploads/' . $item->logo) }}" 
+                                 class="rounded-circle shadow-sm"
+                                 width="80" alt="Logo Sekolah">
+                        @else
+                            <span>-</span>
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <th class="text-start">NPSN</th>
+                    <td class="text-end">{{ $item->npsn }}</td>
+                </tr>
+                <tr>
+                    <th class="text-start">Alamat</th>
+                    <td class="text-end">{{ $item->alamat }}</td>
+                </tr>
+                <tr>
+                    <th class="text-start">Kontak</th>
+                    <td class="text-end">{{ $item->kontak }}</td>
+                </tr>
+                <tr>
+                    <th class="text-start">Visi Misi</th>
+                    <td class="text-end">{{ $item->visi_misi }}</td>
+                </tr>
+                <tr>
+                    <th class="text-start">Tahun Berdiri</th>
+                    <td class="text-end">{{ $item->tahun_berdiri }}</td>
+                </tr>
+                <tr>
+                    <th class="text-start">Deskripsi</th>
+                    <td class="text-end long-text">{{ $item->deskripsi }}</td>
                 </tr>
             </tbody>
-                @endforeach
         </table>
+        @endforeach
     </div>
 </section>
 @endsection
