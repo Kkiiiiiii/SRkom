@@ -17,15 +17,13 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::create([
-            // $validation = 
-            'id_user' => '1',
+            // $validation =
             'username' => 'Admin123',
             'password' => '12345',
             'role' => 'admin'
         ]);
-        
+
         User::create([
-            'id_user' => '2',
             'username' => 'Operator123',
             'password' => '12345678',
             'role' => 'operator'

@@ -66,7 +66,7 @@
     <div class="login-card">
         <img src="{{ asset('assets/image/logo_sekolah.png') }}" class="rounded-circle img-thumbnail mb-3" width="80" height="80" style="margin-left: 8rem">
         <h3 class="login-title">LoginPage</h3>
-        <form action="{{ route('login') }}" method="POST">
+        <form action="{{ route('login') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>

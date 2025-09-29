@@ -15,6 +15,12 @@ class UserController extends Controller
         return view('halamanUtama', $data);
     }
 
+    public function info()
+    {
+        $ps = profil_sekolah::all();
+        return view('profilSekolah', compact('ps'));
+    }
+
     public function berita()
     {
         return view('berita');

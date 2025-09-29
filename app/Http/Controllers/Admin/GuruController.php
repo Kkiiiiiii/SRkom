@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\guru;
 use Illuminate\Http\Request;
 
 class GuruController extends Controller
 {
     //
-    public function create()
+      public function create()
     {
         return view('admin.createGuru');
     }
@@ -20,11 +21,11 @@ class GuruController extends Controller
             'nip' => 'required',
             'mapel' => 'required|string',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);    
-        
+        ]);
+
         // $foto = $request->file('foto');
         // $filename = time().'.'. $foto->getClientOriginalExtension();
-        // $foto->storeAs('public/guru', $filename); 
+        // $foto->storeAs('public/guru', $filename);
         // $validasi['foto'] = $filename;\
 
         if($request->hasFile('foto')) {
@@ -32,7 +33,7 @@ class GuruController extends Controller
         $fotoName = time().'_'.$foto->getClientOriginalName();
         $foto->move(public_path('uploads/guru/'), $fotoName);
     } else {
-        $fotoName = null; 
+        $fotoName = null;
     }
         guru::create([
             'nama_guru' => $request->nama_guru,

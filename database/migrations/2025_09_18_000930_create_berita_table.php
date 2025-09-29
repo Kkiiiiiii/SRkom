@@ -17,8 +17,7 @@ return new class extends Migration
             $table->text('isi');
             $table->date('tanggal');
             $table->string('gambar');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id_user')->on('user')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('user_id')->constrained('user')->cascadeOnDelete()->cascadeOnUpdate();
             //$table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
         });
     }

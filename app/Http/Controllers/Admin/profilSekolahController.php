@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\profil_sekolah;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
@@ -11,12 +12,6 @@ use Illuminate\Support\Facades\Storage;
 class profilSekolahController extends Controller
 {
     //
-    public function info()
-    {
-        $ps = profil_sekolah::all();
-        return view('profilSekolah', compact('ps'));
-    }
-
     public function create()
     {
         return view('admin.createProf');
@@ -37,7 +32,7 @@ class profilSekolahController extends Controller
         $fotoName = time().'_'.$foto->getClientOriginalName();
         $foto->move(public_path('uploads'), $fotoName);
     } else {
-        $fotoName = null; 
+        $fotoName = null;
     }
 
     // Upload logo
@@ -87,7 +82,7 @@ class profilSekolahController extends Controller
         return redirect()->route('admin.profilSek')->with('success', 'Data berhasil dihapus');
     }
 
-    public function edit(String $id, Request $request) 
+    public function edit(String $id, Request $request)
 {
     try {
         $id = Crypt::decrypt($id);
@@ -119,7 +114,7 @@ public function update(Request $request, String $id)
         'kontak' => 'nullable|string',
         'alamat' => 'nullable|string',
         'visi_misi' => 'nullable|string',
-        'tahun_berdiri' => 'nullable|date_format:Y', 
+        'tahun_berdiri' => 'nullable|date_format:Y',
         'deskripsi' => 'nullable|string',
     ]);
 
@@ -164,6 +159,5 @@ public function update(Request $request, String $id)
 
     return redirect()->route('admin.profilSek')->with('success', 'Data berhasil diperbarui!');
 }
-
 
 }
