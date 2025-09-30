@@ -13,5 +13,8 @@ class galeri extends Model
     public $incrementing = true;
     protected $keyType = 'int';
 
+    protected $fillable =
+     ['judul','keterangan','file','kategori','tanggal'];
+
     public $timestamps = false; 
 }

@@ -1,0 +1,31 @@
+@extends('admin.layout')
+@section('content')
+<section class="container my-5">
+    <h3>Tambah User</h3>
+    <hr>
+
+    <form action="{{ route('admin.User-store') }}" method="POST">
+        @csrf
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" name="username" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="role" class="form-label">Role</label>
+            <select name="role" class="form-select" required>
+                <option value="admin">Admin</option>
+                <option value="operator">Operator</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success">Simpan</button>
+        <a href="{{ route('admin.User') }}" class="btn btn-secondary">Kembali</a>
+    </form>
+</section>
+@endsection

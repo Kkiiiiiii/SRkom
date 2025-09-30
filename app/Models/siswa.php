@@ -12,5 +12,7 @@ class siswa extends Model
     public $incrementing = true;
     protected $keyType = 'int';
 
+    protected $fillable =
+     ['nisn','nama_siswa','jenis_kelamin','tahun_masuk'];
     public $timestamps = false; 
 }

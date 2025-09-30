@@ -13,5 +13,8 @@ class ekstrakurikuler extends Model
     public $incrementing = true;
     protected $keyType = 'int';
 
+    protected $fillable =
+     ['nama_ekskul','pembina','jadwal_latihan','deskripsi','gambar'];
+
      public $timestamps = false; 
 }

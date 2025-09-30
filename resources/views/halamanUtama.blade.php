@@ -6,7 +6,7 @@
     }
 
     .utama {
-        background: url('/uploads/smpn.jpg') center/cover no-repeat;
+        background: url('storage/utama.jpg') center/cover no-repeat;
         color: white;
         padding: 100px 20px;
         text-align: center;
@@ -92,7 +92,7 @@
                     <div class="card stat-card p-3 text-center">
                         <i class="fa-solid fa-graduation-cap" style="font-size: 40px"></i>
                         <h5>Jumlah Siswa</h5>
-                        <p class="stat-number">1200</p>
+                        <p class="stat-number">{{ $siswa->count() }}</p>
                     </div>
                 </div>
                 <div class="col-md-6 box-guru">
@@ -143,40 +143,38 @@
     </div>
 </section>
 
-        {{-- BERITA --}}
+        {{-- BERITA --}}  
     <section class="berita">
-    <h2 class="section-title"><a href="{{ route('berita') }}" class="text-dark">Berita Terbaru</a></h2>
+    <h2 class="section-title">
+        <a href="{{ route('berita') }}" class="text-dark">Berita Terbaru</a>
+    </h2>
     <div class="container">
         <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card shadow-sm">
-                    <img src="{{ asset('assets/image/berita/kegPramuka.jpg') }}" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Kegiatan Pramuka di SMPN 02 Gunungputri</h5>
-                        <p class="card-text">SMPN 02 Gunungputri mengadakan kegiatan pramuka yang seru dan mendidik bagi siswa-siswi.</p>
-                        <a href="{{ route('berita') }}" class="btn btn-primary">Baca Selengkapnya</a>   
+            @foreach ($berita as $item)
+            <div class="col-md-4 d-flex">
+                <div class="card shadow-sm mb-3 flex-fill h-100">
+                    {{-- Gambar --}}
+                    <img src="{{ asset('storage/' . $item->gambar) }}" 
+                         class="card-img-top" 
+                         style="height: 200px; object-fit: cover;">
+
+                    {{-- Isi Card --}}
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-truncate" style="max-width: 100%;">
+                            {{ $item->judul }}
+                        </h5>
+                        <p class="card-text flex-grow-1" style="font-size: 14px; text-align: justify;">
+                            {{ Str::limit($item->isi, 135) }}
+                        </p>
+                        <a href="{{ route('berita') }}" class="btn btn-primary mt-auto w-100">
+                            Baca Selengkapnya
+                        </a>
+                    </div>
                 </div>
             </div>
+            @endforeach
         </div>
-         <div class="col-md-4">
-                <div class="card shadow-sm">
-                    <img src="{{ asset('assets/image/berita/rohis.jpg') }}" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Kegiatan Rohis di SMPN 02 Gunungputri</h5>
-                        <p class="card-text">SMPN 02 Gunungputri mengadakan kegiatan rohis yang diadakan setiap hari jumat.</p>
-                        <a href="{{ route('berita') }}" class="btn btn-primary">Baca Selengkapnya</a>   
-                </div>
-            </div>
-        </div>
-          <div class="col-md-4">
-                <div class="card shadow-sm">
-                    <img src="{{ asset('assets/image/berita/rohis.jpg') }}" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Kegiatan Rohis di SMPN 02 Gunungputri</h5>
-                        <p class="card-text">SMPN 02 Gunungputri mengadakan kegiatan rohis yang diadakan setiap hari jumat.</p>
-                        <a href="{{ route('berita') }}" class="btn btn-primary">Baca Selengkapnya</a>   
-                </div>
-            </div>
-        </div>
-        </section>
+    </div>
+</section>
+
 @endsection

@@ -42,7 +42,7 @@
         <div class="mt-3 mb-3">
             <label for="logo">Logo Sekolah (kosongkan jika tidak ingin ganti)</label><br>
             @if($profil->logo)
-                <img src="{{ asset('uploads/'.$profil->logo) }}" alt="Logo Sekolah" width="150" class="mb-2">
+                <img src="{{ asset('storage/guru/'.$profil->logo) }}" alt="Logo Sekolah" width="150" class="mb-2">
                 <br>
             @endif
             <input type="file" name="logo" id="logo" class="form-control-file">

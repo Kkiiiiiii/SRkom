@@ -21,7 +21,7 @@
                     <th class="text-start">Foto Sekolah</th>
                     <td class="text-end">
                         @if ($item->foto)
-                            <img src="{{ asset('uploads/' . $item->foto) }}" 
+                            <img src="{{ asset('storage/' . $item->foto) }}" 
                                  class="img-fluid rounded shadow-sm"
                                  width="120" alt="Foto Sekolah">
                         @else
@@ -33,7 +33,7 @@
                     <th class="text-start">Logo Sekolah</th>
                     <td class="text-end">
                         @if ($item->logo)
-                            <img src="{{ asset('uploads/' . $item->logo) }}" 
+                            <img src="{{ asset('storage/' . $item->logo) }}" 
                                  class="rounded-circle shadow-sm"
                                  width="80" alt="Logo Sekolah">
                         @else

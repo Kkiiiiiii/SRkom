@@ -46,7 +46,7 @@
                             <td>{{ $item->kepala_sekolah }}</td>
                             <td>
                                 @if ($item->foto)
-                                    <img src="{{ asset('uploads/' . $item->foto) }}" class="img-fluid"
+                                    <img src="{{ asset('storage/' . $item->foto) }}" class="img-fluid"
                                         width="60" height="60" alt="Foto Sekolah">
                                 @else
                                     <span>-</span>
@@ -54,7 +54,7 @@
                             </td>
                             <td>
                                 @if ($item->logo)
-                                    <img src="{{ asset('uploads/' . $item->logo) }}" class="rounded-circle"
+                                    <img src="{{ asset('storage/' . $item->logo) }}" class="rounded-circle"
                                         width="60" height="60" alt="Logo Sekolah">
                                 @else
                                     <span>-</span>
@@ -65,7 +65,23 @@
                             <td>{{ $item->kontak }}</td>
                             <td>{{ $item->visi_misi }}</td>
                             <td>{{ $item->tahun_berdiri }}</td>
-                            <td class="long-text">{{ $item->deskripsi }}</td>
+                        <td>{{ Str::limit($item->deskripsi, 50) }}
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#descModal{{ $item->id_profil }}">Lihat</a>
+                                <!-- Modal -->
+                                <div class="modal fade" id="descModal{{ $item->id_profil }}" tabindex="-1">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Deskripsi Sekolah</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{ $item->deskripsi }}
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </td>
                             <td style="min-width: 130px;">
                                 <div class="d-flex justify-content-center gap-2 flex-wrap">
                                     {{-- Tombol Edit --}}
