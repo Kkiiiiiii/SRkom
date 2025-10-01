@@ -18,7 +18,6 @@ return new class extends Migration
             $table->date('tanggal');
             $table->string('gambar');
             $table->foreignId('user_id')->constrained('user')->cascadeOnDelete()->cascadeOnUpdate();
-            //$table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

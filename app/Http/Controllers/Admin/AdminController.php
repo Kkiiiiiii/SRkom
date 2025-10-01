@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\berita;
+use App\Models\ekstrakurikuler;
+use App\Models\galeri;
 use App\Models\guru;
 use App\Models\profil_sekolah;
 use App\Models\siswa;
@@ -17,7 +19,9 @@ class AdminController extends Controller
     {
         $data ['guru'] = guru::all();
         $data ['siswa'] = siswa::all();
-        $data ['berita'] = berita::all();
+        $data ['berita'] = berita::with('user')->get();
+        $data ['galeri'] = galeri::all();
+        $data ['ekskul'] = ekstrakurikuler::all();
         return view('admin.dashboard', $data);
     }
 
@@ -29,7 +33,8 @@ class AdminController extends Controller
 
     public function ekskul()
     {
-        return view('admin.Ekskul',);
+        $ekskul = ekstrakurikuler::all();
+        return view('admin.Ekskul',compact('ekskul'));
     }
 
     public function user()
@@ -46,7 +51,8 @@ class AdminController extends Controller
 
     public function galeri()
     {
-        return view('admin.galeri');
+        $galeri = galeri::all();
+        return view('admin.galeri', compact('galeri'));
     }
 
     public function guru()

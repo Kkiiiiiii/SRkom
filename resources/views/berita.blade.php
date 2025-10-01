@@ -1,6 +1,10 @@
 @extends('layout')
-
 @section('content')
+<style>
+    .card-footer .penulis{
+        font-weight: bold;
+    }
+</style>
 <div class="container my-5">
     <h3>Daftar Berita</h3>
     <div class="row">
@@ -10,8 +14,9 @@
                 <img src="{{ asset('storage/' . $item->gambar) }}" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">{{ $item->judul }}</h5>
-                    <p class="card-text">{{ Str::limit($item->isi, 100) }}</p>
-                    <a href="" class="btn btn-primary">Baca Selengkapnya</a>
+                    <p class="card-text" style="text-align: justify">{{ Str::limit($item->isi, 200) }}</p>
+                    <p class="card-text"><small class="text-muted">Diposkan oleh: {{ $item->user ? $item->user->name : 'Unknown' }} pada {{ \Carbon\Carbon::parse($item->tanggal)}}</small></p>
+                    <a href="" class="btn btn-primary">Selengkapnya</a>
                 </div>
             </div>
         </div>

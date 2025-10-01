@@ -1,5 +1,4 @@
-@extends('admin.layout')
-
+@extends('operator.layout')
 @section('content')
 <div class="container my-5">
     <h3>Edit Ekskul</h3>
@@ -30,16 +29,8 @@
                    value="{{ old('jadwal', $ekskul->jadwal) }}">
         </div>
 
-        <div class="mb-3">
-            <label for="gambar" class="form-label">Gambar</label>
-             @if($ekskul->gambar)
-                <img src="{{ asset('storage/'.$ekskul->gambar) }}" width="100" class="rounded mb-2"><br>
-            @endif
-            <input type="file" class="form-control" id="gambar" name="gambar" required>
-        </div>
-
         <button type="submit" class="btn btn-primary">Update</button>
-        <a href="{{ route('admin.Ekskul') }}" class="btn btn-secondary">Batal</a>
+        <a href="{{ route('admin.ekskul.index') }}" class="btn btn-secondary">Batal</a>
     </form>
 </div>
 @endsection

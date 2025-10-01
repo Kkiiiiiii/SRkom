@@ -76,8 +76,8 @@
         <a  href="{{ route('admin.dash')}}" class="{{ request()->routeIs('admin.dash') ? 'active' : '' }}">Dashboard</a>
         <a href="{{ route('admin.profilSek') }}" class="{{ request()->routeIs('admin.profilSek') ? 'active' : '' }}">Profil Sekolah</a>
         <a href="{{ route('admin.Berita') }}" class="{{ request()->routeIs('admin.Berita') ? 'active' : '' }}">Berita</a>
-        <a href="{{ route('admin.Galeri') }}">Galeri</a>
-        <a href="{{ route('admin.Ekskul') }}">Ekstrakurikuler</a>
+        <a href="{{ route('admin.Galeri') }}"class="{{ request()->routeIs('admin.Galeri') ? 'active' : '' }}">Galeri</a>
+        <a href="{{ route('admin.Ekskul') }}"class="{{ request()->routeIs('admin.Ekskul') ? 'active' : '' }}">Ekstrakurikuler</a>
         <hr>
         <a href="{{ route('admin.User') }}" class="{{ request()->routeIs('admin.User') ? 'active' : '' }}">Users</a>
         <a href="{{ route('admin.Guru') }}" class="{{ request()->routeIs('admin.Guru') ? 'active' : '' }}">Guru</a>

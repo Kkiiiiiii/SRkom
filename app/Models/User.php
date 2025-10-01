@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $table = 'user';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id_user';
 
 
     public $timestamps = false; 
@@ -54,6 +54,6 @@ class User extends Authenticatable
 
        public function berita()
     {
-        return $this->hasMany(berita::class, 'user_id','id');
+        return $this->hasMany(berita::class, 'user_id','id_user');
     }
 }

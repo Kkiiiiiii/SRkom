@@ -62,7 +62,18 @@
     </style>
 </head>
 <body>
+      @if (session('success'))
+            <div class="alert alert-success alert-dismissible mt-10" style="margin-block: 20px">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
 
+        @if (session('error'))  
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
     <div class="login-card">
         <img src="{{ asset('assets/image/logo_sekolah.png') }}" class="rounded-circle img-thumbnail mb-3" width="80" height="80" style="margin-left: 8rem">
         <h3 class="login-title">LoginPage</h3>

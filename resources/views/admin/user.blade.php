@@ -33,7 +33,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->username }}</td>
-                    <td>{{ $item->Role }}</td>
+                    <td>{{ $item->role }}</td>
                      <td style="min-width: 130px;">
                             <div class="d-flex justify-content-center gap-2 flex-wrap">
                                 {{-- Tombol Edit --}}

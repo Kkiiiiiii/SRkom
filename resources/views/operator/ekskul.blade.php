@@ -1,9 +1,9 @@
-@extends('admin.layout')
+@extends('operator.layout')
 @section('content')
 <section class="container my-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h3>Data Ekstrakurikuler</h3>
-        <a class="btn btn-success" href="{{ route('admin.ekskul.create') }}">+ Tambah Ekskul</a>
+        <a class="btn btn-success" href="{{ route('operator.ekskul-create') }}">+ Tambah Ekskul</a>
     </div>
     <hr>
      @if (session('success'))
@@ -33,11 +33,10 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($ekskul as $item)
+                {{-- @foreach($ekskul as $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->nama_ekskul }}</td>
-                        <td>{{ $item->pembina }}</td>
+                        <td>{{ $item->nama_pembina }}</td>
                         <td>{{ $item->jadwal_latihan }}</td>
                         <td>{{ $item->deskripsi }}</td>
                         <td>
@@ -52,7 +51,7 @@
                             <a href="{{ route('admin.ekskul.delete', Crypt::encrypt($item->id_ekskul)) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin hapus berita ini?')">Hapus</a>
                         </td>
                     </tr>
-                @endforeach
+                @endforeach --}}
             </tbody>
         </table>
     </div>

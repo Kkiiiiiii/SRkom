@@ -19,8 +19,8 @@
                 </div>
             @endif
             <div class="table-responsive">
-                <table class="table table table-secondary text-center align-middle">
-                    <thead class="table-dark">
+                <table class="table table-striped table-secondary text-center align-middle">
+                    <thead class="table-dark">      
                         <tr>
                             <th>ID Guru</th>
                             <th>nama_guru</th>

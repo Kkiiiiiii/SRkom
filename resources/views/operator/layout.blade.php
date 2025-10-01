@@ -74,12 +74,11 @@
             <h5 class="mt-4  ms-2">SMPN 02</h5>
         </div>
         <a  href="{{ route('operator.index')}}" class="{{ request()->routeIs('operator.index') ? 'active' : '' }}">Dashboard</a>
-        <a href="">Profil Sekolah</a>
-        <a href="">Berita</a>
-        <a href="">Galeri</a>
-        <a href="">Ekstrakurikuler</a>
-        <hr>
-        <a href="{{ route('admin.Siswa') }}" class="{{ request()->routeIs('admin.Siswa') ? 'active' : '' }}">Siswa</a>
+        <a href="{{ route('operator.profil') }}"class="{{ request()->routeIs('operator.profil') ? 'active' : '' }}">Profil Sekolah</a>
+        <a href="{{ route('operator.berita') }}" class="{{ request()->routeIs('operator.berita') ? 'active' : '' }}">Berita</a>
+        <a href="{{ route('operator.galeri') }}" class="{{ request()->routeIs('operator.galeri') ? 'active' : '' }}">Galeri</a>
+        <a href="{{ route('operator.ekskul') }}" class="{{ request()->routeIs('operator.ekskul') ? 'active' : '' }}">Ekstrakurikuler</a>
+        <a href="{{ route('operator.siswa') }}" class="{{ request()->routeIs('operator.siswa') ? 'active' : '' }}">Siswa</a>
         <hr>
         <li class="nav-item">
             <a class="nav-link" href="#"

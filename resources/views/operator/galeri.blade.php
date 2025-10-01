@@ -1,5 +1,4 @@
-@extends('admin.layout')
-
+@extends('operator.layout')
 @section('content')
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -56,7 +55,7 @@
                       <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editGaleriModal{{ $item->id_galeri }}">
                             <i class="bi bi-pencil"></i> Edit
                         </button>
-                        <form action="{{ route('admin.Galeri-delete', Crypt::encrypt($item->id_galeri)) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus item ini?')">
+                        <form action="{{ route('operator.Galeri-delete', Crypt::encrypt($item->id_galeri)) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus item ini?')">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-sm">

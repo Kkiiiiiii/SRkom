@@ -2,13 +2,18 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Admin\EkskulController;
+use App\Http\Controllers\Admin\GaleriController;
 use App\Http\Controllers\Admin\profilSekolahController;
 use App\Http\Controllers\Admin\GuruController;
 use App\Http\Controllers\admin\SiswaController;
 use App\Http\Controllers\admin\userController as AdminUserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\operator\BeritaController as OperatorBeritaController;
+use App\Http\Controllers\operator\GaleriController as OperatorGaleriController;
 use App\Http\Controllers\operator\OperatorController;
+use App\Http\Controllers\operator\profilSekolahController as OperatorProfilSekolahController;
+use App\Http\Controllers\operator\SiswaController as OperatorSiswaController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
@@ -61,9 +66,13 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/admin/ekskul/store', [EkskulController::class, 'store'])->name('admin.ekskul.store');
     Route::get('/admin/ekskul/edit/{id}', [EkskulController::class, 'edit'])->name('admin.ekskul.edit');
     Route::post('/admin/ekskul/update/{id}', [EkskulController::class, 'update'])->name('admin.ekskul.update');
-    Route::get('/admin/ekskul/delete/{id}', [EkskulController::class, 'destroy'])->name('admin.ekskul.delete');
+    Route::get('/admin/ekskul/delete/{id}', [EkskulController::class, 'delete'])->name('admin.ekskul.delete');
 
     Route::get('/admin/galeri',[AdminController::class,'galeri'])->name('admin.Galeri');
+    Route::post('/admin/galeri/store',[GaleriController::class,'store'])->name('admin.Galeri-store');
+    Route::get('/admin/galeri/edit/{id}',[GaleriController::class,'edit'])->name('admin.Galeri-edit');
+    Route::post('/admin/galeri/edit{id}',[GaleriController::class,'update'])->name('admin.Galeri-update');
+    Route::get('/admin/galeri/delete/{id}',[GaleriController::class,'edit'])->name('admin.Galeri-delete');
 
     Route::get('/admin/user',[AdminController::class,'user'])->name('admin.User');
     Route::get('/admin/user/create', [AdminUserController::class,'create'])->name('admin.User-create');
@@ -75,6 +84,34 @@ Route::middleware(['admin'])->group(function () {
 });
 
 Route::middleware(['operator'])->group(function (){
-    Route::get('/operator',[OperatorController::class,'index'])->name('operator.index');
+    Route::get('/operator/index',[OperatorController::class,'index'])->name('operator.index');
+
+    Route::get('/operator/berita',[OperatorController::class,'berita'])->name('operator.berita');
+    Route::get('/operator/berita/create',[OperatorBeritaController::class,'create'])->name('operator.berita-create');
+    Route::post('/operator/berita/store',[OperatorBeritaController::class,'store'])->name('operator.berita-store');
+    Route::get('/operator/berita/edit/{id}',[OperatorBeritaController::class,'edit'])->name('operator.berita-edit');
+    Route::post('/operator/berita/edit{id}',[OperatorBeritaController::class,'update'])->name('operator.berita-update');
+    Route::get('/operator/berita/delete{id}',[OperatorBeritaController::class,'delete'])->name('operator.berita-delete');
+
+    Route::get('/operator/galeri',[OperatorController::class,'galeri'])->name('operator.galeri');
+    Route::post('/operator/galeri/store',[OperatorGaleriController::class,'store'])->name('operator.Galeri-store');
+    Route::get('/operator/galeri/edit/{id}',[OperatorGaleriController::class,'edit'])->name('operator.Galeri-edit');
+    Route::post('/operator/galeri/edit{id}',[OperatorGaleriController::class,'update'])->name('operator.Galeri-update');
+    Route::get('/operator/galeri/delete/{id}',[OperatorGaleriController::class,'delete'])->name('operator.Galeri-delete');
+
+    Route::get('/operator/ekskul',[OperatorController::class,'ekskul'])->name('operator.ekskul');
+
+    Route::get('/operator/siswa',[OperatorController::class,'siswa'])->name('operator.siswa');
+    Route::post('/operator/siswa/store',[OperatorSiswaController::class,'store'])->name('operator.siswa-store');
+    Route::get('/operator/siswa/edit/{id}',[OperatorSiswaController::class,'edit'])->name('operator.siswa-edit');
+    Route::post('/operator/siswa/edit/{id}',[OperatorSiswaController::class,'update'])->name('operator.siswa-update');
+    Route::get('/operator/siswa/delete/{id}',[OperatorSiswaController::class,'delete'])->name('operator.siswa-delete');
+
+    Route::get('/operator/profil',[OperatorController::class,'profil'])->name('operator.profil');
+    Route::get('/operator/profil/create',[OperatorProfilSekolahController::class,'create'])->name('operator.profil-create');
+    Route::post('/operator/profil/store',[OperatorProfilSekolahController::class,'store'])->name('operator.profil-store');
+    Route::get('/operator/profil/edit{id}',[OperatorProfilSekolahController::class,'edit'])->name('operator.profil-edit');
+    Route::post('/operator/profil/edit/{id}',[OperatorProfilSekolahController::class,'update'])->name('operator.profil-update');
+    Route::get('/operator/profil/delete/{id}',[OperatorProfilSekolahController::class,'delete'])->name('operator.profil-delete');
 });
 

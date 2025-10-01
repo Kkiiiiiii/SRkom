@@ -41,7 +41,7 @@
     }
 </style>
 
-<h3 class="mt-4">Dashboard</h3>
+<h3 class="mt-4">Dashboard Admin</h3>
 <hr>
 
 <section class="container pb-5 mt-5">
@@ -64,21 +64,21 @@
             <div class="card stat-card p-3 text-center">
                 <i class="fa-solid fa-newspaper"></i>
                 <h5>Jumlah Berita</h5>
-                <p class="stat-number">{{ $berita->count() }}</p>
+                <p class="stat-number">{{ $berita->count() }}</p>  
             </div>
         </div>
         <div class="box-galeri">
             <div class="card stat-card p-3 text-center">
                 <i class="fa-solid fa-photo-film"></i>
                 <h5>Jumlah Galeri</h5>
-                <p class="stat-number">12</p>
+                <p class="stat-number">{{ $galeri->count() }}</p>
             </div>
         </div>
         <div class="box-ekskul">
             <div class="card stat-card p-3 text-center">
                 <i class="fa-solid fa-sitemap"></i>
                 <h5>Jumlah Ekstrakurikuler</h5>
-                <p class="stat-number">25</p>
+                <p class="stat-number">{{ $ekskul->count() }}</p>
             </div>
         </div>
     </div>

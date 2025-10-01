@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\operator;
 
 use App\Http\Controllers\Controller;
 use App\Models\galeri;
@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class GaleriController extends Controller
 {
     //
-      public function create()
+         public function create()
     {
         return view('galeri.create');
     }
@@ -30,7 +30,7 @@ class GaleriController extends Controller
 
         galeri::create($validated);
 
-        return redirect()->route('admin.Galeri')->with('success', 'Galeri berhasil ditambahkan.');
+        return redirect()->route('operator.galeri')->with('success', 'Galeri berhasil ditambahkan.');
     }
 
     public function edit($id)
@@ -60,13 +60,13 @@ class GaleriController extends Controller
 
         $galeri->update($validated);
 
-        return redirect()->route('admin.Galeri')->with('success', 'Galeri berhasil diupdate.');
+        return redirect()->route('operator.Galeri')->with('success', 'Galeri berhasil diupdate.');
     }
 
     public function delete($id)
     {
         $galeri = galeri::findOrFail($id);
         $galeri->delete();
-        return redirect()->route('admin.Galeri')->with('success', 'Galeri berhasil dihapus.');
+        return redirect()->route('operator.Galeri')->with('success', 'Galeri berhasil dihapus.');
     }
 }

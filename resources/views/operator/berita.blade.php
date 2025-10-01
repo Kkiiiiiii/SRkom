@@ -1,9 +1,9 @@
-@extends('admin.layout')
+@extends('operator.layout')
 @section('content')
 <section class="container my-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h3>Data Ekstrakurikuler</h3>
-        <a class="btn btn-success" href="{{ route('admin.ekskul.create') }}">+ Tambah Ekskul</a>
+        <h3>Data Berita</h3>
+        <a class="btn btn-success" href="{{ route('operator.berita-create') }}">+ Tambah Berita</a>
     </div>
     <hr>
      @if (session('success'))
@@ -24,22 +24,20 @@
             <thead class="table-dark">
                 <tr>
                     <th>No</th>
-                    <th>Nama Ekskul</th>
-                    <th>Pembina</th>
-                    <th>Jadwal_latihan</th>
-                    <th>Deskripsi</th>
+                    <th>Judul</th>
+                    <th>Isi</th>
+                    <th>Tanggal</th>
                     <th>Gambar</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($ekskul as $item)
+                @forelse($berita as $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->nama_ekskul }}</td>
-                        <td>{{ $item->pembina }}</td>
-                        <td>{{ $item->jadwal_latihan }}</td>
-                        <td>{{ $item->deskripsi }}</td>
+                        <td>{{ $item->judul }}</td>
+                        <td>{{ Str::limit($item->isi, 50) }}</td>
+                        <td>{{ $item->tanggal }}</td>
                         <td>
                             @if($item->gambar)
                                 <img src="{{ asset('storage/'.$item->gambar) }}" width="80" class="rounded">
@@ -48,11 +46,13 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('admin.ekskul.edit', Crypt::encrypt($item->id_ekskul)) }}" class="btn btn-sm btn-info">Edit</a>
-                            <a href="{{ route('admin.ekskul.delete', Crypt::encrypt($item->id_ekskul)) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin hapus berita ini?')">Hapus</a>
+                            <a href="{{ route('operator.berita-edit', Crypt::encrypt($item->id_berita)) }}" class="btn btn-sm btn-info">Edit</a>
+                            <a href="{{ route('operator.berita-delete', Crypt::encrypt($item->id_berita)) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin hapus berita ini?')">Hapus</a>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr><td colspan="6">Belum ada data berita.</td></tr>
+                @endforelse
             </tbody>
         </table>
     </div>

@@ -12,11 +12,11 @@ class berita extends Model
      public $timestamps = false; 
 
       protected $fillable = [
-        'judul', 'isi', 'tanggal', 'gambar','user_id'
+        'judul', 'isi', 'tanggal', 'gambar','id_user'
     ];
 
       public function user()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id_user');
     }
 }

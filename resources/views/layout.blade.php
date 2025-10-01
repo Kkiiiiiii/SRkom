@@ -18,7 +18,7 @@
             <div class="container">
                 <a class="navbar-brand" href="#">
                     <img src="{{ asset('assets/image/logo_sekolah.png') }}" alt="Logo" width="50" height="50" class="rounded-circle img-thumbnail">
-                    SMP 02
+                    SMPN 02
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -58,13 +58,5 @@
         <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('assets/fontawesome/js/all.min.js')}}"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-        <script>
-            $(document).ready(function() {
-                $('.nav-link').on('click', function() {
-                    $('.nav-link').removeClass('active');
-                    $(this).addClass('active');
-                });
-            });
-        </script>
     </body>
     </html>

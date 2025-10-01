@@ -4,32 +4,35 @@
 <div class="container my-5">
     <h3>Tambah Ekskul</h3>
     <hr>
-
-    <form action="{{ route('admin.ekskul.store') }}" method="POST">
+     @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $item)
+                    <li>{{ $item }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <form action="{{ route('admin.ekskul.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="nama_ekskul" class="form-label">Nama Ekskul</label>
-            <input type="text" name="nama_ekskul" id="nama_ekskul" class="form-control" value="{{ old('nama_ekskul') }}" required>
-            @error('nama_ekskul') <small class="text-danger">{{ $message }}</small> @enderror
-        </div>
+            <input type="text" name="nama_ekskul" id="nama_ekskul" class="form-control" required>
 
         
         <div class="mb-3">
             <label for="pembina" class="form-label">Pembina</label>
-            <input type="text" name="pembina" id="pembina" class="form-control" value="{{ old('pembina') }}">
-            @error('pembina') <small class="text-danger">{{ $message }}</small> @enderror
+            <input type="text" name="pembina" id="pembina" class="form-control">
         </div>
         
         <div class="mb-3">
             <label for="jadwal_latihan" class="form-label">Jadwal Latihan</label>
-            <input type="text" name="jadwal_latihan" id="jadwal_latihan" class="form-control" value="{{ old('jadwal_latihan') }}">
-            @error('jadwal_latihan') <small class="text-danger">{{ $message }}</small> @enderror
+            <input type="text" name="jadwal_latihan" id="jadwal_latihan" class="form-control">
         </div>
         
         <div class="mb-3">
             <label for="deskripsi" class="form-label">Deskripsi</label>
-            <textarea name="deskripsi" id="deskripsi" rows="4" class="form-control">{{ old('deskripsi') }}</textarea>
-            @error('deskripsi') <small class="text-danger">{{ $message }}</small> @enderror
+            <textarea name="deskripsi" id="deskripsi" rows="4" class="form-control"></textarea>
         </div>
 
           <div class="mb-3 mt-3">
