@@ -11,6 +11,18 @@ use Illuminate\Support\Facades\Storage;
 class GuruController extends Controller
 {
     //
+     public function index(Request $request)
+    {
+        $search = $request->input('search');
+        $guru = guru::query();
+        if ($search) {
+            $guru->where('mapel', 'like', "%{$search}%");
+        }
+        $guru = $guru->paginate(10);
+        return view('admin.guru', compact('guru'));
+    }
+
+
     public function create()
     {
         return view('admin.createGuru');

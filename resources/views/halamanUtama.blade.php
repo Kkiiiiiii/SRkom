@@ -1,11 +1,8 @@
 @extends('layout')
-
 @section('content')
 <style>
     body {
         font-family: 'Segoe UI', sans-serif;
-        background-color: #f9f9f9;
-        color: #333;
     }
 
     .utama {
@@ -48,8 +45,8 @@
     }
 
     .section-title a:hover {
-        color: #4caf50;
-        text-decoration: underline;
+        color: #40585a;
+        text-decoration: none;
     }
 
     .stat-card {
@@ -133,11 +130,6 @@
         transition: background-color 0.3s ease;
     }
 
-        /* .btn-info:hover {
-            background-color: #;
-            border-color: #388e3c;
-        } */
-
     .carousel-control-prev-icon,
     .carousel-control-next-icon {
         background-color: rgba(0, 0, 0, 0.5);
@@ -146,7 +138,6 @@
         height: 45px;
         background-size: 20px 20px;
     }
-
     @media (max-width: 768px) {
         .card-img-top {
             height: 150px !important;
@@ -177,38 +168,57 @@
     </div>
 </section>
 
-{{-- PROFIL SEKOLAH --}}
-<section class="container my-5">
-    <h2 class="section-title"><a href="{{ route('info') }}">Profil Sekolah</a></h2>
-    <div class="row align-items-center">
-        <div class="col-md-6 d-flex align-items-center">
-            <a href="{{ route('info') }}">
-                <img src="{{ asset('assets/image/logo_sekolah.png') }}" alt="Logo Sekolah" class="me-3 rounded-circle" width="80" height="80">
-            </a>
-            <p class="mb-0 ms-3">
-                SMPN 02 Gunungputri adalah sekolah unggulan yang berkomitmen mencetak generasi berprestasi, disiplin tinggi, dan berkarakter.
-                Dengan fasilitas memadai serta tenaga pendidik profesional, kami mendukung siswa dalam meraih potensi terbaiknya.
-            </p>
+{{-- SAMBUTAN KEPALA SEKOLAH --}}
+<section class="py-5 my-5 bg-h">
+    <div class="container">
+        <h2 class="section-title text-center">Sambutan Kepala Sekolah</h2>
+        <div class="row align-items-start mt-4">
+            <div class="col-md-3 text-center">
+                <img src="{{ asset('assets/image/kepala_sekolah.jpg') }}" alt="Kepala Sekolah" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+                <h6 class="mb-0">Bapak Kosasih Mpd</h6>
+                <small>Kepala Sekolah</small>
+            </div>
+            <div class="col-md-9">
+                <p style="text-align: justify">
+                    Assalamu’alaikum Warahmatullahi Wabarakatuh,
+                </p>
+                <p style="text-align: justify">
+                    Puji syukur kehadirat Allah SWT atas segala rahmat dan karunia-Nya. Kami mengucapkan selamat datang di website resmi SMPN 02 Gunungputri. Website ini menjadi media informasi dan komunikasi antara sekolah dengan seluruh masyarakat, orang tua, dan siswa.
+                </p>
+                <p style="text-align: justify">
+                    SMPN 02 Gunungputri berkomitmen untuk menciptakan lingkungan belajar yang kondusif, aman, dan menyenangkan. Kami terus berupaya meningkatkan kualitas pendidikan melalui inovasi pembelajaran, peningkatan sarana dan prasarana, serta pengembangan karakter siswa yang berakhlak mulia.
+                </p>
+                <p style="text-align: justify">
+                    Semoga melalui media ini, segala informasi mengenai kegiatan dan perkembangan sekolah dapat diakses dengan mudah dan bermanfaat bagi semua pihak.
+                </p>
+                <p style="text-align: justify">
+                    Terima kasih atas kepercayaan dan dukungannya kepada SMPN 02 Gunungputri.
+                </p>
+                <p>
+                    Wassalamu’alaikum Warahmatullahi Wabarakatuh.
+                </p>
+            </div>
         </div>
     </div>
 </section>
 
+
 {{-- JUMLAH SISWA / GURU --}}
-<section class="jumlah my-5 py-5 bg-h">
+<section class="jumlah my-5 py-5 bg-light">
     <div class="container">
         <div class="row justify-content-center text-center">
             <div class="col-md-5 box-siswa mb-4 mb-md-0">
                 <div class="stat-card p-4">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                    <h5>Jumlah Siswa</h5>
+                    <i class="fa-solid fa-graduation-cap" style="font-size: 50px"></i>
                     <p class="stat-number">{{ $siswa->count() }}</p>
+                    <h5>Jumlah Siswa</h5>
                 </div>
             </div>
             <div class="col-md-5 box-guru">
                 <div class="stat-card p-4">
-                    <i class="fa-solid fa-person-chalkboard"></i>
-                    <h5>Jumlah Guru</h5>
+                    <i class="fa-solid fa-person-chalkboard" style="font-size: 50px"></i>
                     <p class="stat-number">{{ $guru->count() }}</p>
+                    <h5>Jumlah Guru</h5>
                 </div>
             </div>
         </div>
@@ -216,18 +226,19 @@
 </section>
 
 
-{{-- EKSTRAKURIKULER --}}
-<section class="ekskul my-5 py-5">
-    <h2 class="section-title"><a href="{{ route('ekskul') }}">Ekstrakurikuler</a></h2>
+{{-- Ekstrakurikuler --}}
+<section class="ekskul my-5 py-5 bg-h">
+     <h2 class="section-title"><a href="{{ route('ekskul') }}">Ekstrakurikuler</a></h2>
     <div class="container">
         <div class="row g-4">
-            @foreach ($ekskul as $ekskul)
-                <div class="col-md-4">
-                    <div class="card shadow-sm h-100 border-0">
-                        <img src="{{ asset('storage/'.$ekskul->gambar) }}" class="card-img-top rounded-top" alt="{{ $ekskul->nama_ekskul }}">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">{{ $ekskul->nama_ekskul }}</h5>
-                            <p class="card-text flex-grow-1">{{ $ekskul->deskripsi }}</p>
+            @foreach ($ekskul as $e)
+                <div class="col-md-3 col-sm-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img src="{{ asset('storage/' . $e->gambar) }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+                        <div class="card-body text-center">
+                            <h6 class="card-title">{{ $e->nama_ekskul }}</h6>
+                            <p class="card-text">{{ $e->jadwal_latihan }}</p>
+                            <p class="card-text">{{ Str::limit($e->deskripsi, 100) }}</p> 
                         </div>
                     </div>
                 </div>
@@ -236,78 +247,111 @@
     </div>
 </section>
 
-{{-- BERITA TERBARU --}}
-<section class="berita my-5 bg-h py-5">
-    <h2 class="section-title text-white"><a href="{{ route('berita') }}">Berita Terbaru</a></h2>
+{{-- Berita Terbaru --}}
+<section class="berita my-5 py-5 bg-light">
+    <h2 class="section-title"><a href="{{ route('berita') }}">Berita Terbaru</a></h2>
     <div class="container">
-        <div id="beritaCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-            <div class="carousel-inner">
-                @foreach ($berita->chunk(3) as $chunkIndex => $beritaChunk)
-                    <div class="carousel-item {{ $chunkIndex == 0 ? 'active' : '' }}">
-                        <div class="row">
-                            @foreach ($beritaChunk as $item)
-                                <div class="col-md-4">
-                                    <div class="card h-100 shadow-sm">
-                                        <img src="{{ asset('storage/' . $item->gambar) }}" class="card-img-top" alt="{{ $item->judul }}">
-                                        <div class="card-body d-flex flex-column">
-                                            <h5 class="card-title">{{ $item->judul }}</h5>
-                                            <p class="card-text text-justify">
-                                                {{ Str::limit($item->isi, 150) }}
-                                            </p>
-                                            <p class="card-text mt-auto">
-                                                <small class="text-muted">
-                                                    Diposkan oleh: {{ $item->user ? $item->user->name : 'Unknown' }} pada {{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}
-                                                </small>
-                                            </p>
-                                            <a href="{{ route('berita') }}" class="btn btn-info mt-2 align-self-start text-white">Baca Selengkapnya</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
+        <div class="row g-4">
+            @foreach ($berita as $item)
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="{{ asset('storage/' . $item->gambar) }}" class="card-img-top" alt="{{ $item->judul }}">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">{{ $item->judul }}</h5>
+                            <p class="card-text text-justify">{{ Str::limit($item->isi, 150) }}</p>
+                            <p class="card-text mt-auto">
+                                <small class="text-muted">
+                                    Diposkan oleh: {{ $item->user->name ?? 'Unknown' }} pada {{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}
+                                </small>
+                            </p>
+                            <a href="{{ route('berita') }}" class="btn btn-info mt-2 align-self-start text-white">Baca Selengkapnya</a>
                         </div>
                     </div>
-                @endforeach
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#beritaCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#beritaCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            </button>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
 
-{{-- STAFF PENGAJAR --}}
-<section class="staff-pengajar my-5 py-5">
-    <h2 class="section-title"><a href="#">Staff Pengajar</a></h2>
+{{-- Galeri --}}
+<section class="py-4 my-4 bg-h">
+    <h2 class="section-title"><a href="{{ route('galeri') }}">Galeri Sekolah</a></h2>
     <div class="container">
-        <div id="guru" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+        <div class="row g-4 justify-content-center">
+            @foreach($galeri as $g)
+                @php
+                    $file = $g->file;
+                    $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+                    $isImage = in_array($ext, ['jpg', 'jpeg', 'png', 'gif']);
+                    $isVideo = in_array($ext, ['mp4', 'mov', 'avi', 'mkv']);     
+                    // Untuk Mnentukan tipe File Foto Dan Video
+                @endphp
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="shadow-sm">
+                        @if($isImage)
+                        {{-- Jika Gambar --}}
+                            <img src="{{ asset('storage/'.$file) }}" loading="lazy" alt="{{ $g->judul }}" class="img-fluid rounded" style="width:100%; height:200px; object-fit:cover;">
+                        @elseif($isVideo)
+                        {{-- Jika Video --}}
+                            <video controls muted class="w-100 rounded" loading="lazy" style="height:200px; object-fit:cover;">
+                                <source src="{{ asset('storage/'.$file) }}" type="video/{{ $ext }}">
+                                Browser tidak mendukung video.
+                            </video>
+                        @endif
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+{{-- Staff Pengajar Carousel --}}
+<section class="staff-pengajar my-5 py-4 bg-light">
+    <div class="container">
+        <h2 class="section-title mb-4 text-center">
+            <a href="#" class="text-decoration-none text-dark">Staff Pengajar</a>
+        </h2>
+
+        <div id="staffCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
             <div class="carousel-inner">
-                @foreach ($guru->chunk(3) as $chunkIndex => $guruChunk)
-                    <div class="carousel-item {{ $chunkIndex == 0 ? 'active' : '' }}">
-                        <div class="row">
-                            @foreach ($guruChunk as $item)
-                                <div class="col-md-4">
-                                    <div class="card h-100 shadow-sm">
-                                        <img src="{{ asset('storage/' . $item->foto) }}" class="card-img-top" style="height: 400px; object-fit: cover;" alt="{{ $item->nama_guru }}">
-                                        <div class="card-body d-flex flex-column">
+
+                @php
+                    $perSlide = 4; // Agar Menampilkan 4 Guru per-slide 
+                    $totalGuru = $guru->count();
+                    $totalSlides = ceil($totalGuru / $perSlide);
+                @endphp
+
+                @for ($i = 0; $i < $totalSlides; $i++)
+                    <div class="carousel-item {{ $i == 0 ? 'active' : '' }}">
+                        <div class="row g-3 justify-content-center">
+                            @foreach ($guru->slice($i * $perSlide, $perSlide) as $item)
+                                <div class="col-6 col-md-3 d-flex">
+                        {{-- ketika di tampilan lebih kecil atau di hp akan responsive(Menyesuaikan Tampilan) --}}
+                                    <div class="card h-100 w-100 shadow-sm">
+                                        <img src="{{ asset('storage/' . $item->foto) }}" class="card-img-top" alt="{{ $item->nama_guru }}" style="height: 240px; object-fit: cover;">
+                                        <div class="card-body text-center">
                                             <h5 class="card-title">{{ $item->nama_guru }}</h5>
-                                            <p class="card-text">{{ $item->nip }}</p>
-                                            <p class="card-text">{{ $item->mapel }}</p>
+                                            <p class="card-text mb-1">{{ $item->nip }}</p>
+                                            <p class="card-text text-muted">{{ $item->mapel }}</p>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
                     </div>
-                @endforeach
+                @endfor
+
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#guru" data-bs-slide="prev">
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#staffCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Sebelumnya</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#guru" data-bs-slide="next">
+
+            <button class="carousel-control-next" type="button" data-bs-target="#staffCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Berikutnya</span>
             </button>
         </div>
     </div>

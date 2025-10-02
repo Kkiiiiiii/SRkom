@@ -4,7 +4,7 @@
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h3 class="mb-0">Data Profil Sekolah</h3>
             {{-- Tombol Tambah --}}
-            <a class="btn btn-success" href="{{ route('admin.profilSek-create') }}">+ Tambah Profil</a>
+            <a class="btn btn-success" href="{{ route('admin.profilSek-create') }}"><i class="bi bi-plus-circle"></i> Tambah Profil</a>
         </div>
         <hr>
         @if (session('success'))
@@ -63,7 +63,7 @@
                             <td>{{ $item->npsn }}</td>
                             <td>{{ $item->alamat }}</td>
                             <td>{{ $item->kontak }}</td>
-                            <td>{{ $item->visi_misi }}</td>
+                            <td>{{ Str::limit($item->visi_misi), 20 }}</td>
                             <td>{{ $item->tahun_berdiri }}</td>
                         <td>{{ Str::limit($item->deskripsi, 50) }}
                                 <a href="#" data-bs-toggle="modal" data-bs-target="#descModal{{ $item->id_profil }}">Lihat</a>
@@ -86,13 +86,14 @@
                                 <div class="d-flex justify-content-center gap-2 flex-wrap">
                                     {{-- Tombol Edit --}}
                                     <a
-                                        href="{{ route('admin.profilSek-edit', Crypt::encrypt($item->id_profil)) }}" class="btn btn-sm btn-info">Edit</a>
+                                        href="{{ route('admin.profilSek-edit', Crypt::encrypt($item->id_profil)) }}" class="btn btn-sm btn-warning">
+                                     <i class="bi bi-pencil"></i>Edit</a>
 
                                     {{-- Tombol Hapus --}}
                                     <a href="{{ route('admin.profilSek-delete', Crypt::encrypt($item->id_profil)) }}"
                                         class="btn btn-sm btn-danger"
-                                        onclick="return confirm('Yakin data profil Sekolah ini dihapus?')">Hapus</a>
-
+                                        onclick="return confirm('Yakin data profil Sekolah ini dihapus?')">
+                                     <i class="bi bi-trash"></i>Hapus</a>
                                 </div>
                             </td>
                         </tr>

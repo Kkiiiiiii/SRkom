@@ -18,6 +18,21 @@
                 {{ session('error') }}
             </div>
         @endif
+         <form action="{{ route('operator.siswa') }}" method="GET" class="mb-3">
+        <div class="input-group">
+            <input
+                type="text"
+                name="search"
+                class="form-control"
+                placeholder="Cari Nama, Tahun Masuk, atau Jenis Kelamin.."
+                value="{{ request('search') }}"
+            >
+            <button class="btn btn-outline-secondary" type="submit">
+                <i class="bi bi-search"></i> Cari
+            </button>
+        </div>
+    </form>
+     {{ $siswa->appends(['search' => request('search')])->links() }}
         <div class="table-responsive">
             <table class="table table-md table-secondary text-center align-middle">
                 <thead class="table-dark">
@@ -39,23 +54,65 @@
                         <td>{{ $item->jenis_kelamin }}</td>
                         <td>{{ $item->tahun_masuk }}</td>
                          <td style="min-width: 130px;">
-                                <div class="d-flex justify-content-center gap-2 flex-wrap">
-                                    
-                                    <a  
-                                        href="{{ route('operator.siswa-edit', Crypt::encrypt($item->id_siswa)) }}" class="btn btn-sm btn-info">Edit</a>
-
-                                   
+                                <div class="d-flex justify-content-center gap-2 flex-wrap">                                 
+                                <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editSiswaModal{{ $item->id_siswa }}">
+                                    <i class="bi bi-pencil"></i>Edit
+                                </button>
                                     <a href="{{ route('operator.siswa-delete', Crypt::encrypt($item->id_siswa)) }}"
                                         class="btn btn-sm btn-danger"
-                                        onclick="return confirm('Yakin data profil Sekolah ini dihapus?')">Hapus</a>
+                                        onclick="return confirm('Yakin data profil Sekolah ini dihapus?')">
+                                    <i class="bi bi-trash"></i>Edit</a></a>
 
                                 </div>
                             </td>
                     </tr>
+                    <!-- Modal Edit Siswa -->
+                    <div class="modal fade" id="editSiswaModal{{ $item->id_siswa }}" tabindex="-1" aria-labelledby="editSiswaModalLabel{{ $item->id_siswa }}" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                        <div class="modal-content">
+                        <form action="{{ route('operator.Siswa-update', $item->id_siswa) }}" method="POST">
+                            @csrf
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="editSiswaModalLabel{{ $item->id_siswa }}">Edit Data Siswa</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                            </div>
+                            <div class="modal-body">
+
+                            <div class="mb-3">
+                                <label for="nisn{{ $item->id_siswa }}" class="form-label">NISN Siswa</label>
+                                <input type="number" class="form-control" id="nisn{{ $item->id_siswa }}" name="nisn" value="{{ $item->nisn }}" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="nama_siswa{{ $item->id_siswa }}" class="form-label">Nama Siswa</label>
+                                <input type="text" class="form-control" id="nama_siswa{{ $item->id_siswa }}" name="nama_siswa" value="{{ $item->nama_siswa }}" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Jenis Kelamin</label><br>
+                                <input type="radio" name="jenis_kelamin" value="Laki-laki" {{ $item->jenis_kelamin == 'Laki-laki' ? 'checked' : '' }}> Laki-laki
+                                <input type="radio" name="jenis_kelamin" value="Perempuan" {{ $item->jenis_kelamin == 'Perempuan' ? 'checked' : '' }}> Perempuan
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="tahun_masuk{{ $item->id_siswa }}" class="form-label">Tahun Masuk</label>
+                                <input type="number" class="form-control" id="tahun_masuk{{ $item->id_siswa }}" name="tahun_masuk" value="{{ $item->tahun_masuk }}" required>
+                            </div>
+
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                    </div>  
                     @endforeach
             </tbody>
                
             </table>
+            {{-- Modal Tambah Siswa --}}
             <div class="modal fade" id="createGaleriModal" tabindex="-1" aria-labelledby="createGaleriModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">

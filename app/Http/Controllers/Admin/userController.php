@@ -11,6 +11,18 @@ use Illuminate\Support\Facades\Hash;
 class userController extends Controller
 {
     //
+
+      public function index(Request $request)
+    {
+        $search = $request->input('search');
+        $user = User::query();
+        if ($search) {
+            $user->where('role', 'like', "%{$search}%");
+        }
+        $user = $user->paginate(10);
+        return view('admin.user', compact('user'));
+    }
+
     public function create()
     {
         return view('admin.userCreate');
@@ -68,7 +80,6 @@ class userController extends Controller
     {
         $user = User::findOrFail(Crypt::decrypt($id));
         $user->delete();
-
         return redirect()->route('admin.User')->with('success', 'User berhasil dihapus');
     }
 }

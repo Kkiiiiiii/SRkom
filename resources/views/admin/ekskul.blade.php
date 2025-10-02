@@ -3,7 +3,7 @@
 <section class="container my-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h3>Data Ekstrakurikuler</h3>
-        <a class="btn btn-success" href="{{ route('admin.ekskul.create') }}">+ Tambah Ekskul</a>
+        <a class="btn btn-success" href="{{ route('admin.ekskul.create') }}"><i class="bi bi-plus-circle"></i>   Tambah Ekskul</a>
     </div>
     <hr>
      @if (session('success'))
@@ -18,6 +18,21 @@
                     {{ session('error') }}
                 </div>
             @endif
+
+        <form action="{{ route('admin.Ekskul') }}" method="GET" class="mb-3">
+        <div class="input-group">
+            <input
+                type="text"
+                name="search"
+                class="form-control"
+                placeholder="Cari Ekstrakurikuler atau jadwal-latihan..."
+                value="{{ request('search') }}"
+            >
+            <button class="btn btn-outline-secondary" type="submit">
+                <i class="bi bi-search"></i> Cari
+            </button>
+        </div>
+    </form>
 
     <div class="table-responsive">
         <table class="table table-bordered text-center align-middle">
@@ -39,7 +54,7 @@
                         <td>{{ $item->nama_ekskul }}</td>
                         <td>{{ $item->pembina }}</td>
                         <td>{{ $item->jadwal_latihan }}</td>
-                        <td>{{ $item->deskripsi }}</td>
+                        <td>{{ Str::limit($item->deskripsi, 50) }}</td>
                         <td>
                             @if($item->gambar)
                                 <img src="{{ asset('storage/'.$item->gambar) }}" width="80" class="rounded">
@@ -48,13 +63,18 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('admin.ekskul.edit', Crypt::encrypt($item->id_ekskul)) }}" class="btn btn-sm btn-info">Edit</a>
-                            <a href="{{ route('admin.ekskul.delete', Crypt::encrypt($item->id_ekskul)) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin hapus berita ini?')">Hapus</a>
+                            <a href="{{ route('admin.ekskul.edit', Crypt::encrypt($item->id_ekskul)) }}" class="btn btn-sm btn-warning">
+                                 <i class="bi bi-pencil"></i> Edit
+                            </a>
+                            <a href="{{ route('admin.ekskul.delete', Crypt::encrypt($item->id_ekskul)) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin hapus ekskul ini?')">
+                                 <i class="bi bi-trash"></i>Hapus
+                            </a>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+           {{ $ekskul->appends(['search' => request('search')])->links() }}
     </div>
 </section>
 @endsection

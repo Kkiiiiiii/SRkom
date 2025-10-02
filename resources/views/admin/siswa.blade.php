@@ -3,7 +3,7 @@
     <section class="container my-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h3>Data Siswa</h3>
-                <a class="btn btn-success" href="{{ route('admin.Siswa-create') }}">+ Tambah Data Siswa</a>
+                <a class="btn btn-success" href="{{ route('admin.Siswa-create') }}"><i class="bi bi-plus-circle"></i>   Tambah Data Siswa</a>
         </div>
         <hr>
          @if (session('success'))
@@ -18,6 +18,22 @@
                 {{ session('error') }}
             </div>
         @endif
+        <form action="{{ route('operator.siswa') }}" method="GET" class="mb-3">
+        <div class="input-group">
+            <input
+                type="text"
+                name="search"
+                class="form-control"
+                placeholder="Cari Nama, Tahun Masuk, atau Jenis Kelamin.."
+                value="{{ request('search') }}"
+            >
+            <button class="btn btn-outline-secondary" type="submit">
+                <i class="bi bi-search"></i> Cari
+            </button>
+        </div>
+    </form>
+     {{ $siswa->appends(['search' => request('search')])->links() }}
+     
         <div class="table-responsive">
             <table class="table table-md table-secondary text-center align-middle">
                 <thead class="table-dark">
@@ -42,12 +58,14 @@
                                 <div class="d-flex justify-content-center gap-2 flex-wrap">
                                     
                                     <a  
-                                        href="{{ route('admin.Siswa-edit', Crypt::encrypt($item->id_siswa)) }}" class="btn btn-sm btn-info">Edit</a>
+                                        href="{{ route('admin.Siswa-edit', Crypt::encrypt($item->id_siswa)) }}" class="btn btn-sm btn-primary">
+                                     <i class="bi bi-pencil"></i> Edit</a>
 
                                    
                                     <a href="{{ route('admin.Siswa-delete', Crypt::encrypt($item->id_siswa)) }}"
                                         class="btn btn-sm btn-danger"
-                                        onclick="return confirm('Yakin data profil Sekolah ini dihapus?')">Hapus</a>
+                                        onclick="return confirm('Yakin data profil Sekolah ini dihapus?')">
+                                     <i class="bi bi-trash"></i>Hapus</a>
 
                                 </div>
                             </td>

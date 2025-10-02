@@ -16,9 +16,6 @@
         background: linear-gradient(135deg, #81c784, #4caf50);
     }
 
-    .box-guru .card {
-        background: linear-gradient(135deg, #ffb300, #fb8c00);
-    }
     .box-berita .card {
         background: linear-gradient(135deg, #42a5f5, #66bb6a);
     }
@@ -53,13 +50,6 @@
                 <p class="stat-number">{{ $siswa->count() }}</p>
             </div>
         </div>
-        <div class="box-guru">
-            <div class="card stat-card p-3 text-center">
-                <i class="fa-solid fa-person-chalkboard"></i>
-                <h5>Jumlah Guru</h5>
-                {{-- <p class="stat-number">{{ $guru->count() }}</p> --}}
-            </div>
-        </div>
         <div class="box-berita">
             <div class="card stat-card p-3 text-center">
                 <i class="fa-solid fa-newspaper"></i>
@@ -71,14 +61,14 @@
             <div class="card stat-card p-3 text-center">
                 <i class="fa-solid fa-photo-film"></i>
                 <h5>Jumlah Galeri</h5>
-                <p class="stat-number">12</p>
+                <p class="stat-number">{{ $galeri->count() }}</p>
             </div>
         </div>
         <div class="box-ekskul">
             <div class="card stat-card p-3 text-center">
                 <i class="fa-solid fa-sitemap"></i>
                 <h5>Jumlah Ekstrakurikuler</h5>
-                <p class="stat-number">25</p>
+                <p class="stat-number">{{ $ekskul->count() }}</p>
             </div>
         </div>
     </div>
@@ -90,17 +80,17 @@
             <a href="{{ route('operator.siswa') }}" class="btn btn-success">
                 <i class="fa-solid fa-user-graduate"></i> Tambah Siswa
             </a>
-            <a href="" class="btn btn-warning">
-                <i class="fa-solid fa-user-plus"></i> Tambah Guru
-            </a>
             <a href="{{ route('operator.berita-create') }}" class="btn btn-primary">
                 <i class="fa-solid fa-newspaper"></i> Buat Berita
             </a>
             <a href="{{ route('operator.galeri') }}" class="btn btn-info text-white">
                 <i class="fa-solid fa-image"></i> Upload Galeri
             </a>
-            <a href="" class="btn btn-danger">
+            <a href="{{ route('operator.ekskul-create') }}" class="btn btn-danger">
                 <i class="fa-solid fa-sitemap"></i> Tambah Ekskul
+            </a>
+            <a href="{{ route('operator.profil-create') }}" class="btn btn-warning text-white">
+                <i class="fa-solid fa-school"></i> Tambah Info Sekolah
             </a>
         </div>
     </div>

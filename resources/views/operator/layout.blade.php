@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
 </head>
 <style>
     .sidebar {
@@ -73,7 +75,7 @@
             <img src="{{ asset('assets/image/logo_sekolah.png') }}" width="50" height="50" class="rounded-circle my-3 ms-2">
             <h5 class="mt-4  ms-2">SMPN 02</h5>
         </div>
-        <a  href="{{ route('operator.index')}}" class="{{ request()->routeIs('operator.index') ? 'active' : '' }}">Dashboard</a>
+        <a  href="{{ route('operator')}}" class="{{ request()->routeIs('operator') ? 'active' : '' }}">Dashboard</a>
         <a href="{{ route('operator.profil') }}"class="{{ request()->routeIs('operator.profil') ? 'active' : '' }}">Profil Sekolah</a>
         <a href="{{ route('operator.berita') }}" class="{{ request()->routeIs('operator.berita') ? 'active' : '' }}">Berita</a>
         <a href="{{ route('operator.galeri') }}" class="{{ request()->routeIs('operator.galeri') ? 'active' : '' }}">Galeri</a>

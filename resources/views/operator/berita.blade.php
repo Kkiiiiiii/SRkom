@@ -19,6 +19,22 @@
                 </div>
             @endif
 
+             <!-- Form Search -->
+    <form action="{{ route('operator.berita') }}" method="GET" class="mb-3">
+        <div class="input-group">
+            <input
+                type="text"
+                name="search"
+                class="form-control"
+                placeholder="Cari judul berita..."
+                value="{{ request('search') }}"
+            >
+            <button class="btn btn-outline-secondary" type="submit">
+                <i class="bi bi-search"></i> Cari
+            </button>
+        </div>
+    </form>
+
     <div class="table-responsive">
         <table class="table table-bordered text-center align-middle">
             <thead class="table-dark">
@@ -46,8 +62,12 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('operator.berita-edit', Crypt::encrypt($item->id_berita)) }}" class="btn btn-sm btn-info">Edit</a>
-                            <a href="{{ route('operator.berita-delete', Crypt::encrypt($item->id_berita)) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin hapus berita ini?')">Hapus</a>
+                            <a href="{{ route('operator.berita-edit', Crypt::encrypt($item->id_berita)) }}" class="btn btn-sm btn-warning">
+                                 <i class="bi bi-pencil"></i> Edit
+                            </a>
+                            <a href="{{ route('operator.berita-delete', Crypt::encrypt($item->id_berita)) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin hapus berita ini?')">
+                                 <i class="bi bi-trash"></i> Hapus
+                            </a>
                         </td>
                     </tr>
                 @empty
@@ -55,6 +75,7 @@
                 @endforelse
             </tbody>
         </table>
+        {{ $berita->appends(['search' => request('search')])->links() }}
     </div>
 </section>
 @endsection

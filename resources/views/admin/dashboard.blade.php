@@ -25,6 +25,9 @@
     .box-ekskul .card {
         background: linear-gradient(135deg, #ff7043, #f44336);
     }
+    .box-user .card {
+        background: linear-gradient(135deg, #0a0e71, #4f84d3);
+    }
     .box-galeri .card {
         background: linear-gradient(135deg, #5c6bc0, #42a5f5);
     }
@@ -45,7 +48,7 @@
 <hr>
 
 <section class="container pb-5 mt-5">
-    <div class="d-flex flex-wrap justify-content-center gap-4">
+    <div class="d-flex flex-wrap justify-content-center gap-4 mb-4">
         <div class="box-siswa">
             <div class="card stat-card p-3 text-center">
                 <i class="fa-solid fa-graduation-cap"></i>
@@ -74,11 +77,20 @@
                 <p class="stat-number">{{ $galeri->count() }}</p>
             </div>
         </div>
+    </div>
+    <div class="d-flex flex-wrap justify-content-center gap-4">
         <div class="box-ekskul">
             <div class="card stat-card p-3 text-center">
                 <i class="fa-solid fa-sitemap"></i>
-                <h5>Jumlah Ekstrakurikuler</h5>
+                <h5>Jumlah Ekskul</h5>
                 <p class="stat-number">{{ $ekskul->count() }}</p>
+            </div>
+        </div>
+        <div class="box-user">
+            <div class="card stat-card p-3 text-center">
+                <i class="fa-solid fa-user"></i>
+                <h5>Jumlah User</h5>
+                <p class="stat-number">{{ $user->count() }}</p>
             </div>
         </div>
     </div>
@@ -87,20 +99,23 @@
     <div class="mt-5">
         <h5 class="text-center">Aksi Cepat</h5>
         <div class="d-flex flex-wrap gap-3 mt-3 justify-content-center">
-            <a href="{{ route('admin.Guru-create') }}" class="btn btn-warning">
+            <a href="{{ route('admin.Guru-create') }}" class="btn btn-outline-warning">
                 <i class="fa-solid fa-user-plus"></i> Tambah Guru
             </a>
-            <a href="{{ route('admin.Siswa-create') }}" class="btn btn-success">
+            <a href="{{ route('admin.Siswa-create') }}" class="btn btn-outline-success">
                 <i class="fa-solid fa-user-graduate"></i> Tambah Siswa
             </a>
-            <a href="{{ route('admin.Berita-create') }}" class="btn btn-primary">
+            <a href="{{ route('admin.Berita-create') }}" class="btn btn-outline-primary">
                 <i class="fa-solid fa-newspaper"></i> Buat Berita
             </a>
-            <a href="" class="btn btn-info text-white">
+            <a href="{{ route('admin.Galeri') }}" class="btn btn-outline-info">
                 <i class="fa-solid fa-image"></i> Upload Galeri
             </a>
-            <a href="{{ route('admin.ekskul.create') }}" class="btn btn-danger">
+            <a href="{{ route('admin.ekskul.create') }}" class="btn btn-outline-danger">
                 <i class="fa-solid fa-sitemap"></i> Tambah Ekskul
+            </a>
+            <a href="{{ route('admin.User-create') }}" class="btn btn-outline-secondary">
+                <i class="fa-solid fa-circle-user"></i> Tambah User
             </a>
         </div>
     </div>

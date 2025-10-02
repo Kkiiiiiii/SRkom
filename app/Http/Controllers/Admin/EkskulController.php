@@ -10,6 +10,18 @@ use Illuminate\Support\Facades\Crypt;
 class EkskulController extends Controller
 {
     //
+
+    public function index(Request $request)
+    {
+        $search = $request->input('search');
+        $ekskul = ekstrakurikuler::query();
+        if ($search) {
+            $ekskul->where('nama_ekskul', 'like', "%{$search}%")
+             ->orWhere('jadwal_latihan', 'like', "%{$search}%");
+        }
+        $ekskul = $ekskul->paginate(10);
+        return view('admin.Ekskul',compact('ekskul'));
+    }
     
     public function create()
     {
@@ -48,7 +60,7 @@ class EkskulController extends Controller
         return view('admin.ekskulEdit', compact('ekskul'));
     }
 
- public function update(Request $request, $id)
+    public function update(Request $request, $id)
 {
     $ekskul = ekstrakurikuler::findOrFail(Crypt::decrypt($id));
 
@@ -69,6 +81,8 @@ class EkskulController extends Controller
         $gambarPath = $request->file('gambar')->store('ekskul', 'public');
         $ekskul->gambar = $gambarPath;
     }
+
+    // dd($ekskul); // Cek data sebelum save
 
     $ekskul->save();
 

@@ -19,6 +19,21 @@
                 </div>
             @endif
 
+            <form action="{{ route('operator.ekskul') }}" method="GET" class="mb-3">
+        <div class="input-group">
+            <input
+                type="text"
+                name="search"
+                class="form-control"
+                placeholder="Cari Ekstrakurikuler atau jadwal-latihan..."
+                value="{{ request('search') }}"
+            >
+            <button class="btn btn-outline-secondary" type="submit">
+                <i class="bi bi-search"></i> Cari
+            </button>
+        </div>
+    </form>
+
     <div class="table-responsive">
         <table class="table table-bordered text-center align-middle">
             <thead class="table-dark">
@@ -26,19 +41,20 @@
                     <th>No</th>
                     <th>Nama Ekskul</th>
                     <th>Pembina</th>
-                    <th>Jadwal_latihan</th>
+                    <th>Jadwal Latihan</th>
                     <th>Deskripsi</th>
                     <th>Gambar</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach($ekskul as $item)
+                @foreach($ekskul as $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->nama_pembina }}</td>
+                        <td>{{ $item->nama_ekskul }}</td>
+                        <td>{{ $item->pembina }}</td>
                         <td>{{ $item->jadwal_latihan }}</td>
-                        <td>{{ $item->deskripsi }}</td>
+                        <td>{{ Str::limit($item->deskripsi, 50) }}</td>
                         <td>
                             @if($item->gambar)
                                 <img src="{{ asset('storage/'.$item->gambar) }}" width="80" class="rounded">
@@ -47,13 +63,17 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('admin.ekskul.edit', Crypt::encrypt($item->id_ekskul)) }}" class="btn btn-sm btn-info">Edit</a>
-                            <a href="{{ route('admin.ekskul.delete', Crypt::encrypt($item->id_ekskul)) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin hapus berita ini?')">Hapus</a>
+                            <a href="{{ route('operator.ekskul-edit', Crypt::encrypt($item->id_ekskul)) }}" class="btn btn-sm btn-warning">
+                                 <i class="bi bi-pencil"></i>Edit</a>
+                            <a href="{{ route('operator.ekskul-delete', Crypt::encrypt($item->id_ekskul)) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin hapus berita ini?')">
+                                 <i class="bi bi-trash"></i>Hapus</a>
                         </td>
                     </tr>
-                @endforeach --}}
+                @endforeach
             </tbody>
         </table>
+           {{ $ekskul->appends(['search' => request('search')])->links() }}
+    </div>
     </div>
 </section>
 @endsection

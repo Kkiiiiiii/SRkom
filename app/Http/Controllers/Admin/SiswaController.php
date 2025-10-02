@@ -10,6 +10,24 @@ use Illuminate\Support\Facades\Crypt;
 class SiswaController extends Controller
 {
     //
+
+     public function index(Request $request)
+    {
+         $search = $request->input('search');
+
+        $siswa = siswa::query();
+
+        if ($search) {
+            $siswa->where(function ($query) use ($search) {
+                $query->where('tahun_masuk', 'like', "%{$search}%")
+                    ->orWhere('nama_siswa', 'like', "%{$search}%")
+                    ->orWhere('jenis_kelamin', 'like', "%{$search}%");
+            });
+        }
+        $siswa = $siswa->paginate(10);
+        return view('admin.siswa', compact('siswa'));
+    }
+
     public function create()
     {
         return view('admin.createSiswa');

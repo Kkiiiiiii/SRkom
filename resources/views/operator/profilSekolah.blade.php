@@ -86,13 +86,12 @@
                                 <div class="d-flex justify-content-center gap-2 flex-wrap">
                                     {{-- Tombol Edit --}}
                                     <a
-                                        href="{{ route('operator.profil-edit', Crypt::encrypt($item->id_profil)) }}" class="btn btn-sm btn-info">Edit</a>
+                                        href="{{ route('operator.profil-edit', Crypt::encrypt($item->id_profil)) }}" class="btn btn-sm btn-warning">Edit</a>
 
                                     {{-- Tombol Hapus --}}
                                     <a href="{{ route('operator.profil-delete', Crypt::encrypt($item->id_profil)) }}"
                                         class="btn btn-sm btn-danger"
                                         onclick="return confirm('Yakin data profil Sekolah ini dihapus?')">Hapus</a>
-
                                 </div>
                             </td>
                         </tr>

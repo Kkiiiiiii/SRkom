@@ -12,6 +12,17 @@ use Illuminate\Support\Facades\Storage;
 class BeritaController extends Controller
 {
     //
+
+  public function index(Request $request) {
+    $search = $request->input('search');
+    $berita = Berita::query();
+    if ($search) {
+        $berita->where('judul', 'like', "%{$search}%");
+    }
+    $berita = $berita->paginate(10);
+    return view('admin.berita', compact('berita'));
+}
+
     
     public function create()
     {

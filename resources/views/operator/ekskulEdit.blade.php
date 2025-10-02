@@ -4,17 +4,12 @@
     <h3>Edit Ekskul</h3>
     <hr>
 
-    <form action="{{ route('admin.ekskul.update', Crypt::encrypt($ekskul->id_ekskul)) }}" method="POST">
+    <form action="{{ route('operator.ekskul-update', Crypt::encrypt($ekskul->id_ekskul)) }}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="nama" class="form-label">Nama Ekskul</label>
             <input type="text" name="nama" id="nama" class="form-control" 
                    value="{{ old('nama', $ekskul->nama) }}" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="deskripsi" class="form-label">Deskripsi</label>
-            <textarea name="deskripsi" id="deskripsi" rows="4" class="form-control">{{ old('deskripsi', $ekskul->deskripsi) }}</textarea>
         </div>
 
         <div class="mb-3">
@@ -29,8 +24,22 @@
                    value="{{ old('jadwal', $ekskul->jadwal) }}">
         </div>
 
+         <div class="mb-3">
+            <label for="deskripsi" class="form-label">Deskripsi</label>
+            <textarea name="deskripsi" id="deskripsi" rows="4" class="form-control">{{ old('deskripsi', $ekskul->deskripsi) }}</textarea>
+        </div>
+
+           <div class="mb-3">
+            <label for="gambar" class="form-label">Upload Gambar</label><br>
+            @if($ekskul->gambar)
+                <img src="{{ asset('storage/'.$ekskul->gambar) }}" width="100" class="rounded mb-2"><br>
+            @endif
+            <input type="file" name="gambar" id="gambar" class="form-control">
+        </div>
+
+
         <button type="submit" class="btn btn-primary">Update</button>
-        <a href="{{ route('admin.ekskul.index') }}" class="btn btn-secondary">Batal</a>
+        <a href="{{ route('operator.ekskul') }}" class="btn btn-secondary">Batal</a>
     </form>
 </div>
 @endsection

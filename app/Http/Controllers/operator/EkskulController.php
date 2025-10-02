@@ -10,12 +10,26 @@ use Illuminate\Support\Facades\Crypt;
 class EkskulController extends Controller
 {
     //
+
+       public function index(Request $request)
+    {
+        $search = $request->input('search');
+        $ekskul = ekstrakurikuler::query();
+        if ($search) {
+            $ekskul->where('nama_ekskul', 'like', "%{$search}%")
+            ->orWhere('jadwal_latihan', 'like', "%{$search}%");
+        }
+        $ekskul = $ekskul->paginate(10);
+        return view('operator.ekskul',compact('ekskul'));
+    }
+    
     
     public function create()
     {
         return view('operator.ekskulCreate');
     }
 
+   
     public function store(Request $request)
     {
         $request->validate([
@@ -26,7 +40,18 @@ class EkskulController extends Controller
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        ekstrakurikuler::create($request->all());
+      $gambarPath = null;
+        if ($request->hasFile('gambar')) {
+            $gambarPath = $request->file('gambar')->store('ekskul', 'public');
+        }
+
+        ekstrakurikuler::create([
+            'nama_ekskul' => $request->nama_ekskul,
+            'pembina' => $request->pembina,
+            'jadwal_latihan' =>$request->jadwal_latihan,
+            'deskripsi' => $request->deskripsi,
+            'gambar' => $gambarPath,
+        ]);
 
         return redirect()->route('operator.ekskul')->with('success', 'Ekskul berhasil ditambahkan');
     }
@@ -37,22 +62,33 @@ class EkskulController extends Controller
         return view('operator.ekskulEdit', compact('ekskul'));
     }
 
-    public function update(Request $request, $id)
-    {
-        $ekskul = ekstrakurikuler::findOrFail(Crypt::decrypt($id));
+ public function update(Request $request, $id)
+{
+    $ekskul = ekstrakurikuler::findOrFail(Crypt::decrypt($id));
 
-        $request->validate([
-            'nama_ekskul' => 'required|string|max:100',
-            'pembina' => 'nullable|string|max:100',
-            'jadwal_latihan' => 'nullable|string|max:100',
-            'deskripsi' => 'nullable|string',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+    $request->validate([
+        'nama_ekskul' => 'required|string|max:100',
+        'pembina' => 'nullable|string|max:100',
+        'jadwal_latihan' => 'nullable|string|max:100',
+        'deskripsi' => 'nullable|string',
+        'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
 
-        $ekskul->update($request->all());
+    $ekskul->nama_ekskul = $request->nama_ekskul;
+    $ekskul->pembina = $request->pembina;
+    $ekskul->jadwal_latihan = $request->jadwal_latihan;
+    $ekskul->deskripsi = $request->deskripsi;
 
-        return redirect()->route('operator.ekskul')->with('success', 'Ekskul berhasil diperbarui');
+    if ($request->hasFile('gambar')) {
+        $gambarPath = $request->file('gambar')->store('ekskul', 'public');
+        $ekskul->gambar = $gambarPath;
     }
+
+    $ekskul->save();
+
+    return redirect()->route('operator.ekskul')->with('success', 'Ekskul berhasil diperbarui');
+}
+
 
     public function delete($id)
     {

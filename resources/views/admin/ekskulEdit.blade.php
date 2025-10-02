@@ -5,17 +5,12 @@
     <h3>Edit Ekskul</h3>
     <hr>
 
-    <form action="{{ route('admin.ekskul.update', Crypt::encrypt($ekskul->id_ekskul)) }}" method="POST">
+    <form action="{{ route('admin.ekskul.update', Crypt::encrypt($ekskul->id_ekskul)) }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
-            <label for="nama" class="form-label">Nama Ekskul</label>
-            <input type="text" name="nama" id="nama" class="form-control" 
-                   value="{{ old('nama', $ekskul->nama) }}" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="deskripsi" class="form-label">Deskripsi</label>
-            <textarea name="deskripsi" id="deskripsi" rows="4" class="form-control">{{ old('deskripsi', $ekskul->deskripsi) }}</textarea>
+            <label for="nama_ekskul" class="form-label">Nama Ekskul</label>
+            <input type="text" name="nama_ekskul" id="nama_ekskul" class="form-control" 
+                   value="{{ old('nama_ekskul', $ekskul->nama_ekskul) }}" required>
         </div>
 
         <div class="mb-3">
@@ -25,9 +20,14 @@
         </div>
 
         <div class="mb-3">
-            <label for="jadwal" class="form-label">Jadwal</label>
-            <input type="text" name="jadwal" id="jadwal" class="form-control" 
-                   value="{{ old('jadwal', $ekskul->jadwal) }}">
+            <label for="jadwal_latihan" class="form-label">Jadwal Latihan</label>
+            <input type="text" name="jadwal_latihan" id="jadwal_latihan" class="form-control" 
+                   value="{{ old('jadwal_latihan', $ekskul->jadwal_latihan) }}">
+        </div>
+
+          <div class="mb-3">
+            <label for="deskripsi" class="form-label">Deskripsi</label>
+            <textarea name="deskripsi" id="deskripsi" rows="4" class="form-control">{{ old('deskripsi', $ekskul->deskripsi) }}</textarea>
         </div>
 
         <div class="mb-3">
