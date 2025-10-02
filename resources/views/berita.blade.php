@@ -1,23 +1,39 @@
 @extends('layout')
 @section('content')
+
 <style>
-    .card-footer .penulis{
-        font-weight: bold;
+    details summary {
+        cursor: pointer;
+        color: #0d6efd; /* bootstrap primary color */
+        font-weight: 600;
+        list-style: none;
+    }
+
+    details summary::-webkit-details-marker {
+        display: none;
+    }
+
+    details p {
+        margin-top: 0.75rem;
+        text-align: justify;
     }
 </style>
+
 <div class="container my-5">
-    <h3>Daftar Berita</h3>
-    <div class="row">
+    <h3 class="mb-4">Daftar Berita</h3>
+    <div class="row g-4">
         @foreach ($berita as $item)
-        <div class="col-md-4">
-            <div class="card shadow-sm mb-3">
-                <img src="{{ asset('storage/' . $item->gambar) }}" class="card-img-top">
-                <div class="card-body">
+        <div class="col-md-4 d-flex">
+            <div class="card shadow-sm w-100">
+                <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->judul }}" class="card-img-top" style="height: 180px; object-fit: cover;">
+                <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ $item->judul }}</h5>
-                    <p class="card-text"><small class="text-muted">Diposting oleh: {{ $item->user ? $item->user->name : 'Unknown' }} pada {{ \Carbon\Carbon::parse($item->tanggal)}}</small></p>
-                         <details>
-                                <summary style="cursor: pointer; color: #007BFF;">Lihat Selengkapnya</summary>
-                                <p class="card-text" style="text-align: justify">{{ Str::limit($item->isi, 200) }}</p>           
+                    <p class="card-text text-muted mb-2" style="font-size: 0.9rem;">
+                        Diposting oleh: {{ $item->user ? $item->user->name : 'Unknown' }} pada {{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}
+                    </p>
+                    <details>
+                        <summary>Lihat Selengkapnya</summary>
+                        <p>{{ Str::limit($item->isi, 200) }}</p>
                     </details>
                 </div>
             </div>
@@ -25,4 +41,5 @@
         @endforeach
     </div>
 </div>
+
 @endsection
