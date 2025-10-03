@@ -19,7 +19,7 @@ class UserController extends Controller
         $data ['siswa'] = siswa::whereIn('tahun_masuk',[2023, 2024, 2025])->get();
         $data ['ekskul'] = ekstrakurikuler::all();
         $data ['berita'] = berita::orderBy('id_berita','desc')->take(5)->get();
-        $data ['galeri'] = galeri::orderBy('id_galeri', 'asc')->take(5)->get();
+        $data ['galeri'] = galeri::orderBy('id_galeri', 'asc')->take(6)->get();
         return view('halamanUtama', $data);
     }
 

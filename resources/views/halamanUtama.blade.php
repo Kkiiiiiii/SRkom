@@ -138,6 +138,7 @@
         height: 45px;
         background-size: 20px 20px;
     }
+    /* Untuk Tampilan Card di section */
     @media (max-width: 768px) {
         .card-img-top {
             height: 150px !important;
@@ -174,7 +175,9 @@
         <h2 class="section-title text-center">Sambutan Kepala Sekolah</h2>
         <div class="row align-items-start mt-4">
             <div class="col-md-3 text-center">
-                <img src="{{ asset('assets/image/tes.jpeg') }}" alt="Kepala Sekolah" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+                <a href="{{ route('info') }}" rel="noopener noreferrer">
+                    <img src="{{ asset('assets/image/tes.jpeg') }}" alt="Kepala Sekolah" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;"> 
+                </a>
                 <h6 class="mb-0">Bapak Kosasih Mpd</h6>
                 <small>Kepala Sekolah</small>
             </div>
@@ -234,7 +237,9 @@
             @foreach ($ekskul as $e)
                 <div class="col-md-3 col-sm-6">
                     <div class="card h-100 border-0 shadow-sm">
-                        <img src="{{ asset('storage/' . $e->gambar) }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+                        <a href="{{ route('ekskul') }}" rel="noopener noreferrer">
+                            <img src="{{ asset('storage/' . $e->gambar) }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+                        </a>
                         <div class="card-body text-center">
                             <h6 class="card-title">{{ $e->nama_ekskul }}</h6>
                             <p class="card-text">{{ $e->jadwal_latihan }}</p>
@@ -255,7 +260,9 @@
             @foreach ($berita as $item)
                 <div class="col-md-4">
                     <div class="card h-100 shadow-sm">
-                        <img src="{{ asset('storage/' . $item->gambar) }}" class="card-img-top" alt="{{ $item->judul }}">
+                        <a href="{{ route('berita') }}" rel="noopener noreferrer">
+                            <img src="{{ asset('storage/' . $item->gambar) }}" class="card-img-top" alt="{{ $item->judul }}">
+                        </a>
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">{{ $item->judul }}</h5>
                             <p class="card-text text-justify">{{ Str::limit($item->isi, 150) }}</p>
@@ -291,7 +298,9 @@
                     <div class="shadow-sm">
                         @if($isImage)
                         {{-- Jika Gambar --}}
+                        <a href="{{ route('galeri') }}" rel="noopener noreferrer">
                             <img src="{{ asset('storage/'.$file) }}" loading="lazy" alt="{{ $g->judul }}" class="img-fluid rounded" style="width:100%; height:200px; object-fit:cover;">
+                            </a> 
                         @elseif($isVideo)
                         {{-- Jika Video --}}
                             <video controls muted class="w-100 rounded" loading="lazy" style="height:200px; object-fit:cover;">

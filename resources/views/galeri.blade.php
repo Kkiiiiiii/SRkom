@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="my-5 container">
-    <h3 class="mb-4 fw-medium">Galeri Foto & Video</h3>
+    <h3 class="mb-4 fw-medium">Daftar Galeri</h3>
     <hr>
     <div class="container">
         <div class="row g-4">

@@ -11,20 +11,7 @@ class SiswaController extends Controller
 {
     //
     public function index(Request $request) {
-    $search = $request->input('search');
-
-    $siswa = siswa::query();
-
-    if ($search) {
-        $siswa->where(function ($query) use ($search) {
-            $query->where('tahun_masuk', 'like', "%{$search}%")
-                  ->orWhere('nama_siswa', 'like', "%{$search}%")
-                  ->orWhere('jenis_kelamin', 'like', "%{$search}%");
-        });
-    }
-
-    $siswa = $siswa->paginate(10);
-
+    $siswa = siswa::all();
     return view('operator.siswa', compact('siswa'));
 }
 

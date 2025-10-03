@@ -13,13 +13,7 @@ class EkskulController extends Controller
 
        public function index(Request $request)
     {
-        $search = $request->input('search');
-        $ekskul = ekstrakurikuler::query();
-        if ($search) {
-            $ekskul->where('nama_ekskul', 'like', "%{$search}%")
-            ->orWhere('jadwal_latihan', 'like', "%{$search}%");
-        }
-        $ekskul = $ekskul->paginate(10);
+       $ekskul = ekstrakurikuler::all();
         return view('operator.ekskul',compact('ekskul'));
     }
     

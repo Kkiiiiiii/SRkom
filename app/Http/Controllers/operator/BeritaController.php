@@ -13,15 +13,11 @@ class BeritaController extends Controller
 {
     //
 
-    public function index(Request $request) {
-    $search = $request->input('search');
-    $berita = Berita::query();
-    if ($search) {
-        $berita->where('judul', 'like', "%{$search}%");
-    }
-    $berita = $berita->paginate(10);
+    public function index(Request $request) 
+    {
+    $berita = berita::all();
     return view('operator.berita', compact('berita'));
-}
+    }
     
     public function create()
     {

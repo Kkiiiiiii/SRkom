@@ -4,7 +4,7 @@
 <div class="container my-5">
     <h3>Tambah Ekskul</h3>
     <hr>
-     @if ($errors->any())
+       @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $item)

@@ -15,14 +15,7 @@ class GaleriController extends Controller
 
     public function index(Request $request)
     {
-        $search = $request->input('search');
-        $galeri = galeri::query();
-        if ($search) {
-            $galeri->where('judul', 'like', "%{$search}%")
-            ->orWhere('kategori', 'like', "%{$search}%");
-
-        }
-        $galeri = $galeri->paginate(10);
+        $galeri = galeri::all();
         return view('operator.galeri', compact('galeri'));
     }
 
@@ -30,21 +23,19 @@ class GaleriController extends Controller
     {
         // Validasi inputan dari form tambah galeri
         $validasi = $request->validate([
-            'judul' => 'required|string|max:100',
-            'keterangan' => 'required|string|max:25000',
+            'judul' => 'required|string|max:255',
+            'keterangan' => 'required|string',
             'file' => 'required|mimes:jpg,jpeg,png,gif,mp4,mov,avi,mkv|max:204800',
-            'kategori' => 'required|string|max:50',
+            'kategori' => 'required|string',
             'tanggal' => 'required|date',
         ]);
 
         //upload file
-        $file = $request->file('file');
-        // Memberi nama file dengan timestamp agar unik
-        $filename = time().".".$file->getClientOriginalExtension();
-        $file->storeAs('galeri', $filename,'public');
-
-        // Menyimpan nama file gambar ke dalam validasi
-        $validasi['file'] = $filename;
+        if ($request->hasFile('file')) {
+            // Simpan file dan ambil path lengkap
+            $path = $request->file('file')->store('galeri', 'public');
+            $validasi['file'] = $path;
+        }
 
         // Menyimpan data galeri ke database
         galeri::create($validasi);

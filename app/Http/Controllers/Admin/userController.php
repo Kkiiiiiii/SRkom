@@ -14,12 +14,7 @@ class userController extends Controller
 
       public function index(Request $request)
     {
-        $search = $request->input('search');
-        $user = User::query();
-        if ($search) {
-            $user->where('role', 'like', "%{$search}%");
-        }
-        $user = $user->paginate(10);
+        $user = User::all();
         return view('admin.user', compact('user'));
     }
 

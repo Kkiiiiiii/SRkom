@@ -40,7 +40,7 @@
                         @endphp
 
                         @if($kategori === 'foto')
-                            <img src="{{ asset('storage/' . $item->file) }}" alt="Media" class="img-thumbnail" style="max-width: 100px;">
+                            <img src="{{ asset('storage/' . $item->file) }}" class="img-thumbnail" style="max-width: 100px;">
                         @elseif($kategori === 'video')
                             <video width="150" controls>
                                 <source src="{{ asset('storage/' . $item->file) }}" type="video/mp4">

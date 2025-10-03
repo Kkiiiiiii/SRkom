@@ -93,7 +93,7 @@
                                         $isImage = Str::endsWith($item->file, ['.jpg', '.jpeg', '.png', '.gif']);
                                     @endphp
                                     @if($isImage)
-                                        <img src="{{ asset('storage/' . $item->file) }}" alt="Media" class="img-thumbnail mt-2" style="max-width: 150px;">
+                                        <img src="{{ asset('storage/' . $item->file) }}" class="img-thumbnail mt-2" style="max-width: 150px;">
                                     @else
                                         <video width="200" controls class="mt-2">
                                             <source src="{{ asset('storage/' . $item->file) }}" type="video/mp4">

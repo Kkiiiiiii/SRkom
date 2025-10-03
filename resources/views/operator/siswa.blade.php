@@ -132,10 +132,6 @@
             <label for="tahun_masuk" class="form-label">Tahun Masuk</label>
             <input type="year" class="form-control" id="tahun_masuk" name="tahun_masuk" required>
         </div>
-
-        <div class="mb-3 mt-3">
-            <input type="submit" value="SIMPAN" class="btn btn-success form-control">
-        </div>
     </div>
 </form>
     <div class="modal-footer">

@@ -56,10 +56,15 @@
                 <h6 class="mb-1">Kontak</h6>
                 <p class="small mb-1">Telp: 02186868677</p>
                 <p class="small mb-0">Email: info@smpn02.sch.id</p>
+                <br>
+                <h6 class="mb-1">Informasi Singkat</h6>
+                <p class="small mb-1">Akreditasi: A</p>
+                <p class="small mb-0">Rombongan Belajar: 31</p>
+                <p class="small mb-0">Penyelengaraan: Sehari Penuh/5 hari</p>
             </div>
         </div>
 
-        <p class="mt-3 mb-1 small">&copy; 2025 - Hak Cipta Dilindungi.</p>
+        <p class="mt-3 mb-1 small"><strong>Copyright</strong> &copy; 2025 - <strong>Hak Cipta Dilindungi.</strong></p>
     </div>
 </footer>
 
