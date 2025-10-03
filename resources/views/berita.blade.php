@@ -30,7 +30,7 @@
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ $item->judul }}</h5>
                     <p class="card-text text-muted mb-2" style="font-size: 0.9rem;">
-                        Diposting oleh: {{ $item->user->name ?? 'Admin' }} pada {{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}
+                        Diposting oleh: {{ $item->user->username ?? 'Unknown' }} pada {{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}
                     </p>
                     <details>
                         <summary>Lihat Selengkapnya</summary>
@@ -42,5 +42,4 @@
         @endforeach
     </div>
 </div>
-
 @endsection

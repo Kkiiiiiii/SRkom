@@ -20,7 +20,7 @@ class AdminMiddleware
             if (Auth::user()->role == 'admin') {
                 return $next($request);
             }
-            return redirect()->route('loginShow');
+          abort(403, 'Akses khusus Admin');
         }
         return redirect()->route('loginShow');
     }

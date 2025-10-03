@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\berita;
+use App\Models\Berita;
 use App\Models\ekstrakurikuler;
 use App\Models\galeri;
 use App\Models\guru;
@@ -19,7 +19,7 @@ class AdminController extends Controller
     {
         $data ['guru'] = guru::all();
         $data ['siswa'] = siswa::all();
-        $data ['berita'] = berita::all();
+        $data ['berita'] = Berita::all();
         $data ['galeri'] = galeri::all();    
         $data ['ekskul'] = ekstrakurikuler::all();
         $data ['user'] = User::all();

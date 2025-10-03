@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Berita;
 
 class User extends Authenticatable
 {
@@ -54,6 +55,6 @@ class User extends Authenticatable
 
        public function berita()
     {
-        return $this->hasMany(berita::class, 'user_id','id_user');
+        return $this->hasMany(Berita::class, 'id_user','id_user');
     }
 }

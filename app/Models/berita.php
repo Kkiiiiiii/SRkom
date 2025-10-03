@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
-class berita extends Model
+class Berita extends Model
 {
     //
      protected $table = 'berita';
@@ -17,6 +18,6 @@ class berita extends Model
 
       public function user()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id_user');
+        return $this->belongsTo(User::class, 'id_user', 'id_user');
     }
 }

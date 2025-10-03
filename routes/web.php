@@ -30,7 +30,7 @@ Route::get('/galeri',[UserController::class,'galeri'])->name('galeri');
 Route::get('/ekskul',[UserController::class,'ekskul'])->name('ekskul');
 Route::get('/profil',[UserController::class,'ekskul'])->name('ekskul');
 
-Route::middleware(['admin'])->group(function () {
+Route::middleware(['auth','admin'])->group(function () {
     Route::get('/admin/dash',[AdminController::class,'dash'])->name('admin.dash');
     
     Route::get('/admin/profil',[profilSekolahController::class,'index'])->name('admin.profilSek');
@@ -84,7 +84,7 @@ Route::middleware(['admin'])->group(function () {
 
 });
 
-Route::middleware(['operator'])->group(function (){
+Route::middleware(['auth','operator'])->group(function (){
     Route::get('/operator/index',[OperatorController::class,'index'])->name('operator');
 
     Route::get('/operator/berita',[OperatorBeritaController::class,'index'])->name('operator.berita');

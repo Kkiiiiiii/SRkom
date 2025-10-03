@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\operator;
 
 use App\Http\Controllers\Controller;
-use App\Models\berita;
+use App\Models\Berita;
 use App\Models\ekstrakurikuler;
 use App\Models\galeri;
 use App\Models\guru;
@@ -17,7 +17,7 @@ class OperatorController extends Controller
     public function index()
     {
         $data ['siswa'] = siswa::all();
-        $data ['berita'] = berita::all();
+        $data ['berita'] = Berita::all();
         $data ['galeri'] = galeri::all();
         $data ['ekskul'] = ekstrakurikuler::all();
         return view('operator.index', $data);

@@ -268,7 +268,7 @@
                             <p class="card-text text-justify">{{ Str::limit($item->isi, 150) }}</p>
                             <p class="card-text mt-auto">
                                 <small class="text-muted">
-                                    Diposkan oleh: {{ $item->user->name ?? 'Unknown' }} pada {{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}
+                                    Diposting oleh: {{ $item->user->username ?? 'Unknown' }} pada {{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}
                                 </small>
                             </p>
                             <a href="{{ route('berita') }}" class="btn btn-info mt-2 align-self-start text-white">Baca Selengkapnya</a>

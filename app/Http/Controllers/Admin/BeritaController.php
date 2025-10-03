@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\berita;
+use App\Models\Berita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
@@ -14,7 +14,7 @@ class BeritaController extends Controller
     //
 
   public function index(Request $request) {
-    $berita = berita::all();
+    $berita = Berita::all();
     return view('admin.berita', compact('berita'));
 }
 
@@ -43,7 +43,7 @@ class BeritaController extends Controller
             'isi'     => $request->isi,
             'tanggal' => $request->tanggal,
             'gambar'  => $gambarPath,   
-            'user_id' => Auth::id(),
+            'id_user' => Auth::id(),
         ]);
 
         return redirect()->route('admin.Berita')->with('success', 'Berita berhasil ditambahkan.');

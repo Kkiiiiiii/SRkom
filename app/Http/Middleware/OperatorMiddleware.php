@@ -20,7 +20,7 @@ class OperatorMiddleware
             if (Auth::user()->role == 'operator') {
                 return $next($request);
             }
-            return redirect('operator');
+           abort(403, 'Akses khusus Operator');
         }
         return redirect("/login");
     }
