@@ -44,7 +44,7 @@
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
                 <img src="{{ asset('assets/image/logo_sekolah.png') }}" alt="Logo" width="40" height="40" class="rounded-circle img-thumbnail">
-                <span class="ms-2">SMPN 02 GunungPutri</span>
+                <span class="ms-2">SMPN 02 Gunungputri</span>
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">

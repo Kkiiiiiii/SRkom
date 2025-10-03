@@ -31,7 +31,7 @@ class UserController extends Controller
 
     public function berita()
     {
-        $berita = berita::all();
+        $berita = berita::with('user')->get();
         return view('berita', compact('berita'));
     }
     public function Galeri()

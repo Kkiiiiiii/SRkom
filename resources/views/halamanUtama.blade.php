@@ -164,7 +164,7 @@
 
 <section class="utama">
     <div class="container">
-        <h1>Selamat Datang di SMPN 02 GunungPutri</h1>
+        <h1>Selamat Datang di SMPN 02 Gunungputri</h1>
         <p>Mendidik generasi cerdas, kreatif, dan berkarakter.</p>
     </div>
 </section>

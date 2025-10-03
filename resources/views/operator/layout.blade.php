@@ -101,7 +101,7 @@
       <div class="col-md-2 sidebar bg-light" id="sidebar">
         <div class="brand-logo">
           <img src="{{ asset('assets/image/logo_sekolah.png') }}" alt="Logo">
-          <h5>SMPN 02 GunungPutri</h5>
+          <h5>SMPN 02 Gunungputri</h5>
         </div>
 
         <a href="{{ route('operator')}}" class="nav-link {{ request()->routeIs('operator') ? 'active' : '' }}">Dashboard</a>

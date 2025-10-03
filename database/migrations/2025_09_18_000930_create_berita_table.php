@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('isi');
             $table->date('tanggal');
             $table->string('gambar');
-            $table->foreignId('user_id')->constrained('user')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('id_user')->constrained('user')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

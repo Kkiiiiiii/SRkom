@@ -8,7 +8,7 @@
                         <img src="{{ asset('assets/image/pgerak.png') }}" 
                      class="img-fluid" 
                      width="100" height="50"> 
-                <h6 class="mb-0">SMPN 02 GunungPutri</h6>
+                <h6 class="mb-0">SMPN 02 Gunungputri</h6>
             </div>
                    <div class="d-flex gap-4">
                 <div class="footer-social-icon">
