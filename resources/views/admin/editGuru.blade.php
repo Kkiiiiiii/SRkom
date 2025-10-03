@@ -29,6 +29,11 @@
             <label for="nip">NIP</label>
             <input type="number" name="nip" class="form-control" id="nip" value="{{ old('nip', $guru->nip) }}" required>
         </div>
+        
+        <div class="mt-3 mb-3">
+            <label for="mapel">Mapel</label>
+            <input type="text" name="mapel" class="form-control" id="mapel" value="{{ old('mapel', $guru->mapel) }}" required>
+        </div>
 
         <div class="mt-3 mb-3">
             <label for="foto">Foto Guru</label><br>
@@ -39,8 +44,8 @@
             <input type="file" name="foto" id="foto" class="form-control-file">
         </div>
 
-        <button type="submit" class="btn btn-primary">Update Data Guru</button>
         <a href="{{ route('admin.Guru') }}" class="btn btn-secondary">Batal</a>
+        <button type="submit" class="btn btn-primary">Update Data Guru</button>
     </form>
 </div>
 @endsection

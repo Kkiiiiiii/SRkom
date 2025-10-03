@@ -30,12 +30,13 @@ class LoginController extends Controller
 
         if (Auth::attempt($validasi)) {
             if(Auth::user()->role == 'admin'){
-                return redirect()->route('admin.dash');
+                 return redirect()->route('admin.dash')->with('success', 'Login berhasil sebagai Admin!');
             }else if(Auth::user()->role == 'operator'){
-                return redirect()->route('operator');
+                return redirect()->route('operator')->with('success', 'Login berhasil sebagai Operator!');
             }
+             return redirect()->back()->with('success','Login Berhasil!');
         }
-        return redirect()->back()->with('Message','Login Gagal!');
+        return redirect()->back()->with('error','Login Gagal!');
     }
 
     public function logout()

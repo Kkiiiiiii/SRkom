@@ -18,24 +18,8 @@
                     {{ session('error') }}
                 </div>
             @endif
-
-        <form action="{{ route('admin.Ekskul') }}" method="GET" class="mb-3">
-        <div class="input-group">
-            <input
-                type="text"
-                name="search"
-                class="form-control"
-                placeholder="Cari Ekstrakurikuler atau jadwal-latihan..."
-                value="{{ request('search') }}"
-            >
-            <button class="btn btn-outline-secondary" type="submit">
-                <i class="bi bi-search"></i> Cari
-            </button>
-        </div>
-    </form>
-
     <div class="table-responsive">
-        <table class="table table-bordered text-center align-middle">
+        <table class="table table-bordered text-center align-middle" id="ekskul">
             <thead class="table-dark">
                 <tr>
                     <th>No</th>
@@ -74,7 +58,22 @@
                 @endforeach
             </tbody>
         </table>
-           {{ $ekskul->appends(['search' => request('search')])->links() }}
     </div>
 </section>
+{{-- Mengambil script dari layout --}}
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $('#ekskul').DataTable({
+        // untuk mengatur data table
+            pageLength: 5,
+            lengthChange: false,
+            info: false,
+            responsive: true,
+            ordering: false,
+            searching: true,           
+        });
+    });
+</script>
+@endpush
 @endsection

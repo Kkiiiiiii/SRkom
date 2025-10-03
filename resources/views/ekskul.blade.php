@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="container my-5">
-        <h3 class="mb-4 fw-bold">Daftar Ekstrakurikuler</h3>
+        <h3 class="mb-4 fw-medium">Daftar Ekstrakurikuler</h3>
+        <hr>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
             @foreach ($ekskul as $item)
                 <div class="col">

@@ -62,18 +62,18 @@ class SiswaController extends Controller
 
     public function update(Request $request, $id)
     {
-        $siswa = siswa::findOrFail(Crypt::decrypt($id));
+        {
+            $siswa = Siswa::findOrFail($id);
+            $siswa->update([
+                'nisn' => $request->nisn,
+                'nama_siswa' => $request->nama_siswa,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'tahun_masuk' => $request->tahun_masuk,
+            ]);
 
-        $validasi = $request->validate([
-            'nama_siswa' => 'required|string',
-            'nisn' => 'required',
-            'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
-            'tahun_masuk' => 'required|digits:4|integer',
-        ]);
+            return redirect()->back()->with('success', 'Data siswa berhasil diperbarui.');
+        }
 
-        $siswa->update([$validasi]);
-
-        return redirect()->route('admin.Siswa')->with('success', 'Data siswa berhasil diupdate.');
     }
 
     public function delete($id)

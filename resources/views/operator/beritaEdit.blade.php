@@ -29,9 +29,9 @@
             <input type="file" name="gambar" id="gambar" class="form-control">
         </div>
 
-        <div class="d-flex justify-content-between">
+        <div class="mt-3">
             <a href="{{ route('operator.berita') }}" class="btn btn-secondary">Kembali</a>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="btn btn-primary">Update</button>   
         </div>
     </form>
 </section>

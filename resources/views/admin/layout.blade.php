@@ -1,107 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin</title>
-    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel</title>
 
-</head>
-<style>
+  <!-- Bootstrap & Icons -->
+  <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css" />
+
+  <style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .sidebar {
+    min-height: 100vh;
+    background-color: #f1f1f1;
+    padding: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .sidebar .nav-link {
+    color: #000;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+  }
+
+  .sidebar .nav-link.active,
+  .sidebar .nav-link:hover {
+    background-color: #6F9496;
+    color: #fff;
+  }
+
+  .brand-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .brand-logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  .brand-logo h5 {
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+
+  /* Mobile Agar responsive (sidebar tersembunyi default) */
+  @media (max-width: 768px) {
     .sidebar {
-        margin: 0;
-        padding: 0;
-        width: 200px;
-        background-color: #f1f1f1;
-        position: fixed;
-        height: 100%;
-        overflow: auto;
+      position: absolute;
+      z-index: 999;
+      width: 250px;
+      transform: translateX(-260px);
     }
 
-    .sidebar a {
-        display: block;
-        color: black;
-        padding: 16px;
-        text-decoration: none;
+    .sidebar.show {
+      transform: translateX(0);
     }
 
-    .sidebar a.active {
-        background-color: #6F9496;
-        color: white;
+    .content {
+      margin-left: 0 !important;
+    }
+  }
+
+  /* Desktop (tampilkan sidebar seperti biasa) */
+  @media (min-width: 769px) {
+    .sidebar {
+      position: relative;
+      transform: none !important;
     }
 
-    .sidebar a:hover:not(.active) {
-        background-color: #40585a;
-        color: white;
+    .content {
+      margin-left: 0;
     }
-
-    div.content {
-        margin-left: 200px;
-        padding: 1px 16px;
-        height: 1000px;
-    }
-
-    @media screen and (max-width: 700px) {
-        .sidebar {
-            width: 100%;
-            height: auto;
-            position: relative;
-        }
-
-        .sidebar a {
-            float: left;
-        }
-
-        div.content {
-            margin-left: 0;
-        }
-    }
-
-    @media screen and (max-width: 400px) {
-        .sidebar a {
-            text-align: center;
-            float: none;
-        }
-    }
+  }
 </style>
 
+</head>
 <body>
-    <div class="sidebar">
-        <div class="d-flex">
-            <img src="{{ asset('assets/image/logo_sekolah.png') }}" width="50" height="50" class="rounded-circle my-3 ms-2">
-            <h5 class="mt-4  ms-2">SMPN 02</h5>
-        </div>
-        <a  href="{{ route('admin.dash')}}" class="{{ request()->routeIs('admin.dash') ? 'active' : '' }}">Dashboard</a>
-        <a href="{{ route('admin.profilSek') }}" class="{{ request()->routeIs('admin.profilSek') ? 'active' : '' }}">Profil Sekolah</a>
-        <a href="{{ route('admin.Berita') }}" class="{{ request()->routeIs('admin.Berita') ? 'active' : '' }}">Berita</a>
-        <a href="{{ route('admin.Galeri') }}"class="{{ request()->routeIs('admin.Galeri') ? 'active' : '' }}">Galeri</a>
-        <a href="{{ route('admin.Ekskul') }}"class="{{ request()->routeIs('admin.Ekskul') ? 'active' : '' }}">Ekstrakurikuler</a>
-        <hr>
-        <a href="{{ route('admin.User') }}" class="{{ request()->routeIs('admin.User') ? 'active' : '' }}">Users</a>
-        <a href="{{ route('admin.Guru') }}" class="{{ request()->routeIs('admin.Guru') ? 'active' : '' }}">Guru</a>
-        <a href="{{ route('admin.Siswa') }}" class="{{ request()->routeIs('admin.Siswa') ? 'active' : '' }}">Siswa</a>
-        <hr>
-        <li class="nav-item">
-            <a class="nav-link" href="#"
-                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                Logout
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-        </li>
+  <!-- Toggle Button (Mobile) -->
+  <nav class="navbar navbar-light bg-light d-md-none">
+    <div class="container-fluid">
+      <button class="btn btn-outline-secondary" id="toggleSidebar">
+        <i class="bi bi-list"></i>
+      </button>
     </div>
+  </nav>
 
-    <div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-md-2 sidebar bg-light" id="sidebar">
+        <div class="brand-logo">
+          <img src="{{ asset('assets/image/logo_sekolah.png') }}" alt="Logo">
+          <h5>SMPN 02 GunungPutri</h5>
+        </div>
+
+        <a href="{{ route('admin.dash')}}" class="nav-link {{ request()->routeIs('admin.dash') ? 'active' : '' }}">Dashboard</a>
+        <a href="{{ route('admin.profilSek') }}" class="nav-link {{ request()->routeIs('admin.profilSek') ? 'active' : '' }}">Profil Sekolah</a>
+        <a href="{{ route('admin.Berita') }}" class="nav-link {{ request()->routeIs('admin.Berita') ? 'active' : '' }}">Berita</a>
+        <a href="{{ route('admin.Galeri') }}" class="nav-link {{ request()->routeIs('admin.Galeri') ? 'active' : '' }}">Galeri</a>
+        <a href="{{ route('admin.Ekskul') }}" class="nav-link {{ request()->routeIs('admin.Ekskul') ? 'active' : '' }}">Ekstrakurikuler</a>
+        <hr>
+        <a href="{{ route('admin.User') }}" class="nav-link {{ request()->routeIs('admin.User') ? 'active' : '' }}">Users</a>
+        <a href="{{ route('admin.Guru') }}" class="nav-link {{ request()->routeIs('admin.Guru') ? 'active' : '' }}">Guru</a>
+        <a href="{{ route('admin.Siswa') }}" class="nav-link {{ request()->routeIs('admin.Siswa') ? 'active' : '' }}">Siswa</a>
+        <hr>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+          @csrf
+          <a class="nav-link text-danger" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            Logout
+          </a>
+        </form>
+      </div>
+
+      <!-- Content -->
+      <div class="col-md-10 offset-md-2 content pt-4">
         @yield('content')
+      </div>
     </div>
-    <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/fontawesome/js/all.min.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('assets/fontawesome/js/all.min.js') }}"></script>
+  <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
+
+  <!-- Sidebar Toggle -->
+  <script>
+    const toggleSidebarBtn = document.getElementById('toggleSidebar');
+    const sidebar = document.getElementById('sidebar');
+
+    toggleSidebarBtn?.addEventListener('click', function () {
+      sidebar.classList.toggle('show');
+    });
+  </script>
+
+  @stack('scripts')
 </body>
 </html>

@@ -62,21 +62,16 @@
     </style>
 </head>
 <body>
-      @if (session('success'))
-            <div class="alert alert-success alert-dismissible mt-10" style="margin-block: 20px">
-                {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
-        @endif
-
-        @if (session('error'))  
-            <div class="alert alert-danger">
+    <div class="login-card">
+        {{-- Notifikasi Error --}}
+        @if (session('error'))
+            <div class="alert alert-danger text-center" id="error">
                 {{ session('error') }}
             </div>
         @endif
-    <div class="login-card">
+
         <img src="{{ asset('assets/image/logo_sekolah.png') }}" class="rounded-circle img-thumbnail mb-3" width="80" height="80" style="margin-left: 8rem">
-        <h3 class="login-title">LoginPage</h3>
+        <h3 class="login-title">SMPN 02 GunungPutri</h3>
         <form action="{{ route('login') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
@@ -90,9 +85,6 @@
             <div class="d-grid">
                 <button type="submit" class="btn btn-success text-white fw-bold">Login</button>
             </div>
-            {{-- <div class="mt-3 text-center">
-                <small>Belum punya akun? <a href="" class="text-light">Daftar di sini</a></small>
-            </div> --}}
         </form>
     </div>
 
@@ -100,3 +92,13 @@
     <script src="{{ asset('assets/fontawesome/js/all.min.js') }}"></script>
 </body>
 </html>
+<script>
+    setTimeout(function () {
+        const alert = document.getElementById('error');
+        if (alert) {
+            alert.style.transition = 'opacity 0.5s ease';
+            alert.style.opacity = 0;
+            setTimeout(() => alert.remove(), 500); // Menghilang setelah waktu 3 detik
+        }
+    }, 3000);
+</script>

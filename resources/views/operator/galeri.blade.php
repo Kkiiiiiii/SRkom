@@ -8,32 +8,15 @@
                 <i class="bi bi-plus-circle"></i> Tambah Galeri
             </button>
         </div>
-
+        <hr>
         @if(session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
         @endif
-
-    <form action="{{ route('operator.galeri') }}" method="GET" class="mb-3">
-        <div class="input-group">
-            <input
-                type="text"
-                name="search"
-                class="form-control"
-                placeholder="Cari judul Galeri/kegiatan..."
-                value="{{ request('search') }}"
-            >
-            <button class="btn btn-outline-secondary" type="submit">
-                <i class="bi bi-search"></i> Cari
-            </button>
-        </div>
-    </form>
-     {{ $galeri->appends(['search' => request('search')])->links() }}
-
         <div class="table-responsive">
-            <table class="table table-hover table-striped align-middle text-center">
+            <table class="table table-hover table-striped align-middle text-center" id="galeri">
                 <thead class="table-dark">
                     <tr>
                         <th>No</th>
@@ -202,4 +185,21 @@
     </div>
         </div>
     </div>
+{{-- Untuk Mengambil script dari layout --}}
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $('#galeri').DataTable({
+            // untuk mengatur data table
+            // untuk mengatur data table
+            pageLength: 5,
+            lengthChange: false,
+            info: false,
+            responsive: false,
+            ordering: false,
+            searching: true,              
+        });
+    });
+</script>
+@endpush
     @endsection

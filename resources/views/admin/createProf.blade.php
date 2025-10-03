@@ -53,7 +53,7 @@
 
         <div class="mb-3 mt-3">
             <label for="visi_misi" class="form-label">Visi Misi</label>
-            <input type="text" class="form-control" id="visi_misi" name="visi_misi" placeholder="Masukan visi misi sekolah" required>
+            <textarea class="form-control" id="visi_misi" name="visi_misi" placeholder="Masukan visi misi sekolah" required></textarea>
         </div>
 
         <div class="mb-3 mt-3">

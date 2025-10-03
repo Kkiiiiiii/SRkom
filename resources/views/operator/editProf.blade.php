@@ -77,9 +77,10 @@
             <label for="deskripsi">Deskripsi</label>
             <textarea name="deskripsi" id="deskripsi" rows="5" class="form-control">{{ old('deskripsi', $profil->deskripsi) }}</textarea>
         </div>
-
-        <button type="submit" class="btn btn-primary">Update Profil</button>
-        <a href="{{ route('operator.profil') }}" class="btn btn-secondary">Batal</a>
+        <div class="mt-3">
+            <a href="{{ route('operator.profil') }}" class="btn btn-secondary">Batal</a>
+            <button type="submit" class="btn btn-primary">Update Profil</button>
+        </div>
     </form>
 </div>
 @endsection

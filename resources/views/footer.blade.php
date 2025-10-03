@@ -5,7 +5,10 @@
                 <img src="{{ asset('assets/image/logo_sekolah.png') }}" 
                      class="rounded-circle img-thumbnail" 
                      width="50" height="50">
-                <h6 class="mb-0">SMPN 02</h6>
+                        <img src="{{ asset('assets/image/pgerak.png') }}" 
+                     class="img-fluid" 
+                     width="100" height="50"> 
+                <h6 class="mb-0">SMPN 02 GunungPutri</h6>
             </div>
                    <div class="d-flex gap-4">
                 <div class="footer-social-icon">
@@ -27,7 +30,7 @@
                     <a href="https://smpn2gunungputri@gmail.com" class="text-dark text-decoration-none" aria-label="Email">
                         <i class="fa-solid fa-envelope"></i>
                     </a>
-                </div>
+                </div>   
             </div>
         </div>
 

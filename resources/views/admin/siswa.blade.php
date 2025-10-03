@@ -18,30 +18,14 @@
                 {{ session('error') }}
             </div>
         @endif
-        <form action="{{ route('operator.siswa') }}" method="GET" class="mb-3">
-        <div class="input-group">
-            <input
-                type="text"
-                name="search"
-                class="form-control"
-                placeholder="Cari Nama, Tahun Masuk, atau Jenis Kelamin.."
-                value="{{ request('search') }}"
-            >
-            <button class="btn btn-outline-secondary" type="submit">
-                <i class="bi bi-search"></i> Cari
-            </button>
-        </div>
-    </form>
-     {{ $siswa->appends(['search' => request('search')])->links() }}
-     
         <div class="table-responsive">
-            <table class="table table-md table-secondary text-center align-middle">
+            <table class="table table-md table-secondary text-center align-middle" id="siswa">
                 <thead class="table-dark">
                     <tr>
                         <th>ID Siswa</th>
                         <th>NISN</th>
                         <th>Nama Siswa</th>
-                        <th>JK</th>
+                        <th>Jenis Kelamin</th>
                         <th>Tahun Masuk</th>
                         <th>Aksi</th>
                     </tr>
@@ -74,4 +58,20 @@
                 </tbody>
         </div>
     </section>
+    {{-- Mengambil script dari layout --}}
+    @push('scripts')
+<script>
+    $(document).ready(function() {
+        $('#siswa').DataTable({
+        // untuk mengatur data table
+            pageLength: 5,
+            lengthChange: true,
+            info: false,
+            responsive: false,
+            ordering: false,
+            searching: true,          
+        });
+    });
+</script>
+@endpush
 @endsection

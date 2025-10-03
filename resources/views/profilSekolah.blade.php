@@ -2,13 +2,11 @@
 @section('content')
 <section>
     <div class="container mt-5">
+           <h2 class="mb-4 fw-medium">Profil Sekolah</h2>
+         <hr>
         @foreach ($ps as $item)
         <table class="table table-borderless align-middle table-striped">
             <tbody>
-                <tr>
-                    <th class="text-start" width="20%">No</th>
-                    <td class="text-end">{{ $loop->iteration }}</td>
-                </tr>
                 <tr>
                     <th class="text-start">Nama Sekolah</th>
                     <td class="text-end">{{ $item->nama_sekolah }}</td>

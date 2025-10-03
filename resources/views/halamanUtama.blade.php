@@ -163,7 +163,7 @@
 
 <section class="utama">
     <div class="container">
-        <h1>Selamat Datang di SMP</h1>
+        <h1>Selamat Datang di SMPN 02 GunungPutri</h1>
         <p>Mendidik generasi cerdas, kreatif, dan berkarakter.</p>
     </div>
 </section>
@@ -174,7 +174,7 @@
         <h2 class="section-title text-center">Sambutan Kepala Sekolah</h2>
         <div class="row align-items-start mt-4">
             <div class="col-md-3 text-center">
-                <img src="{{ asset('assets/image/kepala_sekolah.jpg') }}" alt="Kepala Sekolah" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+                <img src="{{ asset('assets/image/tes.jpeg') }}" alt="Kepala Sekolah" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
                 <h6 class="mb-0">Bapak Kosasih Mpd</h6>
                 <small>Kepala Sekolah</small>
             </div>

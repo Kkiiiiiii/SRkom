@@ -20,7 +20,8 @@
 </style>
 
 <div class="container my-5">
-    <h3 class="mb-4">Daftar Berita</h3>
+    <h3 class="mb-4 fw-medium">Daftar Berita</h3>
+    <hr>
     <div class="row g-4">
         @foreach ($berita as $item)
         <div class="col-md-4 d-flex">
@@ -29,7 +30,7 @@
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ $item->judul }}</h5>
                     <p class="card-text text-muted mb-2" style="font-size: 0.9rem;">
-                        Diposting oleh: {{ $item->user ? $item->user->name : 'Unknown' }} pada {{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}
+                        Diposting oleh:  pada {{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}
                     </p>
                     <details>
                         <summary>Lihat Selengkapnya</summary>

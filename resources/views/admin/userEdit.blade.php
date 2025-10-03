@@ -3,7 +3,6 @@
 <section class="container my-5">
     <h3>Edit User</h3>
     <hr>
-
     <form action="{{ route('admin.User-update', Crypt::encrypt($user->id)) }}" method="POST">
         @csrf
         <div class="mb-3">
@@ -24,8 +23,8 @@
             </select>
         </div>
 
-        <button type="submit" class="btn btn-success">Update</button>
         <a href="{{ route('admin.User') }}" class="btn btn-secondary">Kembali</a>
+        <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </section>
 @endsection

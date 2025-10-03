@@ -7,9 +7,9 @@
     <form action="{{ route('operator.ekskul-update', Crypt::encrypt($ekskul->id_ekskul)) }}" method="POST">
         @csrf
         <div class="mb-3">
-            <label for="nama" class="form-label">Nama Ekskul</label>
-            <input type="text" name="nama" id="nama" class="form-control" 
-                   value="{{ old('nama', $ekskul->nama) }}" required>
+            <label for="nama_ekskul" class="form-label">Nama Ekskul</label>
+            <input type="text" name="nama_ekskul" id="nama_ekskul" class="form-control" 
+                   value="{{ old('nama_ekskul', $ekskul->nama_ekskul) }}" required>
         </div>
 
         <div class="mb-3">
@@ -19,9 +19,9 @@
         </div>
 
         <div class="mb-3">
-            <label for="jadwal" class="form-label">Jadwal</label>
-            <input type="text" name="jadwal" id="jadwal" class="form-control" 
-                   value="{{ old('jadwal', $ekskul->jadwal) }}">
+            <label for="jadwal_latihan" class="form-label">Jadwal Latihan</label>
+            <input type="text" name="jadwal_latihan" id="jadwal_latihan" class="form-control" 
+                   value="{{ old('jadwal_latihan', $ekskul->jadwal_latihan) }}">
         </div>
 
          <div class="mb-3">
@@ -37,9 +37,10 @@
             <input type="file" name="gambar" id="gambar" class="form-control">
         </div>
 
-
-        <button type="submit" class="btn btn-primary">Update</button>
-        <a href="{{ route('operator.ekskul') }}" class="btn btn-secondary">Batal</a>
+        <div class="mt-3">
+            <a href="{{ route('operator.ekskul') }}" class="btn btn-secondary">Batal</a>    
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
     </form>
 </div>
 @endsection

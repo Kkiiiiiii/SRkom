@@ -37,7 +37,6 @@ class UserController extends Controller
     public function Galeri()
     {
         $galeri = galeri::all();    
-        // $galeri = galeri::orderBy('id_galeri','asc')->get();
         return view('galeri', compact('galeri'));
     }
     public function Ekskul()

@@ -56,7 +56,7 @@ class SiswaController extends Controller
         return view('operator.editSiswa', compact('siswa'));
     }
 
-        public function update(Request $request, $id)
+    public function update(Request $request, $id)
         {
             $siswa = Siswa::findOrFail($id);
             $siswa->update([

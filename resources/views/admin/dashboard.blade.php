@@ -1,11 +1,12 @@
 @extends('admin.layout')
+
 @section('content')
 <style>
     .stat-card {
         border: none;
         color: white;
         transition: transform 0.3s ease;
-        min-width: 200px;
+        width: 100%;
     }
 
     .stat-card:hover {
@@ -19,15 +20,19 @@
     .box-guru .card {
         background: linear-gradient(135deg, #ffb300, #fb8c00);
     }
+
     .box-berita .card {
         background: linear-gradient(135deg, #42a5f5, #66bb6a);
     }
+
     .box-ekskul .card {
         background: linear-gradient(135deg, #ff7043, #f44336);
     }
+
     .box-user .card {
         background: linear-gradient(135deg, #0a0e71, #4f84d3);
     }
+
     .box-galeri .card {
         background: linear-gradient(135deg, #5c6bc0, #42a5f5);
     }
@@ -43,54 +48,71 @@
         margin: 0;
     }
 </style>
+    {{-- Untuk Memberi pesan Ketika Login berhasil --}}
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show text-center mt-3" role="alert" id="success">
+            {{ session('success') }}
+        </div>
+    @endif
 
 <h3 class="mt-4">Dashboard Admin</h3>
 <hr>
 
 <section class="container pb-5 mt-5">
-    <div class="d-flex flex-wrap justify-content-center gap-4 mb-4">
-        <div class="box-siswa">
-            <div class="card stat-card p-3 text-center">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <h5>Jumlah Siswa</h5>
-                <p class="stat-number">{{ $siswa->count() }}</p>
+
+    <div class="row g-4">
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="box-siswa">
+                <div class="card stat-card p-3 text-center">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h5>Jumlah Siswa</h5>
+                    <p class="stat-number">{{ $siswa->count() }}</p>
+                </div>
             </div>
         </div>
-        <div class="box-guru">
-            <div class="card stat-card p-3 text-center">
-                <i class="fa-solid fa-person-chalkboard"></i>
-                <h5>Jumlah Guru</h5>
-                <p class="stat-number">{{ $guru->count() }}</p>
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="box-guru">
+                <div class="card stat-card p-3 text-center">
+                    <i class="fa-solid fa-person-chalkboard"></i>
+                    <h5>Jumlah Guru</h5>
+                    <p class="stat-number">{{ $guru->count() }}</p>
+                </div>
             </div>
         </div>
-        <div class="box-berita">
-            <div class="card stat-card p-3 text-center">
-                <i class="fa-solid fa-newspaper"></i>
-                <h5>Jumlah Berita</h5>
-                <p class="stat-number">{{ $berita->count() }}</p>  
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="box-berita">
+                <div class="card stat-card p-3 text-center">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <h5>Jumlah Berita</h5>
+                    <p class="stat-number">{{ $berita->count() }}</p>  
+                </div>
             </div>
         </div>
-        <div class="box-galeri">
-            <div class="card stat-card p-3 text-center">
-                <i class="fa-solid fa-photo-film"></i>
-                <h5>Jumlah Galeri</h5>
-                <p class="stat-number">{{ $galeri->count() }}</p>
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="box-galeri">
+                <div class="card stat-card p-3 text-center">
+                    <i class="fa-solid fa-photo-film"></i>
+                    <h5>Jumlah Galeri</h5>
+                    <p class="stat-number">{{ $galeri->count() }}</p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="d-flex flex-wrap justify-content-center gap-4">
-        <div class="box-ekskul">
-            <div class="card stat-card p-3 text-center">
-                <i class="fa-solid fa-sitemap"></i>
-                <h5>Jumlah Ekskul</h5>
-                <p class="stat-number">{{ $ekskul->count() }}</p>
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="box-ekskul">
+                <div class="card stat-card p-3 text-center">
+                    <i class="fa-solid fa-sitemap"></i>
+                    <h5>Jumlah Ekskul</h5>
+                    <p class="stat-number">{{ $ekskul->count() }}</p>
+                </div>
             </div>
         </div>
-        <div class="box-user">
-            <div class="card stat-card p-3 text-center">
-                <i class="fa-solid fa-user"></i>
-                <h5>Jumlah User</h5>
-                <p class="stat-number">{{ $user->count() }}</p>
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="box-user">
+                <div class="card stat-card p-3 text-center">
+                    <i class="fa-solid fa-user"></i>
+                    <h5>Jumlah User</h5>
+                    <p class="stat-number">{{ $user->count() }}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -120,4 +142,18 @@
         </div>
     </div>
 </section>
+<script>
+    function autoDismissAlert(id) {
+        const alert = document.getElementById(id);
+        if (alert) {
+            setTimeout(() => {
+                alert.classList.remove('show');
+                alert.classList.add('fade');
+                setTimeout(() => alert.remove(), 500);
+            }, 3000); // 3 detik
+        }
+    }
+
+    autoDismissAlert('success');
+</script>
 @endsection

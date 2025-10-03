@@ -51,8 +51,10 @@
             <label for="tahun_masuk">Tahun Masuk</label>
             <input type="year" name="tahun_masuk" class="form-control" id="tahun_masuk" value="{{ old('tahun_masuk', $siswa->tahun_masuk) }}" required>
 
-        <button type="submit" class="btn btn-primary">Update Data Siswa</button>
-        <a href="{{ route('admin.Siswa') }}" class="btn btn-secondary">Batal</a>
+            <div class="mt-3">
+                <a href="{{ route('admin.Siswa') }}" class="btn btn-secondary">Batal</a>
+              <button type="submit" class="btn btn-primary">Update Data Siswa</button>
+            </div>
     </form>
 </div>
 @endsection

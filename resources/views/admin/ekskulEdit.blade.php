@@ -38,8 +38,10 @@
             <input type="file" class="form-control" id="gambar" name="gambar" required>
         </div>
 
-        <button type="submit" class="btn btn-primary">Update</button>
-        <a href="{{ route('admin.Ekskul') }}" class="btn btn-secondary">Batal</a>
+        <div class="mt-3">
+            <a href="{{ route('admin.Ekskul') }}" class="btn btn-secondary">Batal</a>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
     </form>
 </div>
 @endsection

@@ -3,7 +3,8 @@
 <section class="container my-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h3>Data Ekstrakurikuler</h3>
-        <a class="btn btn-success" href="{{ route('operator.ekskul-create') }}">+ Tambah Ekskul</a>
+        <a class="btn btn-success" href="{{ route('operator.ekskul-create') }}">
+            <i class="bi bi-plus-circle"></i> Tambah Ekskul</a>
     </div>
     <hr>
      @if (session('success'))
@@ -18,24 +19,8 @@
                     {{ session('error') }}
                 </div>
             @endif
-
-            <form action="{{ route('operator.ekskul') }}" method="GET" class="mb-3">
-        <div class="input-group">
-            <input
-                type="text"
-                name="search"
-                class="form-control"
-                placeholder="Cari Ekstrakurikuler atau jadwal-latihan..."
-                value="{{ request('search') }}"
-            >
-            <button class="btn btn-outline-secondary" type="submit">
-                <i class="bi bi-search"></i> Cari
-            </button>
-        </div>
-    </form>
-
     <div class="table-responsive">
-        <table class="table table-bordered text-center align-middle">
+        <table class="table table-bordered text-center align-middle" id="ekskul">
             <thead class="table-dark">
                 <tr>
                     <th>No</th>
@@ -72,8 +57,23 @@
                 @endforeach
             </tbody>
         </table>
-           {{ $ekskul->appends(['search' => request('search')])->links() }}
     </div>
     </div>
 </section>
+{{-- Untuk Mengambil script dari layout --}}
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $('#ekskul').DataTable({
+        // untuk mengatur data table
+            pageLength: 5,
+            lengthChange: false,
+            info: false,
+            responsive: false,
+            ordering: false,
+            searching: true,              
+        });
+    });
+</script>
+@endpush
 @endsection
