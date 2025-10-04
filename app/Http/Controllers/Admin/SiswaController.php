@@ -14,12 +14,12 @@ class SiswaController extends Controller
      public function index(Request $request)
     {
         $siswa = siswa::all();
-        return view('admin.siswa', compact('siswa'));
+        return view('admin.siswa.siswa', compact('siswa'));
     }
 
     public function create()
     {
-        return view('admin.createSiswa');
+        return view('admin.siswa.createSiswa');
     }
 
     public function store(Request $request)
@@ -46,7 +46,7 @@ class SiswaController extends Controller
     public function edit($id)
     {
         $siswa = siswa::findOrFail(Crypt::decrypt($id));
-        return view('admin.editSiswa', compact('siswa'));
+        return view('admin.siswa.editSiswa', compact('siswa'));
     }
 
     public function update(Request $request, $id)

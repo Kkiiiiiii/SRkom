@@ -22,6 +22,6 @@ class OperatorMiddleware
             }
            abort(403, 'Akses khusus Operator');
         }
-        return redirect("/login");
+        return redirect()->route('loginShow');
     }
 }

@@ -16,12 +16,12 @@ class BeritaController extends Controller
     public function index(Request $request) 
     {
     $berita = Berita::all();
-    return view('operator.berita', compact('berita'));
+    return view('operator.berita.berita', compact('berita'));
     }
     
     public function create()
     {
-        return view('operator.beritaCreate');
+        return view('operator.berita.beritaCreate');
     }
 
     public function store(Request $request)
@@ -52,7 +52,7 @@ class BeritaController extends Controller
     public function edit($id)
     {
         $berita = Berita::findOrFail(Crypt::decrypt($id));
-        return view('operator.beritaEdit', compact('berita'));
+        return view('operator.berita.beritaEdit', compact('berita'));
     }
 
     public function update(Request $request, $id)

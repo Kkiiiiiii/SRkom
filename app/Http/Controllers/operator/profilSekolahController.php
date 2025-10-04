@@ -15,12 +15,12 @@ class profilSekolahController extends Controller
       public function index()
     {
         $ps = profil_sekolah::all();
-        return view('operator.profilSekolah', compact('ps'));
+        return view('operator.profil_sekolah.profilSekolah', compact('ps'));
     }
     
    public function create()
     {
-        return view('operator.createProf');
+        return view('operator.profil_sekolah.createProf');
     }
 
     public function store(Request $request)
@@ -66,7 +66,7 @@ class profilSekolahController extends Controller
         }
 
         $profil = Profil_sekolah::findOrFail($id);
-        return view('operator.editProf', compact('profil'));
+        return view('operator.profil_sekolah.editProf', compact('profil'));
     }
 
     // Update

@@ -14,12 +14,12 @@ class EkskulController extends Controller
     public function index(Request $request)
     {
         $ekskul = ekstrakurikuler::all();
-        return view('admin.Ekskul',compact('ekskul'));
+        return view('admin.ekskul.ekskul',compact('ekskul'));
     }
     
     public function create()
     {
-        return view('admin.ekskulCreate');
+        return view('admin.ekskul.ekskulCreate');
     }
 
     public function store(Request $request)
@@ -51,7 +51,7 @@ class EkskulController extends Controller
     public function edit($id)
     {
         $ekskul = ekstrakurikuler::findOrFail(Crypt::decrypt($id));
-        return view('admin.ekskulEdit', compact('ekskul'));
+        return view('admin.ekskul.ekskulEdit', compact('ekskul'));
     }
 
     public function update(Request $request, $id)

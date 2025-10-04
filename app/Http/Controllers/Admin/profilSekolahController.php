@@ -16,12 +16,12 @@ class profilSekolahController extends Controller
     public function index()
     {
         $ps = profil_sekolah::all();
-        return view('admin.profilSekolah', compact('ps'));
+        return view('admin.profil_sekolah.profilSekolah', compact('ps'));
     }
     
    public function create()
     {
-        return view('admin.createProf');
+        return view('admin.profil_sekolah.createProf');
     }
 
     // Store

@@ -12,7 +12,7 @@ class SiswaController extends Controller
     //
     public function index(Request $request) {
     $siswa = siswa::all();
-    return view('operator.siswa', compact('siswa'));
+    return view('operator.siswa.siswa', compact('siswa'));
 }
 
 

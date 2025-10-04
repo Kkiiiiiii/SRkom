@@ -30,9 +30,18 @@ Route::get('/galeri',[UserController::class,'galeri'])->name('galeri');
 Route::get('/ekskul',[UserController::class,'ekskul'])->name('ekskul');
 Route::get('/profil',[UserController::class,'ekskul'])->name('ekskul');
 
+// Route Untuk Mengatur role admin
 Route::middleware(['auth','admin'])->group(function () {
-    Route::get('/admin/dash',[AdminController::class,'dash'])->name('admin.dash');
     
+    Route::get('/admin/dash',[AdminController::class,'dash'])->name('admin.dash'); //Untuk Menampilkan halaman dashboard
+    
+    Route::get('/admin/berita',[BeritaController::class,'index'])->name('admin.Berita');
+    Route::get('/admin/berita/create',[BeritaController::class,'create'])->name('admin.Berita-create');
+    Route::post('/admin/berita/store',[BeritaController::class,'store'])->name('admin.Berita-store');
+    Route::get('/admin/berita/edit/{id}',[BeritaController::class,'edit'])->name('admin.Berita-edit');
+    Route::post('/admin/berita/edit/{id}',[BeritaController::class,'update'])->name('admin.Berita-update');
+    Route::get('/admin/berita/delete/{id}',[BeritaController::class,'delete'])->name('admin.Berita-delete');
+
     Route::get('/admin/profil',[profilSekolahController::class,'index'])->name('admin.profilSek');
     Route::get('/admin/profil/create',[profilSekolahController::class,'create'])->name('admin.profilSek-create');
     Route::post('/admin/profil/store',[profilSekolahController::class,'store'])->name('profilSek-store');
@@ -54,12 +63,6 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::post('/admin/siswa/edit/{id}',[SiswaController::class,'update'])->name('admin.Siswa-update');
     Route::get('/admin/siswa/delete/{id}',[SiswaController::class,'delete'])->name('admin.Siswa-delete');
 
-    Route::get('/admin/berita',[BeritaController::class,'index'])->name('admin.Berita');
-    Route::get('/admin/berita/create',[BeritaController::class,'create'])->name('admin.Berita-create');
-    Route::post('/admin/berita/store',[BeritaController::class,'store'])->name('admin.Berita-store');
-    Route::get('/admin/berita/edit/{id}',[BeritaController::class,'edit'])->name('admin.Berita-edit');
-    Route::post('/admin/berita/edit/{id}',[BeritaController::class,'update'])->name('admin.Berita-update');
-    Route::get('/admin/berita/delete/{id}',[BeritaController::class,'delete'])->name('admin.Berita-delete');
 
 
     Route::get('/admin/ekskul',[EkskulController::class,'index'])->name('admin.Ekskul');
@@ -84,8 +87,9 @@ Route::middleware(['auth','admin'])->group(function () {
 
 });
 
+// Route Untuk Mengatur Role Operator
 Route::middleware(['auth','operator'])->group(function (){
-    Route::get('/operator/index',[OperatorController::class,'index'])->name('operator');
+    Route::get('/operator/index',[OperatorController::class,'index'])->name('operator');//Untuk Menampilkan Halaman dashboard Operator
 
     Route::get('/operator/berita',[OperatorBeritaController::class,'index'])->name('operator.berita');
     Route::get('/operator/berita/create',[OperatorBeritaController::class,'create'])->name('operator.berita-create');

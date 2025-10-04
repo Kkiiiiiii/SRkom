@@ -16,7 +16,7 @@ class GaleriController extends Controller
     public function index(Request $request)
     {
         $galeri = galeri::all();
-        return view('operator.galeri', compact('galeri'));
+        return view('operator.galeri.galeri', compact('galeri'));
     }
 
      public function store(Request $request)

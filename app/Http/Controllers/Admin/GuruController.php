@@ -19,13 +19,13 @@ class GuruController extends Controller
             $guru->where('mapel', 'like', "%{$search}%");
         }
         $guru = $guru->paginate(10);
-        return view('admin.guru', compact('guru'));
+        return view('admin.guru.guru', compact('guru'));
     }
 
 
     public function create()
     {
-        return view('admin.createGuru');
+        return view('admin.guru.createGuru');
     }
 
     // Menyimpan data guru baru
@@ -57,7 +57,7 @@ class GuruController extends Controller
     public function edit($id)
     {
         $guru = guru::findOrFail(Crypt::decrypt($id));
-        return view('admin.editGuru', compact('guru'));
+        return view('admin.guru.editGuru', compact('guru'));
     }
 
     // Update data guru

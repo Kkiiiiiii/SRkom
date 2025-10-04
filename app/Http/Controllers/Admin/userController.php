@@ -15,12 +15,12 @@ class userController extends Controller
       public function index(Request $request)
     {
         $user = User::all();
-        return view('admin.user', compact('user'));
+        return view('admin.user.user', compact('user'));
     }
 
     public function create()
     {
-        return view('admin.userCreate');
+        return view('admin.user.userCreate');
     }
 
     public function store(Request $request)
@@ -42,7 +42,7 @@ class userController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail(Crypt::decrypt($id));
-        return view('admin.userEdit', compact('user'));
+        return view('admin.user.userEdit', compact('user'));
     }
 
     public function update(Request $request, $id)
