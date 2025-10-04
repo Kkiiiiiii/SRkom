@@ -1,5 +1,32 @@
 @extends('operator.layout')
 @section('content')
+<style>
+     table#ekskul thead th {
+            text-align: center;
+            /* rata tengah horizontal */
+            vertical-align: middle;
+            /* rata tengah vertikal */
+        }   
+
+        /* Styling untuk badge oval di dalam tabel */
+        .circle-bg {
+            background-color: #6F9496;
+            /* warna merah yang enak dilihat */
+            color: white;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            min-width: 60px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            /* supaya teks tidak pecah ke baris baru */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            /* efek sedikit shadow supaya naik */
+            transition: background-color 0.3s ease;
+        }
+</style>
 <section class="container my-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h3>Data Ekstrakurikuler</h3>
@@ -38,7 +65,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->nama_ekskul }}</td>
                         <td>{{ $item->pembina }}</td>
-                        <td>{{ $item->jadwal_latihan }}</td>
+                        <td><span class="circle-bg">{{ $item->jadwal_latihan }}</span></td>
                         <td>{{ Str::limit($item->deskripsi, 50) }}</td>
                         <td>
                             @if($item->gambar)

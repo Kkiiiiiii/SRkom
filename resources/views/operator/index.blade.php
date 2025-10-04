@@ -57,18 +57,21 @@
 
     <h3 class="mt-4">Dashboard Operator</h3>
     <hr>
-    <section class="container pb-5 mt-5">
-        <div class="row g-4">
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="box-siswa">
-                    <div class="card stat-card p-3 text-center">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                        <h5>Jumlah Siswa</h5>
-                        <p class="stat-number">{{ $siswa->count() }}</p>
-                    </div>
+   <section class="container pb-5 mt-5">
+    <div class="row g-4">
+
+        {{-- Baris pertama 4 kartu --}}
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="box-siswa">
+                <div class="card stat-card p-3 text-center">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h5>Jumlah Siswa</h5>
+                    <p class="stat-number">{{ $siswa->count() }}</p>
                 </div>
             </div>
-              <div class="col-12 col-sm-6 col-lg-4">
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
             <div class="box-guru">
                 <div class="card stat-card p-3 text-center">
                     <i class="fa-solid fa-person-chalkboard"></i>
@@ -77,34 +80,41 @@
                 </div>
             </div>
         </div>
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="box-berita">
-                    <div class="card stat-card p-3 text-center">
-                        <i class="fa-solid fa-newspaper"></i>
-                        <h5>Jumlah Berita</h5>
-                        <p class="stat-number">{{ $berita->count() }}</p>
-                    </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="box-berita">
+                <div class="card stat-card p-3 text-center">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <h5>Jumlah Berita</h5>
+                    <p class="stat-number">{{ $berita->count() }}</p>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="box-galeri">
-                    <div class="card stat-card p-3 text-center">
-                        <i class="fa-solid fa-photo-film"></i>
-                        <h5>Jumlah Galeri</h5>
-                        <p class="stat-number">{{ $galeri->count() }}</p>
-                    </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="box-galeri">
+                <div class="card stat-card p-3 text-center">
+                    <i class="fa-solid fa-photo-film"></i>
+                    <h5>Jumlah Galeri</h5>
+                    <p class="stat-number">{{ $galeri->count() }}</p>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="box-ekskul">
-                    <div class="card stat-card p-3 text-center">
-                        <i class="fa-solid fa-sitemap"></i>
-                        <h5>Jumlah Ekstrakurikuler</h5>
-                        <p class="stat-number">{{ $ekskul->count() }}</p>
-                    </div>
+        </div>
+    </div>
+
+    {{-- Baris terakhir 2 kartu di tengah --}}
+    <div class="d-flex justify-content-center gap-4 mt-4 flex-wrap">
+        <div class="col-12 col-md-6 col-lg-3" style="max-width: 300px;">
+            <div class="box-ekskul">
+                <div class="card stat-card p-3 text-center">
+                    <i class="fa-solid fa-sitemap"></i>
+                    <h5>Jumlah Ekstrakurikuler</h5>
+                    <p class="stat-number">{{ $ekskul->count() }}</p>
                 </div>
             </div>
-             <div class="col-12 col-sm-6 col-lg-4">
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3" style="max-width: 300px;">
             <div class="box-user">
                 <div class="card stat-card p-3 text-center">
                     <i class="fa-solid fa-user"></i>
@@ -113,30 +123,33 @@
                 </div>
             </div>
         </div>
-        </div>
-
-        {{-- Aksi Cepat --}}
-        <div class="mt-5">
-            <h5 class="text-center">Aksi Cepat</h5>
-            <div class="d-flex flex-wrap gap-3 mt-3 justify-content-center">
-                <a href="{{ route('operator.siswa') }}" class="btn btn-success">
-                    <i class="fa-solid fa-user-graduate"></i> Tambah Siswa
-                </a>
-                <a href="{{ route('operator.berita-create') }}" class="btn btn-primary">
-                    <i class="fa-solid fa-newspaper"></i> Buat Berita
-                </a>
-                <a href="{{ route('operator.galeri') }}" class="btn btn-info text-white">
-                    <i class="fa-solid fa-image"></i> Upload Galeri
-                </a>
-                <a href="{{ route('operator.ekskul-create') }}" class="btn btn-danger">
-                    <i class="fa-solid fa-sitemap"></i> Tambah Ekskul
-                </a>
-                <a href="{{ route('operator.profil-create') }}" class="btn btn-warning text-white">
-                    <i class="fa-solid fa-school"></i> Tambah Info Sekolah
-                </a>
+    </div>
+            {{-- Aksi Cepat --}}
+            <div class="mt-5">
+                <h5 class="text-center">Aksi Cepat</h5>
+                <div class="d-flex flex-wrap gap-3 mt-3 justify-content-center">
+                    <a href="{{ route('operator.siswa') }}" class="btn btn-success">
+                        <i class="fa-solid fa-user-graduate"></i> Tambah Siswa
+                    </a>
+                    <a href="{{ route('operator.siswa') }}" class="btn btn-warning">
+                        <i class="fa-solid fa-user-plus"></i> Tambah Guru
+                    </a>
+                    <a href="{{ route('operator.berita-create') }}" class="btn btn-primary">
+                        <i class="fa-solid fa-newspaper"></i> Buat Berita
+                    </a>
+                    <a href="{{ route('operator.galeri') }}" class="btn btn-info text-white">
+                        <i class="fa-solid fa-image"></i> Upload Galeri
+                    </a>
+                    <a href="{{ route('operator.ekskul-create') }}" class="btn btn-danger">
+                        <i class="fa-solid fa-sitemap"></i> Tambah Ekskul
+                    </a>
+                    <a href="{{ route('operator.profil-create') }}" class="btn btn-warning text-white">
+                        <i class="fa-solid fa-school"></i> Tambah Info Sekolah
+                    </a>
+                </div>
             </div>
-        </div>
-    </section>
+</section>
+
 <script>
     function autoDismissAlert(id) {
         const alert = document.getElementById(id);
