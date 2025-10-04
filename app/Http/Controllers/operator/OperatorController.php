@@ -9,6 +9,7 @@ use App\Models\galeri;
 use App\Models\guru;
 use App\Models\profil_sekolah;
 use App\Models\siswa;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class OperatorController extends Controller
@@ -20,6 +21,14 @@ class OperatorController extends Controller
         $data ['berita'] = Berita::all();
         $data ['galeri'] = galeri::all();
         $data ['ekskul'] = ekstrakurikuler::all();
+        $data ['guru'] = guru::all();
+        $data ['user'] = User::all();
         return view('operator.index', $data);
+    }
+
+    public function user() 
+    {
+        $user = User::all();
+        return view('operator.user.user', compact('user'));
     }
 }

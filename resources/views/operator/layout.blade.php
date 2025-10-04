@@ -109,7 +109,9 @@
         <a href="{{ route('operator.berita') }}" class="nav-link {{ request()->routeIs('operator.berita') ? 'active' : '' }}">Berita</a>
         <a href="{{ route('operator.galeri') }}" class="nav-link {{ request()->routeIs('operator.galeri') ? 'active' : '' }}">Galeri</a>
         <a href="{{ route('operator.ekskul') }}" class="nav-link {{ request()->routeIs('operator.ekskul') ? 'active' : '' }}">Ekstrakurikuler</a>
+        <a href="{{ route('operator.Guru') }}" class="nav-link {{ request()->routeIs('operator.Guru') ? 'active' : '' }}">Guru</a>
         <a href="{{ route('operator.siswa') }}" class="nav-link {{ request()->routeIs('operator.siswa') ? 'active' : '' }}">Siswa</a>
+        <a href="{{ route('operator.user') }}" class="nav-link {{ request()->routeIs('operator.user') ? 'active' : '' }}">User</a>
         <hr>    
         <form id="logout-form" action="{{ route('logout') }}" method="POST">
           @csrf

@@ -68,7 +68,7 @@ class profilSekolahController extends Controller
         }
 
         $profil = Profil_sekolah::findOrFail($id);
-        return view('admin.editProf', compact('profil'));
+        return view('admin.profil_sekolah.editProf', compact('profil'));
     }
 
     // Update

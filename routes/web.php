@@ -13,6 +13,7 @@ use App\Http\Controllers\operator\BeritaController as OperatorBeritaController;
 use App\Http\Controllers\operator\EkskulController as OperatorEkskulController;
 use App\Http\Controllers\operator\GaleriController as OperatorGaleriController;
 use App\Http\Controllers\operator\OperatorController;
+use App\Http\Controllers\operator\GuruController as OperatorGuruController;
 use App\Http\Controllers\operator\profilSekolahController as OperatorProfilSekolahController;
 use App\Http\Controllers\operator\SiswaController as OperatorSiswaController;
 use App\Http\Controllers\UserController;
@@ -44,7 +45,7 @@ Route::middleware(['auth','admin'])->group(function () {
 
     Route::get('/admin/profil',[profilSekolahController::class,'index'])->name('admin.profilSek');
     Route::get('/admin/profil/create',[profilSekolahController::class,'create'])->name('admin.profilSek-create');
-    Route::post('/admin/profil/store',[profilSekolahController::class,'store'])->name('profilSek-store');
+    Route::post('/admin/profil/store',[profilSekolahController::class,'store'])->name('admin.profilSek-store');
     Route::get('/admin/profil/edit/{id}',[profilSekolahController::class,'edit'])->name('admin.profilSek-edit');
     Route::post('/admin/profil/edit/{id}',[profilSekolahController::class,'update'])->name('admin.profilSek-update');
     Route::get('/admin/profil/delete/{id}',[profilSekolahController::class,'delete'])->name('admin.profilSek-delete');
@@ -123,5 +124,13 @@ Route::middleware(['auth','operator'])->group(function (){
     Route::get('/operator/profil/edit{id}',[OperatorProfilSekolahController::class,'edit'])->name('operator.profil-edit');
     Route::post('/operator/profil/edit/{id}',[OperatorProfilSekolahController::class,'update'])->name('operator.profil-update');
     Route::get('/operator/profil/delete/{id}',[OperatorProfilSekolahController::class,'delete'])->name('operator.profil-delete');
+
+    Route::get('/operator/guru',[OperatorGuruController::class,'index'])->name('operator.Guru');
+    Route::get('/operator/guru/create',[OperatorGuruController::class,'create'])->name('operator.Guru-create');
+    Route::post('/operator/guru/store',[OperatorGuruController::class,'store'])->name('operator.Guru-store');
+    Route::get('/operator/guru/edit{id}',[OperatorGuruController::class,'edit'])->name('operator.Guru-edit');
+    Route::post('/operator/guru/edit/{id}',[OperatorGuruController::class,'update'])->name('operator.Guru-update');
+    Route::get('/operator/guru/delete/{id}',[OperatorGuruController::class,'destroy'])->name('operator.Guru-delete');
+    Route::get('/operator/guru/user',[OperatorController::class,'user'])->name('operator.user');
 });
 

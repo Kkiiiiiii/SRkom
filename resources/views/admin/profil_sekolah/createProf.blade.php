@@ -13,7 +13,7 @@
         </div>
     @endif
 
-    <form action="{{ route('profilSek-store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.profilSek-store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3 mt-3">

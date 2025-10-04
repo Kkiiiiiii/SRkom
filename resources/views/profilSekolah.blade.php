@@ -27,10 +27,13 @@
                 </div>
             </div>
         </div>
+        
         @if ($ps->count() > 0)
         
         {{-- Data Informasi Profil Sekolah --}}
         @foreach ($ps as $item)
+        <h6 class="mt-3 fw-semibold text-primary">Visi</h6>
+        <p class="text-justify">{{ $item->visi_misi }}</p>
             <table class="table table-borderless align-middle table-striped mt-4">
                 <tbody>
                     <tr>
@@ -76,10 +79,6 @@
                     <tr>
                         <th class="text-start">Kontak</th>
                         <td class="text-end">{{ $item->kontak }}</td>
-                    </tr>
-                    <tr>
-                        <th class="text-start">Visi Misi</th>
-                        <td class="text-end">{{ $item->visi_misi }}</td>
                     </tr>
                     <tr>
                         <th class="text-start">Tahun Berdiri</th>
