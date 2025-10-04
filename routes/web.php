@@ -110,7 +110,7 @@ Route::middleware(['auth','operator'])->group(function (){
     Route::get('/operator/ekskul/edit/{id}',[OperatorEkskulController::class,'edit'])->name('operator.ekskul-edit');
     Route::post('/operator/ekskul/update/{id}',[OperatorEkskulController::class,'update'])->name('operator.ekskul-update');
     Route::get('/operator/ekskul/delete/{id}',[OperatorEkskulController::class,'delete'])->name('operator.ekskul-delete');
-
+    
     Route::get('/operator/siswa',[OperatorSiswaController::class,'index'])->name('operator.siswa');
     Route::post('/operator/siswa/store',[OperatorSiswaController::class,'store'])->name('operator.siswa-store');
     Route::get('/operator/siswa/edit/{id}',[OperatorSiswaController::class,'edit'])->name('operator.siswa-edit');

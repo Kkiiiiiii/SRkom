@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             background: linear-gradient(135deg, #6F9496, #ffffff);
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -19,7 +19,6 @@
 
         .login-card {
             background-color: #6F9496;
-            background-size: cover;
             border-radius: 10px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
             padding: 30px;
@@ -28,22 +27,6 @@
             color: white;
             position: relative;
             overflow: hidden;
-        }
-
-        .login-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .login-card form,
-        .login-card h3 {
-            position: relative;
-            z-index: 2;
         }
 
         .login-title {
@@ -59,46 +42,67 @@
         .form-control {
             background-color: rgba(255, 255, 255, 0.8);
         }
+
+        .school-logo {
+            display: block;
+            margin: 0 auto 15px auto;
+            width: 80px;
+            height: 80px;
+        }
+
+        @media (max-width: 576px) {
+            .login-card {
+                padding: 20px;
+            }
+
+            .school-logo {
+                width: 70px;
+                height: 70px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="login-card">
-        {{-- Notifikasi Error --}}
-        @if (session('error'))
-            <div class="alert alert-danger text-center" id="error">
-                {{ session('error') }}
-            </div>
-        @endif
+    <div class="container">
+        <div class="login-card mx-auto">
+            {{-- Notifikasi Error --}}
+            @if (session('error'))
+                <div class="alert alert-danger text-center" id="error">
+                    {{ session('error') }}
+                </div>
+            @endif
 
-        <img src="{{ asset('assets/image/logo_sekolah.png') }}" class="rounded-circle img-thumbnail mb-3" width="80" height="80" style="margin-left: 8rem">
-        <h3 class="login-title">SMPN 02 GunungPutri</h3>
-        <form action="{{ route('login') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" name="username" id="username" class="form-control" required autofocus>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" id="password" class="form-control" required>
-            </div>
-            <div class="d-grid">
-                <button type="submit" class="btn btn-success text-white fw-bold">Login</button>
-            </div>
-        </form>
+            <img src="{{ asset('assets/image/logo_sekolah.png') }}" class="rounded-circle img-thumbnail school-logo" alt="Logo Sekolah">
+            <h3 class="login-title">SMPN 02 GunungPutri</h3>
+            
+            <form action="{{ route('login') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" name="username" id="username" class="form-control" required autofocus>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" id="password" class="form-control" required>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success text-white fw-bold">Login</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/fontawesome/js/all.min.js') }}"></script>
+    <script>
+        setTimeout(function () {
+            const alert = document.getElementById('error');
+            if (alert) {
+                alert.style.transition = 'opacity 0.5s ease'; // animasi ease
+                alert.style.opacity = 0;
+                setTimeout(() => alert.remove(), 500); // untuk menghapus elemen alert dari dom setelah 0,5 deetik
+            }
+        }, 3000);
+    </script>
 </body>
 </html>
-<script>
-    setTimeout(function () {
-        const alert = document.getElementById('error');
-        if (alert) {
-            alert.style.transition = 'opacity 0.5s ease';
-            alert.style.opacity = 0;
-            setTimeout(() => alert.remove(), 500); // Menghilang setelah waktu 3 detik
-        }
-    }, 3000);
-</script>
