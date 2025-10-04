@@ -1,6 +1,5 @@
 @extends('layout')
 @section('content')
-
 <style>
     details summary {
         cursor: pointer;
@@ -9,7 +8,7 @@
         list-style: none;
     }
 
-    details summary::-webkit-details-marker {
+    details summary::-webkit-details-marker { /* Untuk menonaktifkan cursor pointer di summary */
         display: none;
     }
 
@@ -32,9 +31,9 @@
                     <p class="card-text text-muted mb-2" style="font-size: 0.9rem;">
                         Diposting oleh: {{ $item->user->username ?? 'Unknown' }} pada {{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}
                     </p>
-                    <details>
+                    <details open>
                         <summary>Lihat Selengkapnya</summary>
-                        <p>{{ Str::limit($item->isi, 200) }}</p>
+                        <p>{{ Str::limit($item->isi, limit: 200) }}</p>
                     </details>
                 </div>
             </div>

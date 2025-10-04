@@ -162,12 +162,19 @@
     }
 </style>
 
-<section class="utama">
-    <div class="container">
-        <h1>Selamat Datang di SMPN 02 Gunungputri</h1>
-        <p>Mendidik generasi cerdas, kreatif, dan berkarakter.</p>
-    </div>
+<!-- Section Utama -->
+<section class="utama py-5">
+  <div class="container text-center">
+    <h1 class="mb-3">Selamat Datang di <strong>SMPN 02 Gunungputri</strong></h1>
+    <p class="lead mb-4">Mendidik generasi cerdas, kreatif, dan berkarakter.</p>
+    
+    <!-- Tombol dengan route profil sekolah -->
+    <a href="{{ route('info') }}" class="btn btn-info btn-lg px-4 text-white">
+      Lihat Profil Sekolah
+    </a>
+  </div>
 </section>
+
 
 {{-- SAMBUTAN KEPALA SEKOLAH --}}
 <section class="py-5 my-5 bg-h">

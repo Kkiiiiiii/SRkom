@@ -1,5 +1,21 @@
 @extends('layout')
 @section('content')
+<style>
+    details summary {
+        cursor: pointer;
+        color: #0d6efd; /* bootstrap primary color */
+        font-weight: 600;
+        list-style: none;
+    }
+    details summary::-webkit-details-marker {  /* Untuk menonaktifkan cursor pointer di summary */
+        display: none;
+    }
+
+    details p {
+        margin-top: 0.75rem;
+        text-align: justify;
+    }
+</style>
 <section class="my-5 container">
     <h3 class="mb-4 fw-medium">Daftar Galeri</h3>
     <hr>
@@ -32,8 +48,8 @@
                             <p class="text-muted text-center mb-2"><small>{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}</small></p>
 
                             @if($item->keterangan)
-                                <details>
-                                    <summary style="cursor: pointer; color: #007BFF;">Keterangan</summary>
+                                <details open>
+                                    <summary>Keterangan</summary>
                                     <div style="max-height: 100px; overflow-y: auto; margin-top: 5px; text-align: justify;">
                                         <small>{{ $item->keterangan }}</small>
                                     </div>
