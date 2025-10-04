@@ -3,7 +3,7 @@
     <section class="container my-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h3>Data Siswa</h3>
-                <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#createGaleriModal">
+                <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#createSiswaModal">
                 <i class="bi bi-plus-circle"></i> Tambah Data Siswa 
             </button>
         </div>
@@ -100,7 +100,7 @@
                
             </table>
             {{-- Modal Tambah Siswa --}}
-            <div class="modal fade" id="createGaleriModal" tabindex="-1" aria-labelledby="createGaleriModalLabel" aria-hidden="true">
+            <div class="modal fade" id="createSiswaModal" tabindex="-1" aria-labelledby="createSiswaModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
             <div class="modal-header">
@@ -133,11 +133,11 @@
             <input type="year" class="form-control" id="tahun_masuk" name="tahun_masuk" required>
         </div>
     </div>
-</form>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
       <button type="submit" class="btn btn-success">Simpan</button>
     </div>
+</form>
     </div>
   </div>
 </div>

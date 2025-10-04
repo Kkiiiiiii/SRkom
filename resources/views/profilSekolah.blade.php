@@ -27,8 +27,9 @@
                 </div>
             </div>
         </div>
-
-        {{-- Data Profil Sekolah --}}
+        @if ($ps->count() > 0)
+        
+        {{-- Data Informasi Profil Sekolah --}}
         @foreach ($ps as $item)
             <table class="table table-borderless align-middle table-striped mt-4">
                 <tbody>
@@ -91,6 +92,11 @@
                 </tbody>
             </table>
         @endforeach
+          @else
+            <div class="alert alert-warning text-center mt-4" role="alert">
+                Belum ada Informasi Profil Sekolah yang diinput.
+            </div>
+        @endif
     </div>
 </section>
 @endsection

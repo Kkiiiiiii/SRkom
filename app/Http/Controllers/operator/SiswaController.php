@@ -18,15 +18,14 @@ class SiswaController extends Controller
 
     public function store(Request $request)
     {
-        $validasi = $request->validate([
-           'nama_siswa' => 'required|string',
+        $request->validate([
            'nisn' => 'required',
+           'nama_siswa' => 'required|string',
            'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
            'tahun_masuk' => 'required|digits:4|integer',
         ]);
 
         siswa::create([
-            'nama_siswa' => $request->nama_siswa,
             'nisn' => $request->nisn,
             'nama_siswa' => $request->nama_siswa,
             'jenis_kelamin' => $request->jenis_kelamin,
@@ -40,7 +39,7 @@ class SiswaController extends Controller
     public function edit($id)
     {
         $siswa = siswa::findOrFail(Crypt::decrypt($id));
-        return view('operator.editSiswa', compact('siswa'));
+        return view('operator.siswa.siswa', compact('siswa'));
     }
 
     public function update(Request $request, $id)

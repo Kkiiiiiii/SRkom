@@ -1,9 +1,9 @@
 @extends('layout')
-
 @section('content')
 <section class="my-5 container">
     <h3 class="mb-4 fw-medium">Daftar Galeri</h3>
     <hr>
+@if ($galeri->count() > 0)
     <div class="container">
         <div class="row g-4">
             @foreach ($galeri as $item)
@@ -45,5 +45,10 @@
             @endforeach
         </div>
     </div>
-</section>
+      @else
+            <div class="alert alert-warning text-center mt-4" role="alert">
+                Belum ada Galeri yang diinput.
+            </div>
+    @endif
+    </section>
 @endsection

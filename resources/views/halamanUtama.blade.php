@@ -6,7 +6,7 @@
     }
 
     .utama {
-        background: url('storage/utama.jpg') center/cover no-repeat;
+        background: url('assets/image/utama.jpg') center/cover no-repeat;
         color: white;
         padding: 100px 20px;
         text-align: center;
@@ -230,31 +230,38 @@
 
 
 {{-- Ekstrakurikuler --}}
+@if ($ekskul->count() > 0)
 <section class="ekskul my-5 py-5 bg-h">
      <h2 class="section-title"><a href="{{ route('ekskul') }}">Ekstrakurikuler</a></h2>
-    <div class="container">
-        <div class="row g-4">
-            @foreach ($ekskul as $e)
-                <div class="col-md-3 col-sm-6">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <a href="{{ route('ekskul') }}" rel="noopener noreferrer">
-                            <img src="{{ asset('storage/' . $e->gambar) }}" class="card-img-top" style="height: 200px; object-fit: cover;">
-                        </a>
-                        <div class="card-body text-center">
-                            <h6 class="card-title">{{ $e->nama_ekskul }}</h6>
-                            <p class="card-text">{{ $e->jadwal_latihan }}</p>
-                            <p class="card-text">{{ Str::limit($e->deskripsi, 100) }}</p> 
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
+     <div class="container">
+         <div class="row g-4">
+             @foreach ($ekskul as $e)
+                 <div class="col-md-3 col-sm-6">
+                     <div class="card h-100 border-0 shadow-sm">
+                         <a href="{{ route('ekskul') }}" rel="noopener noreferrer">
+                             <img src="{{ asset('storage/' . $e->gambar) }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+                         </a>
+                         <div class="card-body text-center">
+                             <h6 class="card-title">{{ $e->nama_ekskul }}</h6>
+                             <p class="card-text">{{ $e->jadwal_latihan }}</p>
+                             <p class="card-text">{{ Str::limit($e->deskripsi, 100) }}</p> 
+                         </div>
+                     </div>
+                 </div>
+             @endforeach
+         </div>
+     </div>
+       @else
+            <div class="alert alert-warning text-center mt-4" role="alert">
+                Belum ada Ekstrakurikuler yang diinput.
+            </div>
+    @endif
 </section>
 
 {{-- Berita Terbaru --}}
 <section class="berita my-5 py-5 bg-light">
     <h2 class="section-title"><a href="{{ route('berita') }}">Berita Terbaru</a></h2>
+@if ($berita->count() > 0)
     <div class="container">
         <div class="row g-4">
             @foreach ($berita as $item)
@@ -278,11 +285,17 @@
             @endforeach
         </div>
     </div>
+      @else
+        <div class="alert alert-warning text-center mt-4" role="alert">
+            Belum ada Berita yang diinput.
+        </div>
+    @endif
 </section>
 
 {{-- Galeri --}}
 <section class="py-4 my-4 bg-h">
     <h2 class="section-title"><a href="{{ route('galeri') }}">Galeri Sekolah</a></h2>
+@if ($galeri->count() > 0)
     <div class="container">
         <div class="row g-4 justify-content-center">
             @foreach($galeri as $g)
@@ -312,7 +325,12 @@
                 </div>
             @endforeach
         </div>
-    </div>
+        </div>
+             @else
+            <div class="alert alert-warning text-center mt-4" role="alert">
+                Belum ada Galeri yang diinput.
+            </div>
+    @endif
 </section>
 
 {{-- Staff Pengajar Carousel --}}
@@ -321,7 +339,7 @@
         <h2 class="section-title mb-4 text-center">
             <a href="#" class="text-decoration-none text-dark">Staff Pengajar</a>
         </h2>
-
+        @if ($guru->count() > 0)
         <div id="staffCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
             <div class="carousel-inner">
 
@@ -362,6 +380,11 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Berikutnya</span>
             </button>
+            @else
+            <div class="alert alert-warning text-center mt-4" role="alert">
+                Belum ada staff yang diinput.
+            </div>
+        @endif
         </div>
     </div>
 </section>
