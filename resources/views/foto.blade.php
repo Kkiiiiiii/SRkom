@@ -1,9 +1,25 @@
 @extends('layout')
-
 @section('content')
-<div class="container py-4">
-    <h1 class="mb-4 text-center">Galeri Foto</h1>
+<style>
+        details summary {
+            cursor: pointer;
+            color: #0d6efd; /* bootstrap primary color */
+            font-weight: 600;
+            list-style: none;
+        }
 
+        details summary::-webkit-details-marker { /* Untuk menonaktifkan cursor pointer di summary */
+            display: none;
+        }
+
+        details p {
+            margin-top: 0.75rem;
+            text-align: justify;
+        }
+    </style>
+<div class="container py-4">
+    <h2 class="mb-4">Galeri Foto</h2>
+        <hr>
     @if ($foto->count())
         <div class="row g-4">
             @foreach ($foto as $item)
@@ -37,7 +53,9 @@
             @endforeach
         </div>
     @else
-        <p class="text-center">Belum ada foto yang tersedia.</p>
+         <div class="alert alert-warning text-center mt-4" role="alert">
+                Belum ada Foto yang diinput.
+            </div>
     @endif
 </div>
 @endsection

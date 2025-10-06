@@ -32,6 +32,7 @@ Route::get('/galeri/foto',[UserController::class,'foto'])->name('foto');
 Route::get('/galeri/video',[UserController::class,'video'])->name('video');
 Route::get('/ekskul',[UserController::class,'ekskul'])->name('ekskul');
 Route::get('/guru',[UserController::class,'guru'])->name('guru');
+Route::get('/berita/detail/{id}',[UserController::class,'detail'])->name('detail-berita');
 
 // Route Untuk Mengatur role admin
 Route::middleware(['auth','admin'])->group(function () {

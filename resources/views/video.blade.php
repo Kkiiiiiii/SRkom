@@ -1,15 +1,33 @@
 @extends('layout')
 @section('content')
+<style>
+        details summary {
+            cursor: pointer;
+            color: #0d6efd; /* bootstrap primary color */
+            font-weight: 600;
+            list-style: none;
+        }
+
+        details summary::-webkit-details-marker { /* Untuk menonaktifkan cursor pointer di summary */
+            display: none;
+        }
+
+        details p {
+            margin-top: 0.75rem;
+            text-align: justify;
+        }
+    </style>
 <div class="container py-4">
-    <h1 class="mb-4 text-center">Galeri video</h1>
+    <h2 class="mb-4">Galeri video</h2>
+    <hr>
     @if ($video->count())
         <div class="row g-4">
             @foreach ($video as $item)
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="card border-0 shadow-sm h-100">
                         {{-- Media --}}
-                        <img src="{{ asset('storage/' . $item->file) }}" class="card-img-top"
-                            alt="{{ $item->judul ?? 'video' }}" style="height: 180px; object-fit: cover;">
+                        <video src="{{ asset('storage/' . $item->file) }}" class="card-img-top" controls
+                            alt="{{ $item->judul ?? 'video' }}" style="height: 180px; object-fit: cover;"></video>
 
                         {{-- Konten --}}
                         <div class="card-body p-3 d-flex flex-column">
@@ -35,7 +53,9 @@
             @endforeach
         </div>
     @else
-        <p class="text-center">Belum ada video yang tersedia.</p>
+         <div class="alert alert-warning text-center mt-4" role="alert">
+                Belum ada Video yang diinput.
+            </div>
     @endif
 </div>
 @endsection

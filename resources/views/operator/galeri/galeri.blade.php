@@ -185,7 +185,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">File (Gambar/Video)</label>
+                    <label class="form-label">File (Gambar/Video)   </label>
                     <input type="file" name="file" class="form-control" accept=".jpg,.jpeg,.png,.mp4" required>
                 </div>
 

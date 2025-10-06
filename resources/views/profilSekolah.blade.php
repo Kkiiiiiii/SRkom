@@ -32,14 +32,49 @@
             {{-- Data Informasi Profil Sekolah --}}
             @foreach ($ps as $item)
 
-                {{-- Visi --}}
-                <h6 class="mt-4 fw-semibold text-primary">Visi</h6>
-                <p class="text-justify">{{ $item->visi }}</p>
+                {{-- Visi & Misi Sekolah --}}
+<div class="card shadow-sm border-0 my-4">
+    <div class="card-body p-4">
+        <h4 class="text-center text-primary fw-bold mb-4">
+              Visi & Misi 
+        </h4>
 
-                @if (!empty($item->misi))
-                    <h6 class="mt-3 fw-semibold text-primary">Misi</h6>
-                    <p class="text-justify">{{ $item->misi }}</p>
-                @endif
+        {{-- Visi --}}
+        <div class="mb-4">
+            <h5 class="fw-semibold text-primary border-start border-4 border-primary ps-3 mb-3">
+                Visi
+            </h5>
+            <p class="text-justify fs-6" style="line-height: 1.8;">
+                “{{ $item->visi }}”
+            </p>
+        </div>
+
+        {{-- Misi --}}
+        @if (!empty($item->misi))
+        <div>
+            <h5 class="fw-semibold text-primary border-start border-4 border-primary ps-3 mb-3">
+                Misi
+            </h5>
+            <div class="text-justify fs-6" style="line-height: 1.8;">
+                {{-- Kalau misi berisi beberapa poin, otomatis tampil terpisah --}}
+                @php
+                    $misiList = preg_split("/[\r\n]+/", $item->misi);
+                @endphp
+                <ul class="list-group list-group-flush">
+                    @foreach ($misiList as $m)
+                        @if (trim($m) != '')
+                            <li class="list-group-item border-0 ps-3">
+                                <i class="bi bi-check-circle text-success me-2"></i> {{ $m }}
+                            </li>
+                        @endif
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+        @endif
+    </div>
+</div>
+
 
                 {{-- Detail Sekolah --}}
                 <table class="table table-borderless align-middle table-striped mt-4">

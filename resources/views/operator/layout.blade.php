@@ -101,7 +101,7 @@
       <div class="col-md-2 sidebar bg-light" id="sidebar">
         <div class="brand-logo">
           <img src="{{ asset('assets/image/logo_sekolah.png') }}" alt="Logo">
-          <h5>SMPN 02 Gunungputri</h5>
+          <h5>SMP 02 Gunungputri</h5>
         </div>
 
         <a href="{{ route('operator')}}" class="nav-link {{ request()->routeIs('operator') ? 'active' : '' }}">Dashboard</a>
@@ -112,7 +112,7 @@
         <a href="{{ route('operator.Guru') }}" class="nav-link {{ request()->routeIs('operator.Guru') ? 'active' : '' }}">Guru</a>
         <a href="{{ route('operator.siswa') }}" class="nav-link {{ request()->routeIs('operator.siswa') ? 'active' : '' }}">Siswa</a>
         <a href="{{ route('operator.user') }}" class="nav-link {{ request()->routeIs('operator.user') ? 'active' : '' }}">User</a>
-        <hr>    
+        <hr>
         <form id="logout-form" action="{{ route('logout') }}" method="POST">
           @csrf
           <a class="nav-link text-danger" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

@@ -7,7 +7,7 @@
             /* rata tengah horizontal */
             vertical-align: middle;
             /* rata tengah vertikal */
-        }   
+        }
 
         /* Styling untuk badge oval di dalam tabel */
         .circle-bg {
@@ -98,66 +98,120 @@
                         </tr>
                     @endforelse
                 </tbody>
+                <div class="modal fade" id="editGaleriModal{{ $item->id_galeri }}" tabindex="-1" aria-labelledby="editGaleriModalLabel{{ $item->id_galeri }}" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                        <div class="modal-content">
+                        <form action="{{ route('operator.Galeri-update', $item->id_galeri) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('POST')
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="editGaleriModalLabel{{ $item->id_galeri }}">Edit Galeri</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                            </div>
+                                <div class="modal-body">
+                                <div class="mb-3">
+                                    <label class="form-label">Judul</label>
+                                    <input type="text" name="judul" class="form-control" value="{{ old('judul', $item->judul) }}" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Keterangan</label>
+                                    <textarea name="keterangan" class="form-control" rows="3">{{ old('keterangan', $item->keterangan) }}</textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">File (Gambar/Video)</label>
+                                    <input type="file" name="file" class="form-control" accept=".jpg,.jpeg,.png,.mp4">
+                                    <small class="form-text text-muted">Biarkan kosong jika tidak ingin mengganti file.</small>
+
+                                    {{-- Preview file lama --}}
+                                    @php
+                                        $isImage = Str::endsWith($item->file, ['.jpg', '.jpeg', '.png', '.gif']);
+                                    @endphp
+                                    @if($isImage)
+                                        <img src="{{ asset('storage/' . $item->file) }}" alt="Media" class="img-thumbnail mt-2" style="max-width: 150px;">
+                                    @else
+                                        <video width="200" controls class="mt-2">
+                                            <source src="{{ asset('storage/' . $item->file) }}" type="video/mp4">
+                                            Browser kamu tidak mendukung video.
+                                        </video>
+                                    @endif
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Kategori</label>
+                                    <input type="text" name="kategori" class="form-control" value="{{ old('kategori', $item->kategori) }}" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Tanggal</label>
+                                    <input type="date" name="tanggal" class="form-control" value="{{ old('tanggal', $item->tanggal) }}" required>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                    </div>
             </table>
 
-            {{-- <table class="table table-hover table-striped align-middle text-center" id="galeri">
-            <thead class="table-dark">
-                <tr>
-                    <th>No</th>
-                    <th>Judul</th>
-                    <th>Keterangan</th>
-                    <th>File</th>
-                    <th>Kategori</th>
-                    <th>Tanggal</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse($galeri as $item)
-                    <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->judul }}</td>
-                        <td>{{ Str::limit($item->keterangan, 50) }}</td>
-                        <td>
-                            @php
-                                $kategori = strtolower($item->kategori);
-                            @endphp
+                   <!-- Tambah Galeri -->
+    <div class="modal fade" id="createGaleriModal" tabindex="-1" aria-labelledby="createGaleriModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+        <form action="{{ route('operator.Galeri-store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="modal-header">
+            <h5 class="modal-title" id="createGaleriModalLabel">Tambah Galeri Baru</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+            </div>
+            <div class="modal-body">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $item)
+                                <li>{{ $item }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
-                            @if ($kategori === 'foto')
-                                <img src="{{ asset('storage/' . $item->file) }}" alt="Media" class="img-thumbnail">
-                            @elseif($kategori === 'video')
-                                <video width="100" controls>
-                                    <source src="{{ asset('storage/' . $item->file) }}" type="video/mp4">
-                                    Your browser does not support video.
-                                </video>
-                            @endif
-                        </td>
-                        <td>{{ ucfirst($item->kategori) }}</td>
-                        <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('d-M-Y') }}</td>
-                        <td>
-                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#editGaleriModal{{ $item->id_galeri }}">
-                                <i class="bi bi-pencil"></i> Edit
-                            </button>
-                            <a href="{{ route('admin.Galeri-delete', Crypt::encrypt($item->id_galeri)) }}"
-                                class="btn btn-sm btn-danger"
-                                onclick="return confirm('Yakin ingin hapus berita ini?')">
-                                <i class="bi bi-trash"></i> Hapus
-                            </a>
-                        </td>
-                    </tr>
-                    <!-- Modal Edit Galeri -->
-                    <!-- ... modal content tetap sama ... -->
-                @empty
-                    <tr>
-                        <td colspan="7" class="text-muted">Belum ada data galeri.</td>
-                    </tr>
-                @endforelse
-            </tbody>
-        </table> --}}
+                <div class="mb-3">
+                    <label class="form-label">Judul</label>
+                    <input type="text" name="judul" class="form-control" required>
+                </div>
 
-            <!-- Modal Tambah Galeri -->
-            <!-- ... modal content tetap sama ... -->
+                <div class="mb-3">
+                    <label class="form-label">Keterangan</label>
+                    <textarea name="keterangan" class="form-control" rows="3"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">File (Gambar/Video)   </label>
+                    <input type="file" name="file" class="form-control" accept=".jpg,.jpeg,.png,.mp4" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Kategori</label>
+                    <input type="text" name="kategori" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Tanggal</label>
+                    <input type="date" name="tanggal" class="form-control" required>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-success">Simpan</button>
+            </div>
+        </form>
+        </div>
         </div>
     </div>
 

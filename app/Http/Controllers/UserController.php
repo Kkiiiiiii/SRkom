@@ -9,6 +9,7 @@ use App\Models\guru;
 use App\Models\profil_sekolah;
 use App\Models\siswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
 {
@@ -17,17 +18,17 @@ class UserController extends Controller
     {
         $data['guru'] = guru::all();
         $data['siswa'] = siswa::whereIn('tahun_masuk', [2023, 2024, 2025])->get();
-        $data['ekskul'] = ekstrakurikuler::all();
+        $data['ekskul'] = ekstrakurikuler::orderBy('id_ekskul', 'asc')->take(4)->get();
         $data['berita'] = Berita::with('user') // Mengambil relasi user
             ->orderBy('id_berita', 'desc') // Urutkan berdasarkan id_berita terbaru
-            ->take(5) // Ambil 5 berita saja
+            ->take(4) // Ambil 5 berita saja
             ->get();
-        $data['galeri'] = galeri::orderBy('id_galeri', 'asc')->take(6)->get();
+        $data['galeri'] = galeri::orderBy('id_galeri', 'asc')->take(3)->get();
         return view('halamanUtama', $data);
     }
 
     public function info()
-{
+    {
     $psRaw = profil_sekolah::all();
 
     $ps = $psRaw->map(function ($item) {
@@ -47,14 +48,21 @@ class UserController extends Controller
     });
 
     return view('profilSekolah', compact('ps'));
-}
-
-
-    public function berita()
-    {
-        $berita = Berita::with('user')->get();
-        return view('berita', compact('berita'));
     }
+
+
+        public function berita()
+        {
+            $berita = Berita::all();
+           return view('berita', compact('berita'));
+        }
+
+        public function detail($id)
+        {
+           $berita = Berita::findOrFail(Crypt::decrypt($id));
+           return view('detail-berita', compact('berita'));
+        }
+
      public function foto()
     {
         // Ambil data galeri dengan kategori foto (dengan field kategori)

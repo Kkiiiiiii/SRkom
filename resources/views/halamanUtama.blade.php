@@ -167,7 +167,7 @@
   <div class="container text-center">
     <h1 class="mb-3">Selamat Datang di <strong>SMPN 02 Gunungputri</strong></h1>
     <p class="lead mb-4">Mendidik generasi cerdas, kreatif, dan berkarakter.</p>
-    
+
     <!-- Tombol dengan route profil sekolah -->
     <a href="{{ route('info') }}" class="btn btn-info btn-lg px-4 text-white">
       Lihat Profil Sekolah
@@ -183,7 +183,7 @@
         <div class="row align-items-start mt-4">
             <div class="col-md-3 text-center">
                 <a href="{{ route('info') }}" rel="noopener noreferrer">
-                    <img src="{{ asset('assets/image/tes.jpeg') }}" alt="Kepala Sekolah" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;"> 
+                    <img src="{{ asset('assets/image/tes.jpeg') }}" alt="Kepala Sekolah" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
                 </a>
                 <h6 class="mb-0">Bapak Kosasih Mpd</h6>
                 <small>Kepala Sekolah</small>
@@ -251,7 +251,7 @@
                          <div class="card-body text-center">
                              <h6 class="card-title">{{ $e->nama_ekskul }}</h6>
                              <p class="card-text">{{ $e->jadwal_latihan }}</p>
-                             <p class="card-text">{{ Str::limit($e->deskripsi, 100) }}</p> 
+                             <p class="card-text">{{ Str::limit($e->deskripsi, 100) }}</p>
                          </div>
                      </div>
                  </div>
@@ -274,7 +274,7 @@
             @foreach ($berita as $item)
                 <div class="col-md-4">
                     <div class="card h-100 shadow-sm">
-                        <a href="{{ route('berita') }}" rel="noopener noreferrer">
+                        <a href="{{ route('detail-berita',  ['id' => Crypt::encrypt($item->id_berita)]) }}" rel="noopener noreferrer">
                             <img src="{{ asset('storage/' . $item->gambar) }}" class="card-img-top" alt="{{ $item->judul }}">
                         </a>
                         <div class="card-body d-flex flex-column">
@@ -285,19 +285,21 @@
                                     Diposting oleh: {{ $item->user->username ?? 'Unknown' }} pada {{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}
                                 </small>
                             </p>
-                            <a href="{{ route('berita') }}" class="btn btn-info mt-2 align-self-start text-white">Baca Selengkapnya</a>
+                            <a href="{{ route('detail-berita',  ['id' => Crypt::encrypt($item->id_berita)]) }}" class="btn btn-info mt-2 align-self-start text-white">Baca Selengkapnya</a>
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
     </div>
-      @else
-        <div class="alert alert-warning text-center mt-4" role="alert">
-            Belum ada Berita yang diinput.
-        </div>
-    @endif
+@else
+    <div class="alert alert-warning text-center mt-4" role="alert">
+        Belum ada Berita yang diinput.
+    </div>
+@endif
 </section>
+
+
 
 {{-- Galeri --}}
 <section class="py-4 my-4 bg-h">
@@ -310,7 +312,7 @@
                     $file = $g->file;
                     $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
                     $isImage = in_array($ext, ['jpg', 'jpeg', 'png', 'gif']);
-                    $isVideo = in_array($ext, ['mp4', 'mov', 'avi', 'mkv']);     
+                    $isVideo = in_array($ext, ['mp4', 'mov', 'avi', 'mkv']);
                     // Untuk Mnentukan tipe File Foto Dan Video
                 @endphp
 
@@ -318,15 +320,17 @@
                     <div class="shadow-sm">
                         @if($isImage)
                         {{-- Jika Gambar --}}
-                        <a href="{{ route('galeri') }}" rel="noopener noreferrer">
+                        <a href="{{ route('foto') }}" rel="noopener noreferrer">
                             <img src="{{ asset('storage/'.$file) }}" loading="lazy" alt="{{ $g->judul }}" class="img-fluid rounded" style="width:100%; height:200px; object-fit:cover;">
-                            </a> 
+                            </a>
                         @elseif($isVideo)
                         {{-- Jika Video --}}
+                        <a href="{{ route('video') }}" rel="noopener noreferrer">
                             <video controls muted class="w-100 rounded" loading="lazy" style="height:200px; object-fit:cover;">
                                 <source src="{{ asset('storage/'.$file) }}" type="video/{{ $ext }}">
                                 Browser tidak mendukung video.
                             </video>
+                        </a>
                         @endif
                     </div>
                 </div>
@@ -344,14 +348,14 @@
 <section class="staff-pengajar my-5 py-4 bg-light">
     <div class="container">
         <h2 class="section-title mb-4 text-center">
-            <a href="#" class="text-decoration-none text-dark">Staff Pengajar</a>
+            <a href="{{ route('guru') }}" class="text-decoration-none text-dark">Staff Pengajar</a>
         </h2>
         @if ($guru->count() > 0)
         <div id="staffCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
             <div class="carousel-inner">
 
                 @php
-                    $perSlide = 4; // Agar Menampilkan 4 Guru per-slide 
+                    $perSlide = 4; // Agar Menampilkan 4 Guru per-slide
                     $totalGuru = $guru->count();
                     $totalSlides = ceil($totalGuru / $perSlide);
                 @endphp
@@ -363,7 +367,10 @@
                                 <div class="col-6 col-md-3 d-flex">
                         {{-- ketika di tampilan lebih kecil atau di hp akan responsive(Menyesuaikan Tampilan) --}}
                                     <div class="card h-100 w-100 shadow-sm">
-                                        <img src="{{ asset('storage/' . $item->foto) }}" class="card-img-top" alt="{{ $item->nama_guru }}" style="height: 240px; object-fit: cover;">
+                                        {{-- Untuk Berpindah ke hal guru ketika klik gambar --}}
+                                        <a href="{{ route('guru') }}">
+                                            <img src="{{ asset('storage/' . $item->foto) }}" class="card-img-top" alt="{{ $item->nama_guru }}" style="height: 240px; object-fit: cover;">
+                                        </a>
                                         <div class="card-body text-center">
                                             <h5 class="card-title">{{ $item->nama_guru }}</h5>
                                             <p class="card-text mb-1">{{ $item->nip }}</p>
