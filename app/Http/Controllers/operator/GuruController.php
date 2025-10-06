@@ -57,7 +57,7 @@ class GuruController extends Controller
     public function edit($id)
     {
         $guru = guru::findOrFail(Crypt::decrypt($id));
-        return view('operator.guru.edit-guru', compact('guru'));
+        return view('operator.guru.editGuru', compact('guru'));
     }
 
     // Update data guru

@@ -19,7 +19,8 @@
                     <h5 class="fw-semibold mb-4">Sejarah Sekolah</h5>
                     <p class="text-justify">
                         Sekolah ini didirikan pada tahun 1993 dengan tujuan memberikan pendidikan berkualitas bagi masyarakat sekitar.
-                        Pada awal berdirinya, sekolah hanya memiliki 12 ruang kelas dan staf pengajar yang terbatas.
+                        Pada awal berdirinya, sekolah ini hanya memiliki beberapa ruang kelas dan tenaga pengajar yang terbatas.
+                        Namun, dengan semangat dan komitmen yang tinggi, sekolah ini terus berkembang dari tahun ke tahun.
                         Seiring berjalannya waktu, dengan dedikasi dan kerja keras semua pihak, sekolah ini berkembang menjadi
                         salah satu institusi pendidikan unggulan di wilayahnya. Banyak prestasi telah diraih, baik di bidang
                         akademik maupun non-akademik, yang turut mengharumkan nama sekolah di tingkat daerah hingga nasional.
@@ -36,7 +37,7 @@
 <div class="card shadow-sm border-0 my-4">
     <div class="card-body p-4">
         <h4 class="text-center text-primary fw-bold mb-4">
-              Visi & Misi 
+              Visi & Misi
         </h4>
 
         {{-- Visi --}}
