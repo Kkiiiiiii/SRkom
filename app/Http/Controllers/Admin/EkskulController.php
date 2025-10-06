@@ -16,7 +16,7 @@ class EkskulController extends Controller
         $ekskul = ekstrakurikuler::all();
         return view('admin.ekskul.ekskul',compact('ekskul'));
     }
-    
+
     public function create()
     {
         return view('admin.ekskul.ekskulCreate');
@@ -32,7 +32,7 @@ class EkskulController extends Controller
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-      $gambarPath = null;
+        $gambarPath = null;
         if ($request->hasFile('gambar')) {
             $gambarPath = $request->file('gambar')->store('ekskul', 'public');
         }
@@ -75,8 +75,6 @@ class EkskulController extends Controller
         $gambarPath = $request->file('gambar')->store('ekskul', 'public');
         $ekskul->gambar = $gambarPath;
     }
-
-    // dd($ekskul); // Cek data sebelum save
 
     $ekskul->save();
 

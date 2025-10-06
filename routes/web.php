@@ -28,14 +28,16 @@ Route::get('/',[UserController::class,'index'])->name('beranda');
 Route::get('/info',[UserController::class,'info'])->name('info');
 Route::get('/berita',[UserController::class,'berita'])->name('berita');
 Route::get('/galeri',[UserController::class,'galeri'])->name('galeri');
+Route::get('/galeri/foto',[UserController::class,'foto'])->name('foto');
+Route::get('/galeri/video',[UserController::class,'video'])->name('video');
 Route::get('/ekskul',[UserController::class,'ekskul'])->name('ekskul');
-Route::get('/profil',[UserController::class,'ekskul'])->name('ekskul');
+Route::get('/guru',[UserController::class,'guru'])->name('guru');
 
 // Route Untuk Mengatur role admin
 Route::middleware(['auth','admin'])->group(function () {
-    
+
     Route::get('/admin/dash',[AdminController::class,'dash'])->name('admin.dash'); //Untuk Menampilkan halaman dashboard
-    
+
     Route::get('/admin/berita',[BeritaController::class,'index'])->name('admin.Berita');
     Route::get('/admin/berita/create',[BeritaController::class,'create'])->name('admin.Berita-create');
     Route::post('/admin/berita/store',[BeritaController::class,'store'])->name('admin.Berita-store');
@@ -111,7 +113,7 @@ Route::middleware(['auth','operator'])->group(function (){
     Route::get('/operator/ekskul/edit/{id}',[OperatorEkskulController::class,'edit'])->name('operator.ekskul-edit');
     Route::post('/operator/ekskul/update/{id}',[OperatorEkskulController::class,'update'])->name('operator.ekskul-update');
     Route::get('/operator/ekskul/delete/{id}',[OperatorEkskulController::class,'delete'])->name('operator.ekskul-delete');
-    
+
     Route::get('/operator/siswa',[OperatorSiswaController::class,'index'])->name('operator.siswa');
     Route::post('/operator/siswa/store',[OperatorSiswaController::class,'store'])->name('operator.siswa-store');
     Route::get('/operator/siswa/edit/{id}',[OperatorSiswaController::class,'edit'])->name('operator.siswa-edit');

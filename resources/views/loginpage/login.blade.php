@@ -74,7 +74,7 @@
 
             <img src="{{ asset('assets/image/logo_sekolah.png') }}" class="rounded-circle img-thumbnail school-logo" alt="Logo Sekolah">
             <h3 class="login-title">SMPN 02 GunungPutri</h3>
-            
+
             <form action="{{ route('login') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
@@ -89,6 +89,9 @@
                     <button type="submit" class="btn btn-success text-white fw-bold">Login</button>
                 </div>
             </form>
+            <div class="text-center mt-1"><a class="text-decoration-none text-white" href="{{ route('beranda') }}">
+                Kembali Ke Halaman Web</a>
+            </div>
         </div>
     </div>
 

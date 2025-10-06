@@ -31,7 +31,7 @@
          .box-guru .card {
         background: linear-gradient(135deg, #ffb300, #fb8c00);
         }
-        
+
           .box-user .card {
         background: linear-gradient(135deg, #0a0e71, #4f84d3);
         }

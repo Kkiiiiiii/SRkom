@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="container my-5">
-        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-4">
+        <div class="d-flex flex-wrap align-items-center gap-2 mb-4 jsu">
             <h3 class="mb-0">Data Profil Sekolah</h3>
             <a class="btn btn-success" href="{{ route('operator.profil-create') }}">
                 <i class="bi bi-plus-circle me-1"></i> Tambah Profil
@@ -67,6 +67,11 @@
                     </div>
                 </div>
             @endforeach
+            @empty($item)
+            <div class="alert alert-warning text-center mt-4" role="alert">
+                Belum ada data Profil Sekolah
+            </div>
+            @endempty
         </div>
 
     </section>

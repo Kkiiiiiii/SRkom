@@ -6,7 +6,7 @@
             /* rata tengah horizontal */
             vertical-align: middle;
             /* rata tengah vertikal */
-        }   
+        }
 
         /* Styling untuk badge oval di dalam tabel */
         .circle-bg {
@@ -98,7 +98,7 @@
             info: false,
             responsive: false,
             ordering: false,
-            searching: true,              
+            searching: true,
         });
     });
 </script>

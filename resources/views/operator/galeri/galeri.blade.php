@@ -6,7 +6,7 @@
             /* rata tengah horizontal */
             vertical-align: middle;
             /* rata tengah vertikal */
-        }   
+        }
 
         /* Styling untuk badge oval di dalam tabel */
         .circle-bg {
@@ -92,7 +92,7 @@
                         <div class="modal-content">
                         <form action="{{ route('operator.Galeri-update', $item->id_galeri) }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            @method('POST') 
+                            @method('POST')
                             <div class="modal-header">
                             <h5 class="modal-title" id="editGaleriModalLabel{{ $item->id_galeri }}">Edit Galeri</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
@@ -164,17 +164,15 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
             </div>
             <div class="modal-body">
-            
-
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $item)
-                    <li>{{ $item }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $item)
+                                <li>{{ $item }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
                 <div class="mb-3">
                     <label class="form-label">Judul</label>
@@ -224,7 +222,7 @@
             info: false,
             responsive: false,
             ordering: false,
-            searching: true,              
+            searching: true,
         });
     });
 </script>

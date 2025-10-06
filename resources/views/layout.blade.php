@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
 
     <style>
         body {
@@ -43,7 +45,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-h shadow-sm sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="{{ asset('assets/image/logo_sekolah.png') }}" alt="Logo" width="40" height="40" class="rounded-circle img-thumbnail">
+                <img src="{{ asset('assets/image/logo_sekolah.png') }}" alt="Logo" width="40" height="40"
+                    class="rounded-circle img-thumbnail">
                 <span class="ms-2">SMPN 02 Gunungputri</span>
             </a>
 
@@ -54,26 +57,63 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('beranda') ? 'active' : '' }}" href="{{ route('beranda') }}">Beranda</a>
+                        <a class="nav-link {{ request()->routeIs('beranda') ? 'active' : '' }}"
+                            href="{{ route('beranda') }}"><i class="fas fa-home me-1"></i>Beranda</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {{ request()->routeIs('guru', 'info') ? 'active' : '' }}"
+                            href="#" id="profilDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Profil Sekolah
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="profilDropdown">
+                            <li>
+                                <a class="dropdown-item {{ request()->routeIs('info') ? 'active' : '' }}"
+                                    href="{{ route('info') }}"><i class="fa-solid fa-school me-1"></i>Profil Umum</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item {{ request()->routeIs('guru') ? 'active' : '' }}"
+                                    href="{{ route('guru') }}"><i class="fa-solid fa-user-tie me-1"></i>Staff
+                                    Pengajar</a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('info') ? 'active' : '' }}" href="{{ route('info') }}">Profil Sekolah</a>
+                        <a class="nav-link {{ request()->routeIs('berita') ? 'active' : '' }}"
+                            href="{{ route('berita') }}"><i class="fas fa-newspaper me-1"></i>Berita</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('berita') ? 'active' : '' }}" href="{{ route('berita') }}">Berita</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {{ request()->routeIs('foto', 'video') ? 'active' : '' }}"
+                            href="#" id="galeriDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Galeri Sekolah
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="galeriDropdown">
+                            <li>
+                                <a class="dropdown-item {{ request()->routeIs('foto') ? 'active' : '' }}"
+                                    href="{{ route('foto') }}">
+                                    <i class="fa-solid fa-panorama me-1"></i>Foto
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item {{ request()->routeIs('video') ? 'active' : '' }}"
+                                    href="{{ route('video') }}">
+                                    <i class="fa-solid fa-video me-1"></i>Video
+                                </a>
+                            </li>
+                        </ul>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('galeri') ? 'active' : '' }}" href="{{ route('galeri') }}">Galeri</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('ekskul') ? 'active' : '' }}" href="{{ route('ekskul') }}">Ekstrakurikuler</a>
+                        <a class="nav-link {{ request()->routeIs('ekskul') ? 'active' : '' }}"
+                            href="{{ route('ekskul') }}"><i class="fa-solid fa-users me-1"></i>Ekstrakurikuler</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav ms-auto">
+                {{-- <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('loginShow') ? 'active' : '' }}" href="{{ route('loginShow') }}">Login</a>
                     </li>
-                </ul>
+                </ul> --}}
             </div>
         </div>
     </nav>
@@ -91,4 +131,5 @@
     <script src="{{ asset('assets/fontawesome/js/all.min.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </body>
+
 </html>

@@ -8,19 +8,19 @@
         @csrf
         <div class="mb-3">
             <label for="nama_ekskul" class="form-label">Nama Ekskul</label>
-            <input type="text" name="nama_ekskul" id="nama_ekskul" class="form-control" 
+            <input type="text" name="nama_ekskul" id="nama_ekskul" class="form-control"
                    value="{{ old('nama_ekskul', $ekskul->nama_ekskul) }}" required>
         </div>
 
         <div class="mb-3">
             <label for="pembina" class="form-label">Pembina</label>
-            <input type="text" name="pembina" id="pembina" class="form-control" 
+            <input type="text" name="pembina" id="pembina" class="form-control"
                    value="{{ old('pembina', $ekskul->pembina) }}">
         </div>
 
         <div class="mb-3">
             <label for="jadwal_latihan" class="form-label">Jadwal Latihan</label>
-            <input type="text" name="jadwal_latihan" id="jadwal_latihan" class="form-control" 
+            <input type="text" name="jadwal_latihan" id="jadwal_latihan" class="form-control"
                    value="{{ old('jadwal_latihan', $ekskul->jadwal_latihan) }}">
         </div>
 
@@ -38,7 +38,7 @@
         </div>
 
         <div class="mt-3">
-            <a href="{{ route('operator.ekskul') }}" class="btn btn-secondary">Batal</a>    
+            <a href="{{ route('operator.ekskul') }}" class="btn btn-secondary">Batal</a>
             <button type="submit" class="btn btn-primary">Update</button>
         </div>
     </form>

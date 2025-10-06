@@ -55,14 +55,28 @@ class UserController extends Controller
         $berita = Berita::with('user')->get();
         return view('berita', compact('berita'));
     }
-    public function Galeri()
+     public function foto()
     {
-        $galeri = galeri::all();
-        return view('galeri', compact('galeri'));
+        // Ambil data galeri dengan kategori foto (dengan field kategori)
+        $foto = Galeri::where('kategori', 'foto')->get();
+        return view('foto', compact('foto'));
+    }
+
+    public function video()
+    {
+        // Ambil data galeri dengan kategori video
+        $video = Galeri::where('kategori', 'video')->get();
+        return view('video', compact('video'));
     }
     public function Ekskul()
     {
         $ekskul = ekstrakurikuler::all();
         return view('ekskul', compact('ekskul'));
+    }
+
+    public function guru()
+    {
+        $guru = guru::all();
+        return view('guru', compact('guru'));
     }
 }

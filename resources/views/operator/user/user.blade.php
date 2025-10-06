@@ -6,7 +6,7 @@
             /* rata tengah horizontal */
             vertical-align: middle;
             /* rata tengah vertikal */
-        }   
+        }
 
         /* Styling untuk badge oval di dalam tabel */
         .circle-bg {
@@ -28,10 +28,7 @@
         }
 </style>
     <section class="container my-5">
-        <div class="d-flex justify-content-between align-items-center mb-4">
             <h3>Data Users</h3>
-                <a class="btn btn-success" href="{{ route('admin.User-create') }}"><i class="bi bi-plus-circle"></i> Tambah Data User</a>
-        </div>
         <hr>
          @if (session('success'))
             <div class="alert alert-success alert-dismissible mt-10" style="margin-block: 20px">
@@ -76,7 +73,7 @@
             info: false,
             responsive: false,
             ordering: false,
-            searching: true,           
+            searching: true,
         });
     });
 </script>

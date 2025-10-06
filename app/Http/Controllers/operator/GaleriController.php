@@ -84,9 +84,9 @@ class GaleriController extends Controller
             return redirect()->back();
         }
 
-        $galeri = galeri::findOrFail($id);  
-        if (Storage::exists('galeri/'.$galeri->file)) {
-            Storage::delete('galeri/'.$galeri->file);
+        $galeri = galeri::findOrFail($id);
+        if ($galeri->file && Storage::exists($galeri->file)) {
+            Storage::delete($galeri->file);
         }
 
         $galeri->delete();

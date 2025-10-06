@@ -16,14 +16,14 @@ class EkskulController extends Controller
        $ekskul = ekstrakurikuler::all();
         return view('operator.ekskul.ekskul',compact('ekskul'));
     }
-    
-    
+
+
     public function create()
     {
         return view('operator.ekskul.ekskulCreate');
     }
 
-   
+
     public function store(Request $request)
     {
         $request->validate([

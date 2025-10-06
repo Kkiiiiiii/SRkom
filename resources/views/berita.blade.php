@@ -20,7 +20,7 @@
 <div class="container my-5">
     <h3 class="mb-4 fw-medium">Daftar Berita</h3>
     <hr>
-@if ($berita->count() > 0)
+    @if ($berita->count() > 0)
     <div class="row g-4">
         @foreach ($berita as $item)
         <div class="col-md-4 d-flex">
