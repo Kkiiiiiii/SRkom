@@ -1,13 +1,8 @@
 @extends('admin.layout')
 @section('content')
     <section class="container my-5">
-        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-4">
-            <h3 class="mb-0">Data Profil Sekolah</h3>
-            <a class="btn btn-success" href="{{ route('admin.profilSek-create') }}">
-                <i class="bi bi-plus-circle me-1"></i> Tambah Profil
-            </a>
-        </div>
-        <hr>
+        <h3 class="mb-0">Data Profil Sekolah</h3>
+        <hr style="width: 80px; border: 2px solid #3a4444; margin: 20px 0; text-align: left;">
 
         {{-- Alert Success --}}
         @if (session('success'))
@@ -37,8 +32,8 @@
                             {{-- Logo --}}
                             @if ($item->logo)
                                 <div class="text-center mb-2">
-                                    <img src="{{ asset('storage/' . $item->logo) }}" width="60" height="60" class="rounded-circle"
-                                        alt="Logo Sekolah">
+                                    <img src="{{ asset('storage/' . $item->logo) }}" width="60" height="60"
+                                        class="rounded-circle" alt="Logo Sekolah">
                                 </div>
                             @endif
 
@@ -53,14 +48,12 @@
                         </div>
 
                         <div class="card-footer d-flex justify-content-between">
+                            <a class="btn btn-success" href="{{ route('admin.profilSek-create') }}">
+                                <i class="bi bi-plus-circle me-1"></i> Tambah Profil
+                            </a>
                             <a href="{{ route('admin.profilSek-edit', Crypt::encrypt($item->id_profil)) }}"
                                 class="btn btn-sm btn-warning">
                                 <i class="bi bi-pencil"></i> Edit
-                            </a>
-                            <a href="{{ route('admin.profilSek-delete', Crypt::encrypt($item->id_profil)) }}"
-                                onclick="return confirm('Yakin data profil Sekolah ini dihapus?')"
-                                class="btn btn-sm btn-danger">
-                                <i class="bi bi-trash"></i> Hapus
                             </a>
                         </div>
                     </div>
@@ -70,7 +63,6 @@
 
     </section>
 
-    {{-- Optional styling --}}
     <style>
         .card-body p {
             font-size: 0.9rem;
@@ -81,5 +73,4 @@
             border-top: 1px solid #dee2e6;
         }
     </style>
-
 @endsection

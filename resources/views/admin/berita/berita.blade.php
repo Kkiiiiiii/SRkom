@@ -27,10 +27,10 @@
             transition: background-color 0.3s ease;
         }
 
-        /* Optional: Atur tinggi baris agar gambar dan isi teks tidak terlalu rapat */
+        /* Untuk Atur tinggi baris agar gambar dan isi teks tidak terlalu rapat */
         #berita tbody tr>td {
             vertical-align: middle;
-            /* vertical center */
+            /* vertical tengah */
         }
     </style>
 

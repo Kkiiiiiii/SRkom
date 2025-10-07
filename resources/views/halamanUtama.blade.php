@@ -183,7 +183,7 @@
         <div class="row align-items-start mt-4">
             <div class="col-md-3 text-center">
                 <a href="{{ route('info') }}" rel="noopener noreferrer">
-                    <img src="{{ asset('assets/image/tes.jpeg') }}" alt="Kepala Sekolah" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+                    <img src="{{ asset('assets/image/kepala_sekolah-gest.png') }}" alt="Kepala Sekolah" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
                 </a>
                 <h6 class="mb-0">Bapak Kosasih Mpd</h6>
                 <small>Kepala Sekolah</small>

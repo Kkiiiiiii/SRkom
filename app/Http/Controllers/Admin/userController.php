@@ -24,7 +24,7 @@ class userController extends Controller
     }
 
     public function store(Request $request)
-    {    
+    {
              $request->validate([
                 'username' => 'required|string|max:100|unique:user,username',
                 'password' => 'required|string|max:6',
@@ -47,7 +47,7 @@ class userController extends Controller
 
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail(Crypt::decrypt($id));
+         $user = User::findOrFail(Crypt::decrypt($id));
 
         $request->validate([
             'username' => 'required|string|max:100|unique:user,username,' . $user->id_user . ',id_user',

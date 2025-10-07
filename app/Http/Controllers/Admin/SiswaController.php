@@ -36,7 +36,7 @@ class SiswaController extends Controller
             'nama_siswa' => $request->nama_siswa,
             'jenis_kelamin' => $request->jenis_kelamin,
             'tahun_masuk' => $request->tahun_masuk,
-            
+
         ]);
 
         return redirect()->route('admin.Siswa')->with('Success','Data siswa berhasil ditambahkan.');
@@ -51,7 +51,7 @@ class SiswaController extends Controller
     public function update(Request $request, $id)
     {
         {
-            $siswa = Siswa::findOrFail($id);
+            $siswa = Siswa::findOrFail(Crypt::decrypt($id));
             $siswa->update([
                 'nisn' => $request->nisn,
                 'nama_siswa' => $request->nama_siswa,
@@ -59,7 +59,7 @@ class SiswaController extends Controller
                 'tahun_masuk' => $request->tahun_masuk,
             ]);
 
-            return redirect()->back()->with('success', 'Data siswa berhasil diperbarui.');
+            return redirect()->route('admin.Siswa')->with('success', 'Data siswa berhasil diperbarui.');
         }
 
     }
