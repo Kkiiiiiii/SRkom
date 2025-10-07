@@ -24,9 +24,9 @@ class SiswaController extends Controller
 
     public function store(Request $request)
     {
-        $validasi = $request->validate([
-            'nisn' => 'required',
-            'nama_siswa' => 'required|string',
+        $request->validate([
+           'nisn' => 'required|unique:siswa,nisn|max:11',
+           'nama_siswa' => 'required|string',
            'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
            'tahun_masuk' => 'required|digits:4|integer',
         ]);
@@ -52,6 +52,13 @@ class SiswaController extends Controller
     {
         {
             $siswa = Siswa::findOrFail(Crypt::decrypt($id));
+            $request->validate([
+                'nisn' => 'required|unique:siswa,nisn|max:11' . $siswa->id_siswa . ',id_siswa',
+                'nama_siswa' => 'required|string',
+                'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
+                'tahun_masuk' => 'required|digits:4|integer',
+            ]);
+
             $siswa->update([
                 'nisn' => $request->nisn,
                 'nama_siswa' => $request->nama_siswa,

@@ -70,6 +70,10 @@
         background: linear-gradient(135deg, #ffb300, #fb8c00);
     }
 
+    .box-ekskul .stat-card {
+        background: linear-gradient(135deg, #f85624, #521404);
+    }
+
     .stat-card i {
         font-size: 3rem;
         margin-bottom: 15px;
@@ -216,7 +220,7 @@
 {{-- JUMLAH SISWA / GURU --}}
 <section class="jumlah my-5 py-5 bg-light">
     <div class="container">
-        <div class="row justify-content-center text-center">
+        <div class="row justify-content-center text-center gap-4">
             <div class="col-md-5 box-siswa mb-4 mb-md-0">
                 <div class="stat-card p-4">
                     <i class="fa-solid fa-graduation-cap" style="font-size: 50px"></i>
@@ -229,6 +233,13 @@
                     <i class="fa-solid fa-person-chalkboard" style="font-size: 50px"></i>
                     <p class="stat-number">{{ $guru->count() }}</p>
                     <h5>Jumlah Guru</h5>
+                </div>
+            </div>
+            <div class="col-md-5 box-ekskul mb-4 mb-md-0">
+                <div class="stat-card p-4">
+                    <i class="fa-solid fa-book" style="font-size: 50px"></i>
+                    <p class="stat-number">{{ $ekskul->count() }}</p>
+                    <h5>Jumlah Ekstrakurikuler</h5>
                 </div>
             </div>
         </div>
@@ -274,14 +285,17 @@
             @foreach ($berita as $item)
                 <div class="col-md-4">
                     <div class="card h-100 shadow-sm">
+                        {{-- Crypt::encrypt digunkan untuk mengenkripsi ID berita, dan noopener noreferrer digunakan untuk mencegah akses ke halaman sebelumnya --}}
                         <a href="{{ route('detail-berita',  ['id' => Crypt::encrypt($item->id_berita)]) }}" rel="noopener noreferrer">
                             <img src="{{ asset('storage/' . $item->gambar) }}" class="card-img-top" alt="{{ $item->judul }}">
                         </a>
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">{{ $item->judul }}</h5>
+                            {{-- Memberikan batasan jumlah karakter --}}
                             <p class="card-text text-justify">{{ Str::limit($item->isi, 150) }}</p>
                             <p class="card-text mt-auto">
                                 <small class="text-muted">
+                                    {{-- Menampilkan informasi pengunggah dan tanggal --}}
                                     Diposting oleh: {{ $item->user->username ?? 'Unknown' }} pada {{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}
                                 </small>
                             </p>
@@ -310,13 +324,15 @@
             @foreach($galeri as $g)
                 @php
                     $file = $g->file;
-                    $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+                    $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION)); //Untuk Mendapatkan Ekstensi File dan mengubahnya menjadi huruf kecil
+                    // Untuk Menentukan tipe File Foto Dan Video
                     $isImage = in_array($ext, ['jpg', 'jpeg', 'png', 'gif']);
                     $isVideo = in_array($ext, ['mp4', 'mov', 'avi', 'mkv']);
                     // Untuk Mnentukan tipe File Foto Dan Video
                 @endphp
 
                 <div class="col-md-3 col-sm-6">
+                    {{-- Gambar Thumbnail --}}
                     <div class="shadow-sm">
                         @if($isImage)
                         {{-- Jika Gambar --}}
@@ -326,6 +342,7 @@
                         @elseif($isVideo)
                         {{-- Jika Video --}}
                         <a href="{{ route('video') }}" rel="noopener noreferrer">
+                            {{-- UNtuk menampilkan video --}}
                             <video controls muted class="w-100 rounded" loading="lazy" style="height:200px; object-fit:cover;">
                                 <source src="{{ asset('storage/'.$file) }}" type="video/{{ $ext }}">
                                 Browser tidak mendukung video.
@@ -338,6 +355,7 @@
         </div>
         </div>
              @else
+             {{-- Alert Jika Galeri Kosong --}}
             <div class="alert alert-warning text-center mt-4" role="alert">
                 Belum ada Galeri yang diinput.
             </div>
@@ -356,13 +374,16 @@
 
                 @php
                     $perSlide = 4; // Agar Menampilkan 4 Guru per-slide
-                    $totalGuru = $guru->count();
-                    $totalSlides = ceil($totalGuru / $perSlide);
+                    $totalGuru = $guru->count(); // Menghitung total guru
+                    $totalSlides = ceil($totalGuru / $perSlide); // Untuk Membulatkan ke atas jumlah slide yang dibutuhkan
+
                 @endphp
 
+                {{-- Carousel Item --}}
                 @for ($i = 0; $i < $totalSlides; $i++)
                     <div class="carousel-item {{ $i == 0 ? 'active' : '' }}">
                         <div class="row g-3 justify-content-center">
+                            {{-- Menampilkan guru per-slide --}}
                             @foreach ($guru->slice($i * $perSlide, $perSlide) as $item)
                                 <div class="col-6 col-md-3 d-flex">
                         {{-- ketika di tampilan lebih kecil atau di hp akan responsive(Menyesuaikan Tampilan) --}}

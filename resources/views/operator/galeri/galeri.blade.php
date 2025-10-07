@@ -75,8 +75,8 @@
                             </video>
                         @endif
                         </td>
-                        <td><span class="circle-bg">{{ ucfirst($item->kategori) }}</span></td>
-                        <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('d-M-Y') }}</td>
+                        <td><span class="circle-bg">{{ ucfirst($item->kategori) }}</span></td>{{-- Membuat format kategori --}}
+                        <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('d-M-Y') }}</td>{{-- Membuat format tanggal --}}
                         <td>
                         <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editGaleriModal{{ $item->id_galeri  }}">
                                 <i class="bi bi-pencil"></i> Edit
@@ -115,6 +115,7 @@
 
                                     {{-- Preview file lama --}}
                                     @php
+                                    // Untuk mengecek apakah file adalah gambar atau video
                                         $isImage = Str::endsWith($item->file, ['.jpg', '.jpeg', '.png', '.gif']);
                                     @endphp
                                     @if($isImage)

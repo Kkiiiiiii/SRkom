@@ -87,4 +87,10 @@ class UserController extends Controller
         $guru = guru::all();
         return view('guru', compact('guru'));
     }
+
+    public function siswa()
+    {
+        $siswa = siswa::all();
+        return view('siswa', compact('siswa'));
+    }
 }

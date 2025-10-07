@@ -49,7 +49,7 @@
                         </div>
 
                         <div class="card-footer d-flex justify-content-between">
-                            <a class="btn btn-success" href="{{ route('admin.profilSek-create') }}">
+                            <a class="btn btn-success" href="{{ route('operator.profil-create') }}">
                                 <i class="bi bi-plus-circle me-1"></i> Tambah Profil
                             </a>
                             <a href="{{ route('operator.profil-edit', Crypt::encrypt($item->id_profil)) }}"

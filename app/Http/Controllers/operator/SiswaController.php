@@ -19,7 +19,7 @@ class SiswaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-           'nisn' => 'required',
+           'nisn' => 'required|unique:siswa,nisn|max:11',
            'nama_siswa' => 'required|string',
            'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
            'tahun_masuk' => 'required|digits:4|integer',
@@ -30,7 +30,7 @@ class SiswaController extends Controller
             'nama_siswa' => $request->nama_siswa,
             'jenis_kelamin' => $request->jenis_kelamin,
             'tahun_masuk' => $request->tahun_masuk,
-            
+
         ]);
 
         return redirect()->route('operator.siswa')->with('Success','Data siswa berhasil ditambahkan.');
@@ -45,6 +45,13 @@ class SiswaController extends Controller
     public function update(Request $request, $id)
         {
             $siswa = Siswa::findOrFail($id);
+            $request->validate([
+                'nisn' => 'required|unique:siswa,nisn|max:11,' . $siswa->id_siswa . ',id_siswa',
+                'nama_siswa' => 'required|string',
+                'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
+                'tahun_masuk' => 'required|digits:4|integer',
+            ]);
+
             $siswa->update([
                 'nisn' => $request->nisn,
                 'nama_siswa' => $request->nama_siswa,

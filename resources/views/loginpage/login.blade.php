@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,6 +63,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="login-card mx-auto">
@@ -72,7 +74,8 @@
                 </div>
             @endif
 
-            <img src="{{ asset('assets/image/logo_sekolah.png') }}" class="rounded-circle img-thumbnail school-logo" alt="Logo Sekolah">
+            <img src="{{ asset('assets/image/logo_sekolah.png') }}" class="rounded-circle img-thumbnail school-logo"
+                alt="Logo Sekolah">
             <h3 class="login-title">SMPN 02 GunungPutri</h3>
 
             <form action="{{ route('login') }}" method="POST" enctype="multipart/form-data">
@@ -90,7 +93,7 @@
                 </div>
             </form>
             <div class="text-center mt-1"><a class="text-decoration-none text-white" href="{{ route('beranda') }}">
-                Kembali Ke Halaman Web</a>
+                    Kembali Ke Halaman Web</a>
             </div>
         </div>
     </div>
@@ -98,7 +101,7 @@
     <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/fontawesome/js/all.min.js') }}"></script>
     <script>
-        setTimeout(function () {
+        setTimeout(function() {
             const alert = document.getElementById('error');
             if (alert) {
                 alert.style.transition = 'opacity 0.5s ease'; // animasi ease
@@ -108,4 +111,5 @@
         }, 3000);
     </script>
 </body>
+
 </html>

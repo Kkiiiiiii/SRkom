@@ -3,6 +3,7 @@
 <div class="container my-5">
     <h3>Tambahkan data Guru</h3>
 
+    {{-- Notifikasi error --}}
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>

@@ -6,7 +6,7 @@
             /* rata tengah horizontal */
             vertical-align: middle;
             /* rata tengah vertikal */
-        }   
+        }
 
         /* Styling untuk badge oval di dalam tabel */
         .circle-bg {
@@ -35,7 +35,7 @@
         </a>
     </div>
     <hr>
-
+    {{-- Notifikasi sukses --}}
     @if (session('success'))
         <div class="alert alert-success alert-dismissible mt-10" style="margin-block: 20px">
             {{ session('success') }}
@@ -43,6 +43,7 @@
         </div>
     @endif
 
+    {{-- Notifikasi error --}}
     @if (session('error'))
         <div class="alert alert-danger">
             {{ session('error') }}
@@ -106,7 +107,7 @@
             info: false,
             responsive: false,
             ordering: false,
-            searching: true,          
+            searching: true,
         });
     });
 </script>

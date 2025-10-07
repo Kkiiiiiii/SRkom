@@ -40,6 +40,7 @@
                 Ekskul</a>
         </div>
         <hr>
+        {{-- Notifikasi sukses --}}
         @if (session('success'))
             <div class="alert alert-success alert-dismissible mt-10" style="margin-block: 20px">
                 {{ session('success') }}
@@ -47,6 +48,7 @@
             </div>
         @endif
 
+        {{-- Notifikasi error --}}
         @if (session('error'))
             <div class="alert alert-danger">
                 {{ session('error') }}
@@ -66,13 +68,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {{-- looping di dalam koleksi ekskul --}}
                     @foreach ($ekskul as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->nama_ekskul }}</td>
                             <td>{{ $item->pembina }}</td>
                             <td><span class="circle-bg">{{ $item->jadwal_latihan }}</span></td>
-                            <td>{{ Str::limit($item->deskripsi, 50) }}</td>
+                            <td>{{ Str::limit($item->deskripsi, 50) }}</td>{{-- Membatasi jumlah karakter deskripsi --}}
                             <td>
                                 @if ($item->gambar)
                                     <img src="{{ asset('storage/' . $item->gambar) }}" width="80" class="rounded">
@@ -81,11 +84,11 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('admin.ekskul.edit', Crypt::encrypt($item->id_ekskul)) }}"
+                                <a href="{{ route('admin.ekskul.edit', Crypt::encrypt($item->id_ekskul)) }}"{{-- Meng-enkripsi ID ekskul --}}
                                     class="btn btn-sm btn-warning">
                                     <i class="bi bi-pencil"></i> Edit
                                 </a>
-                                <a href="{{ route('admin.ekskul.delete', Crypt::encrypt($item->id_ekskul)) }}"
+                                <a href="{{ route('admin.ekskul.delete', Crypt::encrypt($item->id_ekskul)) }}"{{-- Meng-enkripsi ID ekskul --}}
                                     class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin hapus ekskul ini?')">
                                     <i class="bi bi-trash"></i>Hapus
                                 </a>

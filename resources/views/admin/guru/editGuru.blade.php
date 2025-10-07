@@ -29,7 +29,7 @@
             <label for="nip">NIP</label>
             <input type="number" name="nip" class="form-control" id="nip" value="{{ old('nip', $guru->nip) }}" required>
         </div>
-        
+
         <div class="mt-3 mb-3">
             <label for="mapel">Mapel</label>
             <input type="text" name="mapel" class="form-control" id="mapel" value="{{ old('mapel', $guru->mapel) }}" required>
@@ -37,6 +37,7 @@
 
         <div class="mt-3 mb-3">
             <label for="foto">Foto Guru</label><br>
+            {{-- Menampilkan foto guru yang sudah ada --}}
             @if($guru->foto)
                 <img src="{{ asset('storage/' . $guru->foto) }}" alt="Foto Guru" width="100" class="mb-2">
                 <br>

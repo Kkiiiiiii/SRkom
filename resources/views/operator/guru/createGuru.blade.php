@@ -2,7 +2,6 @@
 @section('content')
 <div class="container my-5">
     <h3>Tambahkan data Guru</h3>
-
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>

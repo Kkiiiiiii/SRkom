@@ -77,7 +77,8 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {{ request()->routeIs('guru', 'info') ? 'active' : '' }}"
-                            href="#" id="profilDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            href="#" id="profilDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             Profil Sekolah
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="profilDropdown">
@@ -90,6 +91,11 @@
                                     href="{{ route('guru') }}"><i class="fa-solid fa-user-tie me-1"></i>Staff
                                     Pengajar</a>
                             </li>
+                            <li>
+                                <a class="dropdown-item {{ request()->routeIs('siswa') ? 'active' : '' }}"
+                                    href="{{ route('siswa') }}"><i class="fa-solid fa-graduation-cap me-1"></i>Daftar
+                                    Siswa</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -98,7 +104,8 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {{ request()->routeIs('foto', 'video') ? 'active' : '' }}"
-                            href="#" id="galeriDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            href="#" id="galeriDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             Galeri Sekolah
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="galeriDropdown">
@@ -135,9 +142,15 @@
     @include('footer')
 
     <!-- Script -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/fontawesome/js/all.min.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-</body>
-</html>
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
 
+
+    @stack('scripts')
+</body>
+
+</html>

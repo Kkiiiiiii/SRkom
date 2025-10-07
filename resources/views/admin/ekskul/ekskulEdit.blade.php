@@ -32,6 +32,7 @@
 
         <div class="mb-3">
             <label for="gambar" class="form-label">Gambar</label>
+            {{-- Menampilkan gambar yang sudah ada --}}
              @if($ekskul->gambar)
                 <img src="{{ asset('storage/'.$ekskul->gambar) }}" width="100" class="rounded mb-2"><br>
             @endif
